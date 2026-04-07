@@ -5,54 +5,54 @@ url: https://www.jetbrains.com/teamcity/
 created: '2024'
 modified: '2026-03-16'
 tags:
-- continuous integration
-- ci/cd
-- deployment
-- build automation
-- devops
-- testing
+  - Build Automation
+  - Ci/Cd
+  - Continuous Integration
+  - Deployment
+  - Devops
+  - Testing
 apis:
-- name: TeamCity REST API
-  description: The primary REST API for interacting with TeamCity server, allowing you to manage builds, projects, build configurations, agents, and more.
-  image: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
-  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
-  baseURL: https://teamcity.example.com/app/rest
-  tags:
-  - rest
-  - builds
-  - projects
-  - automation
-  properties:
-  - type: Documentation
-    url: https://www.jetbrains.com/help/teamcity/rest-api.html
-  - type: OpenAPI
-    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
-  - type: Authentication
-    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
-  contact:
-  - type: Support
-    url: https://www.jetbrains.com/support/teamcity/
+  - name: TeamCity REST API
+    description: The primary REST API for interacting with TeamCity server, allowing you to manage builds, projects, build configurations, agents, and more.
+    image: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
+    humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+    baseURL: https://teamcity.example.com/app/rest
+    tags:
+      - Automation
+      - Builds
+      - Projects
+      - Rest
+    properties:
+      - type: Documentation
+        url: https://www.jetbrains.com/help/teamcity/rest-api.html
+      - type: OpenAPI
+        url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+      - type: Authentication
+        url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+    contact:
+      - type: Support
+        url: https://www.jetbrains.com/support/teamcity/
 common:
-- type: Getting Started
-  url: https://www.jetbrains.com/help/teamcity/getting-started-with-teamcity.html
-- type: Documentation
-  url: https://www.jetbrains.com/help/teamcity/teamcity-documentation.html
-- type: Pricing
-  url: https://www.jetbrains.com/teamcity/buy/
-- type: Download
-  url: https://www.jetbrains.com/teamcity/download/
-- type: Blog
-  url: https://blog.jetbrains.com/teamcity/
-- type: Twitter
-  url: https://twitter.com/teamcity
-- type: GitHub
-  url: https://github.com/JetBrains/teamcity-rest-client
-- type: Status
-  url: https://teamcity-support.jetbrains.com/hc/en-us/categories/200595559-Known-Issues
-- type: Plugins
-  url: https://plugins.jetbrains.com/teamcity
+  - type: Getting Started
+    url: https://www.jetbrains.com/help/teamcity/getting-started-with-teamcity.html
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/teamcity-documentation.html
+  - type: Pricing
+    url: https://www.jetbrains.com/teamcity/buy/
+  - type: Download
+    url: https://www.jetbrains.com/teamcity/download/
+  - type: Blog
+    url: https://blog.jetbrains.com/teamcity/
+  - type: Twitter
+    url: https://twitter.com/teamcity
+  - type: GitHub
+    url: https://github.com/JetBrains/teamcity-rest-client
+  - type: Status
+    url: https://teamcity-support.jetbrains.com/hc/en-us/categories/200595559-Known-Issues
+  - type: Plugins
+    url: https://plugins.jetbrains.com/teamcity
 maintainers:
-- type: Organization
-  name: JetBrains
-  url: https://www.jetbrains.com
-  email: teamcity-support@jetbrains.com
+  - type: Organization
+    name: JetBrains
+    url: https://www.jetbrains.com
+    email: teamcity-support@jetbrains.com
