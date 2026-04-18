@@ -1,0 +1,283 @@
+---
+name: TeamCity REST API JSON Structure
+description: JSON structure documentation for the TeamCity REST API resources, describing the shape and nesting of response payloads.
+created: '2026-04-18'
+modified: '2026-04-18'
+
+structures:
+
+  - name: Project
+    description: A TeamCity project organizing build configurations into a hierarchy.
+    fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique project identifier (e.g., MyProject)
+      - name: name
+        type: string
+        required: true
+        description: Display name of the project
+      - name: description
+        type: string
+        required: false
+        description: Project description text
+      - name: href
+        type: string
+        required: false
+        description: Relative REST API URL for this project
+      - name: webUrl
+        type: string
+        required: false
+        description: Web UI URL for this project
+      - name: parentProjectId
+        type: string
+        required: false
+        description: ID of the parent project in the hierarchy
+      - name: archived
+        type: boolean
+        required: false
+        description: Whether the project is archived
+      - name: buildTypes
+        type: object
+        required: false
+        description: Nested BuildTypes collection
+        fields:
+          - name: count
+            type: integer
+          - name: buildType
+            type: array
+            items: BuildType
+      - name: parameters
+        type: object
+        required: false
+        description: Project parameters collection
+      - name: projects
+        type: object
+        required: false
+        description: Sub-projects collection
+
+  - name: BuildType
+    description: A build configuration defining build steps, triggers, and settings.
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: description
+        type: string
+        required: false
+      - name: projectName
+        type: string
+        required: false
+      - name: projectId
+        type: string
+        required: false
+      - name: href
+        type: string
+        required: false
+      - name: webUrl
+        type: string
+        required: false
+      - name: paused
+        type: boolean
+        required: false
+      - name: parameters
+        type: object
+        required: false
+        description: Build parameters collection
+      - name: steps
+        type: object
+        required: false
+        description: Build steps collection
+      - name: triggers
+        type: object
+        required: false
+        description: Build triggers collection
+
+  - name: Build
+    description: An instance of a build execution with status, timing, and results.
+    fields:
+      - name: id
+        type: integer
+        required: true
+      - name: buildTypeId
+        type: string
+        required: true
+      - name: number
+        type: string
+        required: false
+      - name: status
+        type: string
+        required: false
+        enum: [SUCCESS, FAILURE, UNKNOWN]
+      - name: state
+        type: string
+        required: false
+        enum: [queued, running, finished]
+      - name: statusText
+        type: string
+        required: false
+      - name: href
+        type: string
+        required: false
+      - name: webUrl
+        type: string
+        required: false
+      - name: branchName
+        type: string
+        required: false
+      - name: startDate
+        type: string
+        required: false
+      - name: finishDate
+        type: string
+        required: false
+      - name: queuedDate
+        type: string
+        required: false
+      - name: triggered
+        type: object
+        required: false
+        description: Information about what triggered the build
+      - name: lastChanges
+        type: object
+        required: false
+        description: VCS changes included in the build
+      - name: agent
+        type: object
+        required: false
+        description: Agent that executed the build
+      - name: testOccurrences
+        type: object
+        required: false
+        description: Test results for the build
+      - name: problemOccurrences
+        type: object
+        required: false
+        description: Build problems
+
+  - name: Agent
+    description: A build agent that connects to TeamCity server and executes builds.
+    fields:
+      - name: id
+        type: integer
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: connected
+        type: boolean
+        required: false
+      - name: enabled
+        type: boolean
+        required: false
+      - name: authorized
+        type: boolean
+        required: false
+      - name: ip
+        type: string
+        required: false
+      - name: href
+        type: string
+        required: false
+      - name: pool
+        type: object
+        required: false
+        description: Agent pool assignment
+
+  - name: VcsRoot
+    description: A version control system root defining repository connection settings.
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: vcsName
+        type: string
+        required: false
+      - name: href
+        type: string
+        required: false
+      - name: status
+        type: string
+        required: false
+
+  - name: Change
+    description: A VCS change (commit) detected by TeamCity.
+    fields:
+      - name: id
+        type: integer
+        required: true
+      - name: version
+        type: string
+        required: true
+      - name: username
+        type: string
+        required: false
+      - name: date
+        type: string
+        required: false
+      - name: comment
+        type: string
+        required: false
+
+  - name: User
+    description: A TeamCity user account with roles and group memberships.
+    fields:
+      - name: id
+        type: integer
+        required: true
+      - name: username
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: false
+      - name: email
+        type: string
+        required: false
+      - name: href
+        type: string
+        required: false
+      - name: lastLogin
+        type: string
+        required: false
+
+  - name: TestOccurrence
+    description: A single test execution within a build.
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: status
+        type: string
+        required: true
+        enum: [SUCCESS, FAILURE, UNKNOWN]
+      - name: duration
+        type: integer
+        required: false
+      - name: muted
+        type: boolean
+        required: false
+      - name: currentlyMuted
+        type: boolean
+        required: false
+      - name: currentlyInvestigated
+        type: boolean
+        required: false
+
+collectionPatterns:
+  description: TeamCity REST API uses a consistent collection wrapper pattern.
+  pattern:
+    count: integer
+    href: string (optional)
+    nextHref: string (optional, for pagination)
+    items: array of resource objects
+  note: The array field name matches the singular resource name (e.g., project, build, agent).

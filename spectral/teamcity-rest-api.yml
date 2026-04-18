@@ -1,0 +1,125 @@
+extends:
+  - spectral:oas
+
+rules:
+  # TeamCity Locator Pattern
+  teamcity-locator-parameter-description:
+    description: Locator parameters should describe the TeamCity locator syntax
+    given: "$.paths.*.*.parameters[?(@.name =~ /[Ll]ocator/)]"
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  # TeamCity uses /app/rest as base path
+  teamcity-server-base-path:
+    description: Server URL should use /app/rest as base path
+    given: "$.servers[*].url"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "/app/rest$"
+
+  # All operations should have operationId
+  teamcity-operation-id-required:
+    description: Every operation must have an operationId
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+
+  # Operation summaries should be Title Case
+  teamcity-summary-title-case:
+    description: Operation summaries should use Title Case
+    given: "$.paths.*.*.summary"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-z]*(\\s[A-Z][a-z]*)*$"
+
+  # TeamCity responses support both JSON and XML
+  teamcity-json-response:
+    description: Operations should support application/json responses
+    given: "$.paths.*.*.responses.200.content"
+    severity: warn
+    then:
+      field: application/json
+      function: truthy
+
+  # Build status enum values
+  teamcity-build-status-enum:
+    description: Build status should use TeamCity standard values
+    given: "$.components.schemas.Build.properties.status.enum"
+    severity: error
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - SUCCESS
+          - FAILURE
+          - UNKNOWN
+
+  # Build state enum values
+  teamcity-build-state-enum:
+    description: Build state should use TeamCity standard values
+    given: "$.components.schemas.Build.properties.state.enum"
+    severity: error
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - queued
+          - running
+          - finished
+
+  # Security schemes required
+  teamcity-security-defined:
+    description: API must define security schemes
+    given: "$"
+    severity: error
+    then:
+      field: components.securitySchemes
+      function: truthy
+
+  # Pagination parameters for list endpoints
+  teamcity-list-pagination:
+    description: List endpoints should support count and start parameters
+    given: "$.paths[?(@property.match(/^\\/[a-z]+(s|Queue|Occurrences)$/))].get"
+    severity: info
+    then:
+      field: parameters
+      function: truthy
+
+  # Tag naming - Title Case
+  teamcity-tag-title-case:
+    description: Tags should use Title Case
+    given: "$.tags[*].name"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z]*(\\s[A-Z][a-zA-Z]*)*$"
+
+  # Descriptions required on schemas
+  teamcity-schema-description:
+    description: Schema properties should have descriptions
+    given: "$.components.schemas.*.properties.*"
+    severity: info
+    then:
+      field: description
+      function: truthy
+
+  # href property pattern
+  teamcity-href-format:
+    description: href properties should be strings
+    given: "$.components.schemas.*.properties.href"
+    severity: warn
+    then:
+      field: type
+      function: enumeration
+      functionOptions:
+        values:
+          - string

@@ -1,0 +1,240 @@
+---
+name: TeamCity REST API Capabilities
+description: Shared per-API capability definitions and workflow-oriented capability compositions for the TeamCity REST API.
+version: 2024.12.1
+created: '2026-04-18'
+modified: '2026-04-18'
+
+capabilities:
+
+  # Core CI/CD Capabilities
+  - name: Project Management
+    description: Create, read, update, and delete TeamCity projects with full hierarchy support.
+    tags:
+      - Projects
+      - Configuration
+    operations:
+      - getAllProjects
+      - getProject
+      - createProject
+      - deleteProject
+      - getProjectParameters
+      - getProjectBuildTypes
+
+  - name: Build Configuration Management
+    description: Manage build configurations (build types) including parameters, steps, and triggers.
+    tags:
+      - Build Configurations
+      - Configuration
+    operations:
+      - getAllBuildTypes
+      - getBuildType
+      - getBuildTypeBuilds
+      - getBuildTypeParameters
+
+  - name: Build Execution
+    description: Trigger, monitor, and cancel builds with full lifecycle management.
+    tags:
+      - Builds
+      - Execution
+    operations:
+      - getAllBuilds
+      - getBuild
+      - triggerBuild
+      - cancelBuild
+      - getBuildQueue
+      - getBuildTags
+      - setBuildTags
+
+  - name: Build Artifacts
+    description: Access and manage build artifacts and build statistics.
+    tags:
+      - Builds
+      - Artifacts
+    operations:
+      - getBuildArtifacts
+      - getBuildStatistics
+
+  - name: Test Management
+    description: Query test results, test occurrences, and test history across builds.
+    tags:
+      - Tests
+      - Quality
+    operations:
+      - getAllTests
+      - getAllTestOccurrences
+      - getBuildTests
+
+  - name: Problem Tracking
+    description: Track and query build problems and problem occurrences.
+    tags:
+      - Problems
+      - Quality
+    operations:
+      - getAllProblemOccurrences
+      - getBuildProblems
+
+  - name: Agent Management
+    description: Monitor and manage build agents including enabling, disabling, and authorization.
+    tags:
+      - Agents
+      - Infrastructure
+    operations:
+      - getAllAgents
+      - getAgent
+      - getAgentEnabledStatus
+      - setAgentEnabledStatus
+      - getAgentAuthorizedStatus
+      - setAgentAuthorizedStatus
+
+  - name: Agent Pool Management
+    description: Organize agents into pools for resource management and project assignment.
+    tags:
+      - Agent Pools
+      - Infrastructure
+    operations:
+      - getAllAgentPools
+      - getAgentPool
+      - createAgentPool
+      - deleteAgentPool
+
+  - name: Version Control Integration
+    description: Manage VCS roots and track code changes across repositories.
+    tags:
+      - VCS Roots
+      - Changes
+    operations:
+      - getAllVcsRoots
+      - getVcsRoot
+      - createVcsRoot
+      - deleteVcsRoot
+      - getAllChanges
+      - getChange
+
+  - name: User Management
+    description: Create, update, and manage users and user groups with role-based access control.
+    tags:
+      - Users
+      - User Groups
+      - Security
+    operations:
+      - getAllUsers
+      - getUser
+      - createUser
+      - updateUser
+      - deleteUser
+      - getAllUserGroups
+      - createUserGroup
+
+  - name: Investigation Management
+    description: Assign and track investigations for failing builds and tests.
+    tags:
+      - Investigations
+      - Quality
+    operations:
+      - getAllInvestigations
+
+  - name: Test Muting
+    description: Mute flaky or known-failing tests to prevent false build failures.
+    tags:
+      - Mutes
+      - Quality
+    operations:
+      - getAllMutes
+      - createMute
+
+  - name: Cloud Integration
+    description: Manage cloud profiles and cloud agent instances for elastic build infrastructure.
+    tags:
+      - Cloud
+      - Infrastructure
+    operations:
+      - getAllCloudProfiles
+      - getAllCloudInstances
+
+  - name: Server Administration
+    description: Access server information, plugin management, and audit logging.
+    tags:
+      - Server
+      - Audit
+      - Administration
+    operations:
+      - getServerInfo
+      - getServerPlugins
+      - getAuditEvents
+
+# Workflow Compositions
+workflows:
+
+  - name: CI Pipeline Execution
+    description: End-to-end continuous integration workflow from code change to build result.
+    tags:
+      - CI/CD
+      - Automation
+    steps:
+      - capability: Version Control Integration
+        description: Detect code changes in VCS roots
+      - capability: Build Execution
+        description: Trigger a build for the changed code
+      - capability: Test Management
+        description: Review test results from the build
+      - capability: Problem Tracking
+        description: Investigate any build problems
+      - capability: Build Artifacts
+        description: Collect build artifacts and statistics
+
+  - name: Infrastructure Scaling
+    description: Scale build infrastructure using cloud agents and agent pool management.
+    tags:
+      - Infrastructure
+      - Cloud
+    steps:
+      - capability: Agent Pool Management
+        description: Configure agent pools for workload distribution
+      - capability: Cloud Integration
+        description: Provision cloud agent instances
+      - capability: Agent Management
+        description: Authorize and enable new agents
+
+  - name: Build Failure Investigation
+    description: Investigate and resolve build failures through test analysis and investigation assignment.
+    tags:
+      - Quality
+      - Troubleshooting
+    steps:
+      - capability: Build Execution
+        description: Identify failed builds
+      - capability: Problem Tracking
+        description: Review build problem details
+      - capability: Test Management
+        description: Analyze failing test results
+      - capability: Investigation Management
+        description: Assign investigation to team members
+      - capability: Test Muting
+        description: Mute known flaky tests if needed
+
+  - name: Project Setup
+    description: Set up a new project with build configurations and VCS integration.
+    tags:
+      - Configuration
+      - Onboarding
+    steps:
+      - capability: Project Management
+        description: Create a new project
+      - capability: Version Control Integration
+        description: Configure VCS roots for the project
+      - capability: Build Configuration Management
+        description: Create build configurations with steps and triggers
+      - capability: Agent Pool Management
+        description: Assign agent pools to the project
+
+  - name: User Onboarding
+    description: Onboard new team members with appropriate access and roles.
+    tags:
+      - Security
+      - Administration
+    steps:
+      - capability: User Management
+        description: Create user accounts and assign to groups
+      - capability: Server Administration
+        description: Review audit trail for compliance

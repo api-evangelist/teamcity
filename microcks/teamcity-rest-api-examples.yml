@@ -1,0 +1,385 @@
+---
+name: TeamCity REST API Examples
+version: 2024.12.1
+description: Microcks-compatible example request/response pairs for the TeamCity REST API.
+
+operations:
+
+  # Projects
+  GET /projects:
+    - name: Get All Projects
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "count": 3,
+            "href": "/app/rest/projects",
+            "project": [
+              {
+                "id": "_Root",
+                "name": "<Root project>",
+                "description": "Contains all other projects",
+                "href": "/app/rest/projects/id:_Root",
+                "webUrl": "https://teamcity.example.com/project.html?projectId=_Root"
+              },
+              {
+                "id": "MyProject",
+                "name": "My Project",
+                "description": "Main application project",
+                "href": "/app/rest/projects/id:MyProject",
+                "webUrl": "https://teamcity.example.com/project.html?projectId=MyProject",
+                "parentProjectId": "_Root"
+              },
+              {
+                "id": "MyProject_SubProject",
+                "name": "Sub Project",
+                "href": "/app/rest/projects/id:MyProject_SubProject",
+                "webUrl": "https://teamcity.example.com/project.html?projectId=MyProject_SubProject",
+                "parentProjectId": "MyProject"
+              }
+            ]
+          }
+
+  POST /projects:
+    - name: Create Project
+      request:
+        headers:
+          Content-Type: application/json
+          Accept: application/json
+          Authorization: Bearer <token>
+        body: |
+          {
+            "name": "New Project",
+            "id": "NewProject",
+            "parentProject": {
+              "locator": "id:_Root"
+            }
+          }
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "id": "NewProject",
+            "name": "New Project",
+            "href": "/app/rest/projects/id:NewProject",
+            "webUrl": "https://teamcity.example.com/project.html?projectId=NewProject",
+            "parentProjectId": "_Root"
+          }
+
+  GET /projects/{projectLocator}:
+    - name: Get Project By ID
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+        params:
+          projectLocator: id:MyProject
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "id": "MyProject",
+            "name": "My Project",
+            "description": "Main application project",
+            "href": "/app/rest/projects/id:MyProject",
+            "webUrl": "https://teamcity.example.com/project.html?projectId=MyProject",
+            "parentProjectId": "_Root",
+            "archived": false,
+            "buildTypes": {
+              "count": 2,
+              "buildType": [
+                {
+                  "id": "MyProject_Build",
+                  "name": "Build",
+                  "projectId": "MyProject",
+                  "href": "/app/rest/buildTypes/id:MyProject_Build"
+                },
+                {
+                  "id": "MyProject_Deploy",
+                  "name": "Deploy",
+                  "projectId": "MyProject",
+                  "href": "/app/rest/buildTypes/id:MyProject_Deploy"
+                }
+              ]
+            }
+          }
+
+  # Builds
+  GET /builds:
+    - name: Get All Builds
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "count": 2,
+            "href": "/app/rest/builds",
+            "build": [
+              {
+                "id": 12345,
+                "buildTypeId": "MyProject_Build",
+                "number": "42",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/app/rest/builds/id:12345",
+                "webUrl": "https://teamcity.example.com/viewLog.html?buildId=12345",
+                "branchName": "main",
+                "startDate": "20260418T100000+0000",
+                "finishDate": "20260418T101500+0000"
+              },
+              {
+                "id": 12344,
+                "buildTypeId": "MyProject_Build",
+                "number": "41",
+                "status": "FAILURE",
+                "state": "finished",
+                "href": "/app/rest/builds/id:12344",
+                "webUrl": "https://teamcity.example.com/viewLog.html?buildId=12344",
+                "branchName": "feature/new-api",
+                "startDate": "20260418T090000+0000",
+                "finishDate": "20260418T091200+0000"
+              }
+            ]
+          }
+
+  GET /builds/{buildLocator}:
+    - name: Get Build By ID
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+        params:
+          buildLocator: "id:12345"
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "id": 12345,
+            "buildTypeId": "MyProject_Build",
+            "number": "42",
+            "status": "SUCCESS",
+            "state": "finished",
+            "statusText": "Tests passed: 150",
+            "href": "/app/rest/builds/id:12345",
+            "webUrl": "https://teamcity.example.com/viewLog.html?buildId=12345",
+            "branchName": "main",
+            "startDate": "20260418T100000+0000",
+            "finishDate": "20260418T101500+0000",
+            "queuedDate": "20260418T095800+0000",
+            "triggered": {
+              "type": "vcs",
+              "date": "20260418T095800+0000"
+            },
+            "agent": {
+              "id": 1,
+              "name": "agent-linux-01",
+              "href": "/app/rest/agents/id:1"
+            },
+            "buildType": {
+              "id": "MyProject_Build",
+              "name": "Build",
+              "projectId": "MyProject",
+              "href": "/app/rest/buildTypes/id:MyProject_Build"
+            }
+          }
+
+  # Build Queue
+  POST /buildQueue:
+    - name: Trigger Build
+      request:
+        headers:
+          Content-Type: application/json
+          Accept: application/json
+          Authorization: Bearer <token>
+        body: |
+          {
+            "buildType": {
+              "id": "MyProject_Build"
+            },
+            "branchName": "main",
+            "properties": {
+              "property": [
+                {
+                  "name": "env.DEPLOY_TARGET",
+                  "value": "staging"
+                }
+              ]
+            }
+          }
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "id": 12346,
+            "buildTypeId": "MyProject_Build",
+            "state": "queued",
+            "href": "/app/rest/buildQueue/id:12346",
+            "webUrl": "https://teamcity.example.com/viewQueued.html?itemId=12346",
+            "branchName": "main",
+            "queuedDate": "20260418T120000+0000"
+          }
+
+  # Agents
+  GET /agents:
+    - name: Get All Agents
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "count": 2,
+            "href": "/app/rest/agents",
+            "agent": [
+              {
+                "id": 1,
+                "name": "agent-linux-01",
+                "connected": true,
+                "enabled": true,
+                "authorized": true,
+                "ip": "192.168.1.10",
+                "href": "/app/rest/agents/id:1"
+              },
+              {
+                "id": 2,
+                "name": "agent-windows-01",
+                "connected": true,
+                "enabled": true,
+                "authorized": true,
+                "ip": "192.168.1.11",
+                "href": "/app/rest/agents/id:2"
+              }
+            ]
+          }
+
+  # Users
+  GET /users:
+    - name: Get All Users
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "count": 2,
+            "user": [
+              {
+                "id": 1,
+                "username": "admin",
+                "name": "Administrator",
+                "email": "admin@example.com",
+                "href": "/app/rest/users/id:1",
+                "lastLogin": "20260418T080000+0000"
+              },
+              {
+                "id": 2,
+                "username": "developer",
+                "name": "Dev User",
+                "email": "dev@example.com",
+                "href": "/app/rest/users/id:2",
+                "lastLogin": "20260417T170000+0000"
+              }
+            ]
+          }
+
+  # VCS Roots
+  GET /vcs-roots:
+    - name: Get All VCS Roots
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "count": 1,
+            "href": "/app/rest/vcs-roots",
+            "vcs-root": [
+              {
+                "id": "MyProject_GitRepo",
+                "name": "Main Git Repository",
+                "vcsName": "jetbrains.git",
+                "href": "/app/rest/vcs-roots/id:MyProject_GitRepo",
+                "status": "FINISHED",
+                "lastChecked": "20260418T115500+0000"
+              }
+            ]
+          }
+
+  # Changes
+  GET /changes:
+    - name: Get All Changes
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "count": 1,
+            "change": [
+              {
+                "id": 9001,
+                "version": "abc123def456",
+                "username": "developer",
+                "date": "20260418T110000+0000",
+                "href": "/app/rest/changes/id:9001",
+                "comment": "Fix build pipeline configuration"
+              }
+            ]
+          }
+
+  # Server
+  GET /server:
+    - name: Get Server Info
+      request:
+        headers:
+          Accept: application/json
+          Authorization: Bearer <token>
+      response:
+        status: 200
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "version": "2024.12.1 (build 166675)",
+            "versionMajor": 2024,
+            "versionMinor": 12,
+            "buildNumber": "166675",
+            "currentTime": "20260418T120000+0000",
+            "startTime": "20260415T060000+0000",
+            "webUrl": "https://teamcity.example.com"
+          }

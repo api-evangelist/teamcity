@@ -1,0 +1,305 @@
+---
+name: TeamCity REST API Usage Examples
+description: Practical usage examples for common TeamCity REST API operations.
+created: '2026-04-18'
+modified: '2026-04-18'
+
+examples:
+
+  - name: List All Projects
+    description: Retrieve all projects visible to the authenticated user.
+    method: GET
+    path: /app/rest/projects
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        count: 3
+        project:
+          - id: _Root
+            name: "<Root project>"
+          - id: MyProject
+            name: My Project
+            parentProjectId: _Root
+          - id: MyProject_SubProject
+            name: Sub Project
+            parentProjectId: MyProject
+
+  - name: Get Project Details
+    description: Retrieve detailed information about a specific project using its ID.
+    method: GET
+    path: /app/rest/projects/id:MyProject
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        id: MyProject
+        name: My Project
+        description: Main application project
+        archived: false
+        parentProjectId: _Root
+        buildTypes:
+          count: 2
+
+  - name: Create A New Project
+    description: Create a new project under the root project.
+    method: POST
+    path: /app/rest/projects
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    body:
+      name: New Microservice
+      id: NewMicroservice
+      parentProject:
+        locator: "id:_Root"
+    response:
+      status: 200
+      body:
+        id: NewMicroservice
+        name: New Microservice
+        parentProjectId: _Root
+
+  - name: Trigger A Build
+    description: Queue a new build for a specific build configuration.
+    method: POST
+    path: /app/rest/buildQueue
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    body:
+      buildType:
+        id: MyProject_Build
+      branchName: main
+      comment:
+        text: Triggered via API
+    response:
+      status: 200
+      body:
+        id: 12346
+        buildTypeId: MyProject_Build
+        state: queued
+        branchName: main
+
+  - name: Get Build Status
+    description: Check the status and details of a specific build.
+    method: GET
+    path: /app/rest/builds/id:12345
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        id: 12345
+        buildTypeId: MyProject_Build
+        number: "42"
+        status: SUCCESS
+        state: finished
+        statusText: "Tests passed: 150"
+        branchName: main
+
+  - name: Cancel A Running Build
+    description: Cancel a build that is currently queued or running.
+    method: POST
+    path: /app/rest/builds/id:12345/cancel
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer <access-token>
+    body:
+      comment: Cancelling due to configuration issue
+      readdIntoQueue: false
+    response:
+      status: 200
+
+  - name: Get Build Test Results
+    description: Retrieve test results for a specific build.
+    method: GET
+    path: /app/rest/builds/id:12345/testOccurrences
+    query:
+      locator: "status:FAILURE"
+      fields: "testOccurrence(id,name,status,duration,details)"
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        count: 2
+        testOccurrence:
+          - id: "12345:test1"
+            name: "com.example.MyTest.testSomething"
+            status: FAILURE
+            duration: 1500
+          - id: "12345:test2"
+            name: "com.example.MyTest.testAnother"
+            status: FAILURE
+            duration: 200
+
+  - name: List Build Agents
+    description: Get all connected build agents with their status.
+    method: GET
+    path: /app/rest/agents
+    query:
+      locator: "connected:true"
+      fields: "agent(id,name,connected,enabled,authorized,ip)"
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        count: 2
+        agent:
+          - id: 1
+            name: agent-linux-01
+            connected: true
+            enabled: true
+            authorized: true
+            ip: 192.168.1.10
+          - id: 2
+            name: agent-windows-01
+            connected: true
+            enabled: true
+            authorized: true
+            ip: 192.168.1.11
+
+  - name: Disable An Agent
+    description: Disable a build agent to prevent it from running builds.
+    method: PUT
+    path: /app/rest/agents/id:2/enabled
+    headers:
+      Content-Type: text/plain
+      Authorization: Bearer <access-token>
+    body: "false"
+    response:
+      status: 200
+
+  - name: Get Recent Changes
+    description: Get the most recent VCS changes.
+    method: GET
+    path: /app/rest/changes
+    query:
+      locator: "project:id:MyProject"
+      count: "10"
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        count: 1
+        change:
+          - id: 9001
+            version: abc123def456
+            username: developer
+            comment: Fix build pipeline configuration
+
+  - name: Create A VCS Root
+    description: Create a new Git VCS root for a project.
+    method: POST
+    path: /app/rest/vcs-roots
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    body:
+      name: Main Repository
+      vcsName: jetbrains.git
+      project:
+        id: MyProject
+      properties:
+        property:
+          - name: url
+            value: https://github.com/example/repo.git
+          - name: branch
+            value: refs/heads/main
+          - name: authMethod
+            value: ACCESS_TOKEN
+    response:
+      status: 200
+      body:
+        id: MyProject_MainRepository
+        name: Main Repository
+        vcsName: jetbrains.git
+
+  - name: Get Server Version
+    description: Get TeamCity server version and status information.
+    method: GET
+    path: /app/rest/server
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        version: "2024.12.1 (build 166675)"
+        versionMajor: 2024
+        versionMinor: 12
+        buildNumber: "166675"
+
+  - name: Trigger Build With Parameters
+    description: Queue a build with custom parameters.
+    method: POST
+    path: /app/rest/buildQueue
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    body:
+      buildType:
+        id: MyProject_Deploy
+      properties:
+        property:
+          - name: env.DEPLOY_ENV
+            value: staging
+          - name: env.VERSION
+            value: "2.1.0"
+    response:
+      status: 200
+      body:
+        id: 12347
+        buildTypeId: MyProject_Deploy
+        state: queued
+
+  - name: Get Build Queue
+    description: View all builds currently in the queue.
+    method: GET
+    path: /app/rest/buildQueue
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        count: 1
+        build:
+          - id: 12347
+            buildTypeId: MyProject_Deploy
+            state: queued
+            branchName: main
+            queuedDate: "20260418T120000+0000"
+
+  - name: Use Field Filtering
+    description: Use the fields parameter to get a minimal project response.
+    method: GET
+    path: /app/rest/projects
+    query:
+      fields: "project(id,name)"
+    headers:
+      Accept: application/json
+      Authorization: Bearer <access-token>
+    response:
+      status: 200
+      body:
+        project:
+          - id: _Root
+            name: "<Root project>"
+          - id: MyProject
+            name: My Project

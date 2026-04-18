@@ -1,0 +1,168 @@
+---
+name: TeamCity REST API Vocabulary
+description: Vocabulary and taxonomy schema mapping operational and capability dimensions for the TeamCity REST API.
+created: '2026-04-18'
+modified: '2026-04-18'
+
+domains:
+
+  - name: Continuous Integration
+    description: Core CI/CD domain covering build execution, testing, and deployment pipelines.
+    concepts:
+      - term: Project
+        definition: A logical grouping of build configurations, organized in a hierarchy.
+        synonyms: [Workspace, Repository Group]
+        relatedTerms: [Build Configuration, VCS Root]
+
+      - term: Build Configuration
+        definition: A set of instructions defining how to build, test, and deploy code. Also called a build type.
+        synonyms: [Build Type, Pipeline, Job]
+        relatedTerms: [Project, Build, Step, Trigger]
+
+      - term: Build
+        definition: A single execution of a build configuration, producing results, artifacts, and test data.
+        synonyms: [Build Run, Pipeline Run, Job Execution]
+        relatedTerms: [Build Configuration, Agent, Build Queue]
+
+      - term: Build Queue
+        definition: The queue of builds waiting to be executed by available agents.
+        synonyms: [Job Queue, Pipeline Queue]
+        relatedTerms: [Build, Agent]
+
+      - term: Build Step
+        definition: An individual task within a build configuration (e.g., compile, test, deploy).
+        synonyms: [Task, Stage, Action]
+        relatedTerms: [Build Configuration, Build Runner]
+
+      - term: Build Runner
+        definition: The execution engine for a build step (e.g., Maven, Gradle, Command Line).
+        synonyms: [Runner, Executor]
+        relatedTerms: [Build Step]
+
+      - term: Trigger
+        definition: A condition that automatically starts a build (e.g., VCS change, schedule, dependency).
+        synonyms: [Build Trigger, Pipeline Trigger]
+        relatedTerms: [Build Configuration, VCS Root]
+
+  - name: Version Control
+    description: Version control system integration and change tracking.
+    concepts:
+      - term: VCS Root
+        definition: Configuration for connecting to a version control repository.
+        synonyms: [Repository, Source Repository, Version Control Root]
+        relatedTerms: [Project, Change]
+
+      - term: Change
+        definition: A VCS commit or changeset detected by TeamCity.
+        synonyms: [Commit, Changeset, Revision]
+        relatedTerms: [VCS Root, Build]
+
+      - term: Branch
+        definition: A VCS branch tracked by TeamCity for building and monitoring.
+        synonyms: [Feature Branch, Git Branch]
+        relatedTerms: [VCS Root, Build]
+
+  - name: Build Infrastructure
+    description: Build agent and infrastructure management.
+    concepts:
+      - term: Agent
+        definition: A machine or process that executes builds on behalf of the TeamCity server.
+        synonyms: [Build Agent, Worker, Runner]
+        relatedTerms: [Agent Pool, Build]
+
+      - term: Agent Pool
+        definition: A group of agents organized for resource management and project assignment.
+        synonyms: [Pool, Agent Group, Worker Pool]
+        relatedTerms: [Agent, Project]
+
+      - term: Cloud Profile
+        definition: Configuration for provisioning cloud-based build agents dynamically.
+        synonyms: [Cloud Configuration, Elastic Agent Profile]
+        relatedTerms: [Cloud Instance, Agent]
+
+      - term: Cloud Instance
+        definition: A dynamically provisioned cloud agent instance.
+        synonyms: [Cloud Agent, Elastic Agent, Dynamic Agent]
+        relatedTerms: [Cloud Profile, Agent]
+
+  - name: Quality Assurance
+    description: Test management, problem tracking, and quality monitoring.
+    concepts:
+      - term: Test Occurrence
+        definition: A single execution of a test within a build.
+        synonyms: [Test Result, Test Run]
+        relatedTerms: [Test, Build]
+
+      - term: Test
+        definition: A named test case tracked across builds for history and trends.
+        synonyms: [Test Case, Unit Test]
+        relatedTerms: [Test Occurrence, Investigation]
+
+      - term: Problem Occurrence
+        definition: A build problem detected during a specific build execution.
+        synonyms: [Build Error, Build Problem]
+        relatedTerms: [Build, Investigation]
+
+      - term: Investigation
+        definition: An assignment of responsibility to fix a failing build or test.
+        synonyms: [Issue Assignment, Failure Investigation]
+        relatedTerms: [User, Test, Problem Occurrence]
+
+      - term: Mute
+        definition: A suppression of a test or problem to prevent it from failing builds.
+        synonyms: [Test Mute, Problem Suppression, Test Skip]
+        relatedTerms: [Test, Problem Occurrence]
+
+  - name: Access Control
+    description: User management, authentication, and authorization.
+    concepts:
+      - term: User
+        definition: A TeamCity user account with roles and permissions.
+        synonyms: [Account, Team Member]
+        relatedTerms: [User Group, Role]
+
+      - term: User Group
+        definition: A group of users for collective permission management.
+        synonyms: [Group, Team, Role Group]
+        relatedTerms: [User, Role]
+
+      - term: Role
+        definition: A set of permissions that can be assigned to users or groups.
+        synonyms: [Permission Set, Access Role]
+        relatedTerms: [User, User Group]
+
+  - name: Administration
+    description: Server administration, plugins, and audit.
+    concepts:
+      - term: Server
+        definition: The TeamCity server instance providing CI/CD services.
+        synonyms: [TeamCity Server, CI Server]
+        relatedTerms: [Plugin, Audit Event]
+
+      - term: Plugin
+        definition: An extension that adds functionality to the TeamCity server.
+        synonyms: [Extension, Add-on]
+        relatedTerms: [Server]
+
+      - term: Audit Event
+        definition: A record of an administrative action for compliance and tracking.
+        synonyms: [Audit Log Entry, Activity Log]
+        relatedTerms: [User, Server]
+
+  - name: TeamCity Patterns
+    description: TeamCity-specific patterns and conventions.
+    concepts:
+      - term: Locator
+        definition: A query string syntax used to filter and find resources (e.g., id:MyProject, status:SUCCESS).
+        synonyms: [Filter, Query, Selector]
+        relatedTerms: [All Resources]
+
+      - term: Fields
+        definition: A response shaping parameter to include/exclude specific fields in API responses.
+        synonyms: [Field Filter, Sparse Fields, Projection]
+        relatedTerms: [Locator]
+
+      - term: Property
+        definition: A key-value configuration parameter used across projects, builds, and agents.
+        synonyms: [Parameter, Setting, Configuration Value]
+        relatedTerms: [Project, Build Configuration, Agent]

@@ -1,0 +1,118 @@
+{
+  "@context": {
+    "@vocab": "https://api-evangelist.github.io/teamcity/json-ld/",
+    "schema": "https://schema.org/",
+    "tc": "https://api-evangelist.github.io/teamcity/json-ld/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Project": {
+      "@id": "tc:Project",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "description": {"@id": "schema:description", "@type": "xsd:string"},
+        "webUrl": {"@id": "schema:url", "@type": "@id"},
+        "parentProjectId": {"@id": "tc:parentProject", "@type": "xsd:string"},
+        "archived": {"@id": "tc:archived", "@type": "xsd:boolean"},
+        "buildTypes": {"@id": "tc:hasBuildTypes", "@type": "@id"}
+      }
+    },
+
+    "BuildType": {
+      "@id": "tc:BuildType",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "description": {"@id": "schema:description", "@type": "xsd:string"},
+        "projectId": {"@id": "tc:belongsToProject", "@type": "xsd:string"},
+        "projectName": {"@id": "tc:projectName", "@type": "xsd:string"},
+        "webUrl": {"@id": "schema:url", "@type": "@id"},
+        "paused": {"@id": "tc:paused", "@type": "xsd:boolean"}
+      }
+    },
+
+    "Build": {
+      "@id": "tc:Build",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:integer"},
+        "buildTypeId": {"@id": "tc:buildConfiguration", "@type": "xsd:string"},
+        "number": {"@id": "tc:buildNumber", "@type": "xsd:string"},
+        "status": {"@id": "tc:buildStatus", "@type": "xsd:string"},
+        "state": {"@id": "tc:buildState", "@type": "xsd:string"},
+        "statusText": {"@id": "tc:statusText", "@type": "xsd:string"},
+        "webUrl": {"@id": "schema:url", "@type": "@id"},
+        "branchName": {"@id": "tc:branch", "@type": "xsd:string"},
+        "startDate": {"@id": "schema:startDate", "@type": "xsd:dateTime"},
+        "finishDate": {"@id": "schema:endDate", "@type": "xsd:dateTime"},
+        "queuedDate": {"@id": "tc:queuedDate", "@type": "xsd:dateTime"},
+        "agent": {"@id": "tc:executedByAgent", "@type": "@id"},
+        "triggered": {"@id": "tc:triggeredBy", "@type": "@id"}
+      }
+    },
+
+    "Agent": {
+      "@id": "tc:Agent",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:integer"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "connected": {"@id": "tc:connected", "@type": "xsd:boolean"},
+        "enabled": {"@id": "tc:enabled", "@type": "xsd:boolean"},
+        "authorized": {"@id": "tc:authorized", "@type": "xsd:boolean"},
+        "ip": {"@id": "tc:ipAddress", "@type": "xsd:string"},
+        "pool": {"@id": "tc:assignedPool", "@type": "@id"}
+      }
+    },
+
+    "VcsRoot": {
+      "@id": "tc:VcsRoot",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "vcsName": {"@id": "tc:vcsType", "@type": "xsd:string"},
+        "status": {"@id": "tc:vcsStatus", "@type": "xsd:string"}
+      }
+    },
+
+    "Change": {
+      "@id": "tc:Change",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:integer"},
+        "version": {"@id": "tc:revision", "@type": "xsd:string"},
+        "username": {"@id": "schema:author", "@type": "xsd:string"},
+        "date": {"@id": "schema:dateCreated", "@type": "xsd:dateTime"},
+        "comment": {"@id": "schema:description", "@type": "xsd:string"}
+      }
+    },
+
+    "User": {
+      "@id": "tc:User",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:integer"},
+        "username": {"@id": "schema:alternateName", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "email": {"@id": "schema:email", "@type": "xsd:string"},
+        "lastLogin": {"@id": "tc:lastLogin", "@type": "xsd:dateTime"}
+      }
+    },
+
+    "TestOccurrence": {
+      "@id": "tc:TestOccurrence",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "status": {"@id": "tc:testStatus", "@type": "xsd:string"},
+        "duration": {"@id": "schema:duration", "@type": "xsd:integer"},
+        "muted": {"@id": "tc:muted", "@type": "xsd:boolean"}
+      }
+    },
+
+    "AgentPool": {
+      "@id": "tc:AgentPool",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:integer"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "maxAgents": {"@id": "tc:maxAgents", "@type": "xsd:integer"}
+      }
+    }
+  }
+}

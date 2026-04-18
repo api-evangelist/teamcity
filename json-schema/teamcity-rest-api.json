@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/teamcity/json-schema/teamcity-rest-api.json",
+  "title": "TeamCity REST API JSON Schema",
+  "description": "JSON Schema definitions for key TeamCity REST API resources.",
+  "type": "object",
+  "$defs": {
+    "Project": {
+      "type": "object",
+      "title": "Project",
+      "description": "A TeamCity project that organizes build configurations.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Project unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Project display name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Project description"
+        },
+        "href": {
+          "type": "string",
+          "description": "Relative URL to this project resource"
+        },
+        "webUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the project in the TeamCity web UI"
+        },
+        "parentProjectId": {
+          "type": "string",
+          "description": "Parent project identifier"
+        },
+        "archived": {
+          "type": "boolean",
+          "description": "Whether the project is archived"
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "BuildType": {
+      "type": "object",
+      "title": "Build Configuration",
+      "description": "A TeamCity build configuration (build type) defining how to build, test, and deploy code.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Build configuration unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Build configuration display name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Build configuration description"
+        },
+        "projectName": {
+          "type": "string",
+          "description": "Name of the parent project"
+        },
+        "projectId": {
+          "type": "string",
+          "description": "ID of the parent project"
+        },
+        "href": {
+          "type": "string",
+          "description": "Relative URL to this build type resource"
+        },
+        "webUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL in the TeamCity web UI"
+        },
+        "paused": {
+          "type": "boolean",
+          "description": "Whether the build configuration is paused"
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "Build": {
+      "type": "object",
+      "title": "Build",
+      "description": "A TeamCity build instance representing a single execution of a build configuration.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Build unique identifier"
+        },
+        "buildTypeId": {
+          "type": "string",
+          "description": "Build configuration identifier"
+        },
+        "number": {
+          "type": "string",
+          "description": "Build number"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["SUCCESS", "FAILURE", "UNKNOWN"],
+          "description": "Build status"
+        },
+        "state": {
+          "type": "string",
+          "enum": ["queued", "running", "finished"],
+          "description": "Build state"
+        },
+        "statusText": {
+          "type": "string",
+          "description": "Build status text"
+        },
+        "href": {
+          "type": "string",
+          "description": "Relative URL to this build resource"
+        },
+        "webUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL in the TeamCity web UI"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "Branch name for the build"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Build start date in TeamCity format"
+        },
+        "finishDate": {
+          "type": "string",
+          "description": "Build finish date in TeamCity format"
+        },
+        "queuedDate": {
+          "type": "string",
+          "description": "Date the build was queued"
+        }
+      },
+      "required": ["id", "buildTypeId"]
+    },
+    "Agent": {
+      "type": "object",
+      "title": "Agent",
+      "description": "A TeamCity build agent that executes builds.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Agent unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Agent display name"
+        },
+        "connected": {
+          "type": "boolean",
+          "description": "Whether the agent is connected"
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether the agent is enabled"
+        },
+        "authorized": {
+          "type": "boolean",
+          "description": "Whether the agent is authorized"
+        },
+        "ip": {
+          "type": "string",
+          "description": "Agent IP address"
+        },
+        "href": {
+          "type": "string",
+          "description": "Relative URL to this agent resource"
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "VcsRoot": {
+      "type": "object",
+      "title": "VCS Root",
+      "description": "A version control system root configuration.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "VCS root unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "VCS root display name"
+        },
+        "vcsName": {
+          "type": "string",
+          "description": "VCS type (e.g., jetbrains.git)"
+        },
+        "href": {
+          "type": "string",
+          "description": "Relative URL to this VCS root resource"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the VCS root"
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "Change": {
+      "type": "object",
+      "title": "Change",
+      "description": "A VCS change (commit) detected by TeamCity.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Change unique identifier"
+        },
+        "version": {
+          "type": "string",
+          "description": "VCS revision hash"
+        },
+        "username": {
+          "type": "string",
+          "description": "VCS username"
+        },
+        "date": {
+          "type": "string",
+          "description": "Change date"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Commit message"
+        }
+      },
+      "required": ["id", "version"]
+    },
+    "User": {
+      "type": "object",
+      "title": "User",
+      "description": "A TeamCity user account.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "User unique identifier"
+        },
+        "username": {
+          "type": "string",
+          "description": "User login name"
+        },
+        "name": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "href": {
+          "type": "string",
+          "description": "Relative URL to this user resource"
+        }
+      },
+      "required": ["id", "username"]
+    },
+    "TestOccurrence": {
+      "type": "object",
+      "title": "Test Occurrence",
+      "description": "A single test execution result within a build.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Test occurrence identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Test name"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["SUCCESS", "FAILURE", "UNKNOWN"],
+          "description": "Test status"
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Test duration in milliseconds"
+        },
+        "muted": {
+          "type": "boolean",
+          "description": "Whether the test was muted at execution time"
+        },
+        "currentlyMuted": {
+          "type": "boolean",
+          "description": "Whether the test is currently muted"
+        },
+        "currentlyInvestigated": {
+          "type": "boolean",
+          "description": "Whether the test is under investigation"
+        }
+      },
+      "required": ["id", "name", "status"]
+    }
+  }
+}
