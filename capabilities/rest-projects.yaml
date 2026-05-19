@@ -1,0 +1,226 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TeamCity REST API — Projects
+  description: 'TeamCity REST API — Projects. 6 operations. Lead operation: Get All Projects. Self-contained Naftiko capability
+    covering one Teamcity business surface.'
+  tags:
+  - Teamcity
+  - Projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TEAMCITY_API_KEY: TEAMCITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-projects
+    baseUri: https://{server}/app/rest
+    description: TeamCity REST API — Projects business capability. Self-contained, no shared references.
+    resources:
+    - name: projects
+      path: /projects
+      operations:
+      - name: getallprojects
+        method: GET
+        description: Get All Projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createproject
+        method: POST
+        description: Create Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-projectLocator
+      path: /projects/{projectLocator}
+      operations:
+      - name: getproject
+        method: GET
+        description: Get Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteproject
+        method: DELETE
+        description: Delete Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectLocator-buildTypes
+      path: /projects/{projectLocator}/buildTypes
+      operations:
+      - name: getprojectbuildtypes
+        method: GET
+        description: Get Project Build Configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectLocator-parameters
+      path: /projects/{projectLocator}/parameters
+      operations:
+      - name: getprojectparameters
+        method: GET
+        description: Get Project Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TEAMCITY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-projects-rest
+    port: 8080
+    description: REST adapter for TeamCity REST API — Projects. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/projects
+      name: projects
+      description: REST surface for projects.
+      operations:
+      - method: GET
+        name: getallprojects
+        description: Get All Projects
+        call: rest-projects.getallprojects
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createproject
+        description: Create Project
+        call: rest-projects.createproject
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectlocator}
+      name: projects-projectlocator
+      description: REST surface for projects-projectLocator.
+      operations:
+      - method: GET
+        name: getproject
+        description: Get Project
+        call: rest-projects.getproject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteproject
+        description: Delete Project
+        call: rest-projects.deleteproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectlocator}/buildtypes
+      name: projects-projectlocator-buildtypes
+      description: REST surface for projects-projectLocator-buildTypes.
+      operations:
+      - method: GET
+        name: getprojectbuildtypes
+        description: Get Project Build Configurations
+        call: rest-projects.getprojectbuildtypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectlocator}/parameters
+      name: projects-projectlocator-parameters
+      description: REST surface for projects-projectLocator-parameters.
+      operations:
+      - method: GET
+        name: getprojectparameters
+        description: Get Project Parameters
+        call: rest-projects.getprojectparameters
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TeamCity REST API — Projects. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-projects
+      description: Get All Projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-projects.getallprojects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-project
+      description: Create Project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-projects.createproject
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project
+      description: Get Project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-projects.getproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project
+      description: Delete Project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-projects.deleteproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project-build-configurations
+      description: Get Project Build Configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-projects.getprojectbuildtypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project-parameters
+      description: Get Project Parameters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-projects.getprojectparameters
+      outputParameters:
+      - type: object
+        mapping: $.

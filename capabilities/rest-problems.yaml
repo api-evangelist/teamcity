@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TeamCity REST API — Problems
+  description: 'TeamCity REST API — Problems. 1 operations. Lead operation: Get All Problem Occurrences. Self-contained Naftiko
+    capability covering one Teamcity business surface.'
+  tags:
+  - Teamcity
+  - Problems
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TEAMCITY_API_KEY: TEAMCITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-problems
+    baseUri: https://{server}/app/rest
+    description: TeamCity REST API — Problems business capability. Self-contained, no shared references.
+    resources:
+    - name: problemOccurrences
+      path: /problemOccurrences
+      operations:
+      - name: getallproblemoccurrences
+        method: GET
+        description: Get All Problem Occurrences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TEAMCITY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-problems-rest
+    port: 8080
+    description: REST adapter for TeamCity REST API — Problems. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/problemoccurrences
+      name: problemoccurrences
+      description: REST surface for problemOccurrences.
+      operations:
+      - method: GET
+        name: getallproblemoccurrences
+        description: Get All Problem Occurrences
+        call: rest-problems.getallproblemoccurrences
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-problems-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TeamCity REST API — Problems. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-problem-occurrences
+      description: Get All Problem Occurrences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-problems.getallproblemoccurrences
+      outputParameters:
+      - type: object
+        mapping: $.

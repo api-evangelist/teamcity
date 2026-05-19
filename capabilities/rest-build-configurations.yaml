@@ -1,0 +1,194 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TeamCity REST API — Build Configurations
+  description: 'TeamCity REST API — Build Configurations. 4 operations. Lead operation: Get All Build Configurations. Self-contained
+    Naftiko capability covering one Teamcity business surface.'
+  tags:
+  - Teamcity
+  - Build Configurations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TEAMCITY_API_KEY: TEAMCITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-build-configurations
+    baseUri: https://{server}/app/rest
+    description: TeamCity REST API — Build Configurations business capability. Self-contained, no shared references.
+    resources:
+    - name: buildTypes
+      path: /buildTypes
+      operations:
+      - name: getallbuildtypes
+        method: GET
+        description: Get All Build Configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: buildTypes-btLocator
+      path: /buildTypes/{btLocator}
+      operations:
+      - name: getbuildtype
+        method: GET
+        description: Get Build Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: btLocator
+          in: path
+          type: string
+          description: Build type locator string
+          required: true
+    - name: buildTypes-btLocator-builds
+      path: /buildTypes/{btLocator}/builds
+      operations:
+      - name: getbuildtypebuilds
+        method: GET
+        description: Get Build Configuration Builds
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: btLocator
+          in: path
+          type: string
+          required: true
+    - name: buildTypes-btLocator-parameters
+      path: /buildTypes/{btLocator}/parameters
+      operations:
+      - name: getbuildtypeparameters
+        method: GET
+        description: Get Build Configuration Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: btLocator
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TEAMCITY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-build-configurations-rest
+    port: 8080
+    description: REST adapter for TeamCity REST API — Build Configurations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/buildtypes
+      name: buildtypes
+      description: REST surface for buildTypes.
+      operations:
+      - method: GET
+        name: getallbuildtypes
+        description: Get All Build Configurations
+        call: rest-build-configurations.getallbuildtypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/buildtypes/{btlocator}
+      name: buildtypes-btlocator
+      description: REST surface for buildTypes-btLocator.
+      operations:
+      - method: GET
+        name: getbuildtype
+        description: Get Build Configuration
+        call: rest-build-configurations.getbuildtype
+        with:
+          btLocator: rest.btLocator
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/buildtypes/{btlocator}/builds
+      name: buildtypes-btlocator-builds
+      description: REST surface for buildTypes-btLocator-builds.
+      operations:
+      - method: GET
+        name: getbuildtypebuilds
+        description: Get Build Configuration Builds
+        call: rest-build-configurations.getbuildtypebuilds
+        with:
+          btLocator: rest.btLocator
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/buildtypes/{btlocator}/parameters
+      name: buildtypes-btlocator-parameters
+      description: REST surface for buildTypes-btLocator-parameters.
+      operations:
+      - method: GET
+        name: getbuildtypeparameters
+        description: Get Build Configuration Parameters
+        call: rest-build-configurations.getbuildtypeparameters
+        with:
+          btLocator: rest.btLocator
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-build-configurations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TeamCity REST API — Build Configurations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-all-build-configurations
+      description: Get All Build Configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-build-configurations.getallbuildtypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-build-configuration
+      description: Get Build Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-build-configurations.getbuildtype
+      with:
+        btLocator: tools.btLocator
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-build-configuration-builds
+      description: Get Build Configuration Builds
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-build-configurations.getbuildtypebuilds
+      with:
+        btLocator: tools.btLocator
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-build-configuration-parameters
+      description: Get Build Configuration Parameters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-build-configurations.getbuildtypeparameters
+      with:
+        btLocator: tools.btLocator
+      outputParameters:
+      - type: object
+        mapping: $.
