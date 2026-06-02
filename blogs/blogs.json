@@ -2,12 +2,20 @@
   "repo": "teamcity",
   "feeds": [
     {
-      "source": "https://blog.jetbrains.com/teamcity/",
+      "source": "https://blog.jetbrains.com/teamcity/feed/",
       "feed_url": "https://blog.jetbrains.com/teamcity/feed/",
-      "title": "TeamCity : Powerful CI/CD for DevOps-centric teams | The JetBrains Blog",
-      "saved": 9
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.jetbrains.com/teamcity/buy/",
+      "feed_url": "https://www.jetbrains.com/teamcity/buy/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 19,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 22,
+  "fetched": "2026-06-01T23:35:02Z"
 }
