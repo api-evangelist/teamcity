@@ -81,11 +81,11 @@ common:
     url: https://github.com/JetBrains/teamcity-cli
     title: TeamCity CLI
     description: Command-line interface for TeamCity. Manage builds, logs, agents, agent terminals, and queues from the terminal.
-  - type: SDK
+  - type: SDKs
     url: https://github.com/JetBrains/teamcity-rest-client
     title: TeamCity REST Client (Kotlin)
     description: Official Kotlin client library for the TeamCity REST API.
-  - type: SDK
+  - type: SDKs
     url: https://github.com/JetBrains/terraform-provider-teamcity
     title: Terraform Provider for TeamCity
     description: Terraform provider to manage TeamCity resources as infrastructure as code.
