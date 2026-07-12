@@ -53,6 +53,12 @@ apis:
       - type: Support
         url: https://www.jetbrains.com/support/teamcity/
 common:
+  - type: VulnerabilityDisclosure
+    url: security/teamcity-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/teamcity-domain-security.yml
+  - type: Authentication
+    url: authentication/teamcity-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/jetbrains
   - type: GettingStarted
