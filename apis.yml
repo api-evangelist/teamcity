@@ -53,6 +53,8 @@ apis:
       - type: Support
         url: https://www.jetbrains.com/support/teamcity/
 common:
+  - type: AgenticAccess
+    url: agentic-access/teamcity-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/teamcity-vulnerability-disclosure.yml
   - type: DomainSecurity
