@@ -1,0 +1,354 @@
+openapi: 3.0.3
+info:
+  title: TeamCity REST Agent Pools Projects API
+  description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
+  version: 2024.12.1
+  contact:
+    name: JetBrains
+    url: https://www.jetbrains.com/support/teamcity/
+    email: teamcity-support@jetbrains.com
+  license:
+    name: Proprietary
+    url: https://www.jetbrains.com/teamcity/buy/
+  x-logo:
+    url: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
+servers:
+- url: https://{server}/app/rest
+  description: TeamCity Server
+  variables:
+    server:
+      default: teamcity.example.com
+      description: Your TeamCity server hostname
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Projects
+  description: Manage TeamCity projects
+paths:
+  /projects:
+    get:
+      operationId: getAllProjects
+      summary: Get All Projects
+      description: Returns a list of all projects on the TeamCity server.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/locator'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createProject
+      summary: Create Project
+      description: Creates a new project on the TeamCity server.
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewProjectDescription'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/NewProjectDescription'
+      responses:
+        '200':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /projects/{projectLocator}:
+    get:
+      operationId: getProject
+      summary: Get Project
+      description: Returns details of a specific project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/projectLocator'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteProject
+      summary: Delete Project
+      description: Deletes a specific project from the TeamCity server.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/projectLocator'
+      responses:
+        '204':
+          description: Project deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectLocator}/parameters:
+    get:
+      operationId: getProjectParameters
+      summary: Get Project Parameters
+      description: Returns all parameters defined for a project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/projectLocator'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Properties'
+  /projects/{projectLocator}/buildTypes:
+    get:
+      operationId: getProjectBuildTypes
+      summary: Get Project Build Configurations
+      description: Returns all build configurations for a project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/projectLocator'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildTypes'
+components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    projectLocator:
+      name: projectLocator
+      in: path
+      required: true
+      description: Project locator string (e.g., id:MyProject)
+      schema:
+        type: string
+  schemas:
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    BuildType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Build configuration unique identifier
+        name:
+          type: string
+          description: Build configuration display name
+        description:
+          type: string
+          description: Build configuration description
+        projectName:
+          type: string
+          description: Name of the parent project
+        projectId:
+          type: string
+          description: ID of the parent project
+        href:
+          type: string
+        webUrl:
+          type: string
+        paused:
+          type: boolean
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        steps:
+          $ref: '#/components/schemas/Steps'
+        triggers:
+          $ref: '#/components/schemas/Triggers'
+        settings:
+          $ref: '#/components/schemas/Properties'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    NewProjectDescription:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Project display name
+        id:
+          type: string
+          description: Project unique identifier
+        parentProject:
+          type: object
+          properties:
+            locator:
+              type: string
+        copyAllAssociatedSettings:
+          type: boolean
+    Steps:
+      type: object
+      properties:
+        count:
+          type: integer
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Properties:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Project unique identifier
+        name:
+          type: string
+          description: Project display name
+        description:
+          type: string
+          description: Project description
+        href:
+          type: string
+          description: Relative URL to this project resource
+        webUrl:
+          type: string
+          description: URL to the project in the TeamCity web UI
+        parentProjectId:
+          type: string
+          description: Parent project identifier
+        archived:
+          type: boolean
+          description: Whether the project is archived
+        buildTypes:
+          $ref: '#/components/schemas/BuildTypes'
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        projects:
+          $ref: '#/components/schemas/Projects'
+    Property:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+  responses:
+    BadRequest:
+      description: Bad request - invalid input
+      content:
+        text/plain:
+          schema:
+            type: string
+    NotFound:
+      description: Resource not found
+      content:
+        text/plain:
+          schema:
+            type: string
+    Unauthorized:
+      description: Unauthorized - authentication required
+      content:
+        text/plain:
+          schema:
+            type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using access tokens
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with username and password
+externalDocs:
+  description: TeamCity REST API Documentation
+  url: https://www.jetbrains.com/help/teamcity/rest-api.html

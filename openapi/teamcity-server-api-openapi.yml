@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: TeamCity REST Agent Pools Server API
+  description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
+  version: 2024.12.1
+  contact:
+    name: JetBrains
+    url: https://www.jetbrains.com/support/teamcity/
+    email: teamcity-support@jetbrains.com
+  license:
+    name: Proprietary
+    url: https://www.jetbrains.com/teamcity/buy/
+  x-logo:
+    url: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
+servers:
+- url: https://{server}/app/rest
+  description: TeamCity Server
+  variables:
+    server:
+      default: teamcity.example.com
+      description: Your TeamCity server hostname
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Server
+  description: Server information and configuration
+paths:
+  /server:
+    get:
+      operationId: getServerInfo
+      summary: Get Server Info
+      description: Returns TeamCity server information including version and build number.
+      tags:
+      - Server
+      parameters:
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
+  /server/plugins:
+    get:
+      operationId: getServerPlugins
+      summary: Get Server Plugins
+      description: Returns a list of installed server plugins.
+      tags:
+      - Server
+      parameters:
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugins'
+components:
+  schemas:
+    Server:
+      type: object
+      properties:
+        version:
+          type: string
+          description: TeamCity server version
+        versionMajor:
+          type: integer
+        versionMinor:
+          type: integer
+        buildNumber:
+          type: string
+        buildDate:
+          type: string
+        currentTime:
+          type: string
+        startTime:
+          type: string
+        webUrl:
+          type: string
+    Plugins:
+      type: object
+      properties:
+        count:
+          type: integer
+        plugin:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              displayName:
+                type: string
+              version:
+                type: string
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using access tokens
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with username and password
+externalDocs:
+  description: TeamCity REST API Documentation
+  url: https://www.jetbrains.com/help/teamcity/rest-api.html

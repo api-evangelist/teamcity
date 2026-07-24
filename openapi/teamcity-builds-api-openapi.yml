@@ -1,0 +1,825 @@
+openapi: 3.0.3
+info:
+  title: TeamCity REST Agent Pools Builds API
+  description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
+  version: 2024.12.1
+  contact:
+    name: JetBrains
+    url: https://www.jetbrains.com/support/teamcity/
+    email: teamcity-support@jetbrains.com
+  license:
+    name: Proprietary
+    url: https://www.jetbrains.com/teamcity/buy/
+  x-logo:
+    url: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
+servers:
+- url: https://{server}/app/rest
+  description: TeamCity Server
+  variables:
+    server:
+      default: teamcity.example.com
+      description: Your TeamCity server hostname
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Builds
+  description: Trigger, query, and manage builds
+paths:
+  /builds:
+    get:
+      operationId: getAllBuilds
+      summary: Get All Builds
+      description: Returns a list of builds matching the specified criteria.
+      tags:
+      - Builds
+      parameters:
+      - $ref: '#/components/parameters/locator'
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/start'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Builds'
+  /builds/{buildLocator}:
+    get:
+      operationId: getBuild
+      summary: Get Build
+      description: Returns details of a specific build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        description: Build locator string
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Build'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /builds/{buildLocator}/tags:
+    get:
+      operationId: getBuildTags
+      summary: Get Build Tags
+      description: Returns tags associated with a build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tags'
+    put:
+      operationId: setBuildTags
+      summary: Set Build Tags
+      description: Sets tags for a build, replacing existing tags.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tags'
+      responses:
+        '200':
+          description: Tags updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tags'
+  /builds/{buildLocator}/artifacts:
+    get:
+      operationId: getBuildArtifacts
+      summary: Get Build Artifacts
+      description: Returns the artifacts of a specific build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Files'
+  /builds/{buildLocator}/statistics:
+    get:
+      operationId: getBuildStatistics
+      summary: Get Build Statistics
+      description: Returns statistical values for a specific build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Properties'
+  /builds/{buildLocator}/problemOccurrences:
+    get:
+      operationId: getBuildProblems
+      summary: Get Build Problem Occurrences
+      description: Returns problem occurrences for a specific build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemOccurrences'
+  /builds/{buildLocator}/testOccurrences:
+    get:
+      operationId: getBuildTests
+      summary: Get Build Test Occurrences
+      description: Returns test occurrences for a specific build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/locator'
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/start'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestOccurrences'
+  /builds/{buildLocator}/cancel:
+    post:
+      operationId: cancelBuild
+      summary: Cancel Build
+      description: Cancels a queued or running build.
+      tags:
+      - Builds
+      parameters:
+      - name: buildLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildCancelRequest'
+      responses:
+        '200':
+          description: Build cancelled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Build'
+components:
+  schemas:
+    Builds:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        nextHref:
+          type: string
+        build:
+          type: array
+          items:
+            $ref: '#/components/schemas/Build'
+    ProblemOccurrence:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        identity:
+          type: string
+        href:
+          type: string
+        details:
+          type: string
+        additionalData:
+          type: string
+        build:
+          $ref: '#/components/schemas/Build'
+        problem:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            identity:
+              type: string
+    BuildType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Build configuration unique identifier
+        name:
+          type: string
+          description: Build configuration display name
+        description:
+          type: string
+          description: Build configuration description
+        projectName:
+          type: string
+          description: Name of the parent project
+        projectId:
+          type: string
+          description: ID of the parent project
+        href:
+          type: string
+        webUrl:
+          type: string
+        paused:
+          type: boolean
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        steps:
+          $ref: '#/components/schemas/Steps'
+        triggers:
+          $ref: '#/components/schemas/Triggers'
+        settings:
+          $ref: '#/components/schemas/Properties'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    ProblemOccurrences:
+      type: object
+      properties:
+        count:
+          type: integer
+        problemOccurrence:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemOccurrence'
+    Files:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              size:
+                type: integer
+                format: int64
+              modificationTime:
+                type: string
+              href:
+                type: string
+              content:
+                type: object
+                properties:
+                  href:
+                    type: string
+    Properties:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Test:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        href:
+          type: string
+    BuildCancelRequest:
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Comment for cancellation
+        readdIntoQueue:
+          type: boolean
+          description: Whether to re-add the build to the queue
+    Property:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    Steps:
+      type: object
+      properties:
+        count:
+          type: integer
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    TestOccurrences:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        testOccurrence:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestOccurrence'
+    Agent:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Agent unique identifier
+        name:
+          type: string
+          description: Agent display name
+        typeId:
+          type: integer
+          description: Agent type identifier
+        connected:
+          type: boolean
+          description: Whether the agent is connected
+        enabled:
+          type: boolean
+          description: Whether the agent is enabled
+        authorized:
+          type: boolean
+          description: Whether the agent is authorized
+        ip:
+          type: string
+          description: Agent IP address
+        href:
+          type: string
+        webUrl:
+          type: string
+        pool:
+          $ref: '#/components/schemas/AgentPool'
+        properties:
+          $ref: '#/components/schemas/Properties'
+        build:
+          $ref: '#/components/schemas/Build'
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Project unique identifier
+        name:
+          type: string
+          description: Project display name
+        description:
+          type: string
+          description: Project description
+        href:
+          type: string
+          description: Relative URL to this project resource
+        webUrl:
+          type: string
+          description: URL to the project in the TeamCity web UI
+        parentProjectId:
+          type: string
+          description: Parent project identifier
+        archived:
+          type: boolean
+          description: Whether the project is archived
+        buildTypes:
+          $ref: '#/components/schemas/BuildTypes'
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        projects:
+          $ref: '#/components/schemas/Projects'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Agents:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        agent:
+          type: array
+          items:
+            $ref: '#/components/schemas/Agent'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    TestOccurrence:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Test occurrence identifier
+        name:
+          type: string
+          description: Test name
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+          - UNKNOWN
+          description: Test status
+        duration:
+          type: integer
+          description: Test duration in milliseconds
+        href:
+          type: string
+        muted:
+          type: boolean
+        currentlyMuted:
+          type: boolean
+        currentlyInvestigated:
+          type: boolean
+        details:
+          type: string
+        build:
+          $ref: '#/components/schemas/Build'
+        test:
+          $ref: '#/components/schemas/Test'
+    Change:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Change unique identifier
+        version:
+          type: string
+          description: VCS revision
+        username:
+          type: string
+          description: VCS username
+        date:
+          type: string
+          description: Change date
+        href:
+          type: string
+        webUrl:
+          type: string
+        comment:
+          type: string
+          description: Commit message
+        user:
+          $ref: '#/components/schemas/User'
+        files:
+          $ref: '#/components/schemas/FileChanges'
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    Tags:
+      type: object
+      properties:
+        count:
+          type: integer
+        tag:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+    FileChanges:
+      type: object
+      properties:
+        count:
+          type: integer
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              beforeRevision:
+                type: string
+              afterRevision:
+                type: string
+              changeType:
+                type: string
+              file:
+                type: string
+              relativeFile:
+                type: string
+    AgentPool:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Agent pool unique identifier
+        name:
+          type: string
+          description: Agent pool display name
+        href:
+          type: string
+        maxAgents:
+          type: integer
+          description: Maximum number of agents in the pool
+        agents:
+          $ref: '#/components/schemas/Agents'
+        projects:
+          $ref: '#/components/schemas/Projects'
+    Build:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Build unique identifier
+        buildTypeId:
+          type: string
+          description: Build configuration identifier
+        number:
+          type: string
+          description: Build number
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+          - UNKNOWN
+          description: Build status
+        state:
+          type: string
+          enum:
+          - queued
+          - running
+          - finished
+          description: Build state
+        statusText:
+          type: string
+          description: Build status text
+        href:
+          type: string
+        webUrl:
+          type: string
+        branchName:
+          type: string
+          description: Branch name for the build
+        startDate:
+          type: string
+          description: Build start date
+        finishDate:
+          type: string
+          description: Build finish date
+        queuedDate:
+          type: string
+          description: Date the build was queued
+        triggered:
+          $ref: '#/components/schemas/TriggeredBy'
+        lastChanges:
+          $ref: '#/components/schemas/Changes'
+        agent:
+          $ref: '#/components/schemas/Agent'
+        testOccurrences:
+          $ref: '#/components/schemas/TestOccurrences'
+        problemOccurrences:
+          $ref: '#/components/schemas/ProblemOccurrences'
+        artifacts:
+          $ref: '#/components/schemas/Files'
+        properties:
+          $ref: '#/components/schemas/Properties'
+        statistics:
+          $ref: '#/components/schemas/Properties'
+        buildType:
+          $ref: '#/components/schemas/BuildType'
+    TriggeredBy:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Trigger type (user, vcs, schedule, etc.)
+        details:
+          type: string
+        date:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    Changes:
+      type: object
+      properties:
+        count:
+          type: integer
+        change:
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        text/plain:
+          schema:
+            type: string
+  parameters:
+    count:
+      name: count
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 100
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    start:
+      name: start
+      in: query
+      description: Index of the first item to return (for pagination)
+      schema:
+        type: integer
+        default: 0
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using access tokens
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with username and password
+externalDocs:
+  description: TeamCity REST API Documentation
+  url: https://www.jetbrains.com/help/teamcity/rest-api.html

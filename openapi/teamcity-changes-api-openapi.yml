@@ -1,0 +1,229 @@
+openapi: 3.0.3
+info:
+  title: TeamCity REST Agent Pools Changes API
+  description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
+  version: 2024.12.1
+  contact:
+    name: JetBrains
+    url: https://www.jetbrains.com/support/teamcity/
+    email: teamcity-support@jetbrains.com
+  license:
+    name: Proprietary
+    url: https://www.jetbrains.com/teamcity/buy/
+  x-logo:
+    url: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
+servers:
+- url: https://{server}/app/rest
+  description: TeamCity Server
+  variables:
+    server:
+      default: teamcity.example.com
+      description: Your TeamCity server hostname
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Changes
+  description: Query VCS changes
+paths:
+  /changes:
+    get:
+      operationId: getAllChanges
+      summary: Get All Changes
+      description: Returns a list of VCS changes.
+      tags:
+      - Changes
+      parameters:
+      - $ref: '#/components/parameters/locator'
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/start'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Changes'
+  /changes/{changeLocator}:
+    get:
+      operationId: getChange
+      summary: Get Change
+      description: Returns details of a specific VCS change.
+      tags:
+      - Changes
+      parameters:
+      - name: changeLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Change'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    FileChanges:
+      type: object
+      properties:
+        count:
+          type: integer
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              beforeRevision:
+                type: string
+              afterRevision:
+                type: string
+              changeType:
+                type: string
+              file:
+                type: string
+              relativeFile:
+                type: string
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Change:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Change unique identifier
+        version:
+          type: string
+          description: VCS revision
+        username:
+          type: string
+          description: VCS username
+        date:
+          type: string
+          description: Change date
+        href:
+          type: string
+        webUrl:
+          type: string
+        comment:
+          type: string
+          description: Commit message
+        user:
+          $ref: '#/components/schemas/User'
+        files:
+          $ref: '#/components/schemas/FileChanges'
+    Changes:
+      type: object
+      properties:
+        count:
+          type: integer
+        change:
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    start:
+      name: start
+      in: query
+      description: Index of the first item to return (for pagination)
+      schema:
+        type: integer
+        default: 0
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    count:
+      name: count
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 100
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using access tokens
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with username and password
+externalDocs:
+  description: TeamCity REST API Documentation
+  url: https://www.jetbrains.com/help/teamcity/rest-api.html

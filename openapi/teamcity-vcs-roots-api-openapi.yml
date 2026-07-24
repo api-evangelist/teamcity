@@ -1,0 +1,301 @@
+openapi: 3.0.3
+info:
+  title: TeamCity REST Agent Pools VCS Roots API
+  description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
+  version: 2024.12.1
+  contact:
+    name: JetBrains
+    url: https://www.jetbrains.com/support/teamcity/
+    email: teamcity-support@jetbrains.com
+  license:
+    name: Proprietary
+    url: https://www.jetbrains.com/teamcity/buy/
+  x-logo:
+    url: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
+servers:
+- url: https://{server}/app/rest
+  description: TeamCity Server
+  variables:
+    server:
+      default: teamcity.example.com
+      description: Your TeamCity server hostname
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: VCS Roots
+  description: Manage version control system roots
+paths:
+  /vcs-roots:
+    get:
+      operationId: getAllVcsRoots
+      summary: Get All VCS Roots
+      description: Returns a list of all VCS roots.
+      tags:
+      - VCS Roots
+      parameters:
+      - $ref: '#/components/parameters/locator'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VcsRoots'
+    post:
+      operationId: createVcsRoot
+      summary: Create VCS Root
+      description: Creates a new VCS root.
+      tags:
+      - VCS Roots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VcsRoot'
+      responses:
+        '200':
+          description: VCS root created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VcsRoot'
+  /vcs-roots/{vcsRootLocator}:
+    get:
+      operationId: getVcsRoot
+      summary: Get VCS Root
+      description: Returns details of a specific VCS root.
+      tags:
+      - VCS Roots
+      parameters:
+      - name: vcsRootLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VcsRoot'
+    delete:
+      operationId: deleteVcsRoot
+      summary: Delete VCS Root
+      description: Deletes a specific VCS root.
+      tags:
+      - VCS Roots
+      parameters:
+      - name: vcsRootLocator
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: VCS root deleted successfully
+components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+  schemas:
+    VcsRoot:
+      type: object
+      properties:
+        id:
+          type: string
+          description: VCS root unique identifier
+        name:
+          type: string
+          description: VCS root display name
+        vcsName:
+          type: string
+          description: VCS type (e.g., jetbrains.git)
+        href:
+          type: string
+        status:
+          type: string
+        lastChecked:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        properties:
+          $ref: '#/components/schemas/Properties'
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    VcsRoots:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        vcs-root:
+          type: array
+          items:
+            $ref: '#/components/schemas/VcsRoot'
+    BuildType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Build configuration unique identifier
+        name:
+          type: string
+          description: Build configuration display name
+        description:
+          type: string
+          description: Build configuration description
+        projectName:
+          type: string
+          description: Name of the parent project
+        projectId:
+          type: string
+          description: ID of the parent project
+        href:
+          type: string
+        webUrl:
+          type: string
+        paused:
+          type: boolean
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        steps:
+          $ref: '#/components/schemas/Steps'
+        triggers:
+          $ref: '#/components/schemas/Triggers'
+        settings:
+          $ref: '#/components/schemas/Properties'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Steps:
+      type: object
+      properties:
+        count:
+          type: integer
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Properties:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Project unique identifier
+        name:
+          type: string
+          description: Project display name
+        description:
+          type: string
+          description: Project description
+        href:
+          type: string
+          description: Relative URL to this project resource
+        webUrl:
+          type: string
+          description: URL to the project in the TeamCity web UI
+        parentProjectId:
+          type: string
+          description: Parent project identifier
+        archived:
+          type: boolean
+          description: Whether the project is archived
+        buildTypes:
+          $ref: '#/components/schemas/BuildTypes'
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        projects:
+          $ref: '#/components/schemas/Projects'
+    Property:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using access tokens
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with username and password
+externalDocs:
+  description: TeamCity REST API Documentation
+  url: https://www.jetbrains.com/help/teamcity/rest-api.html
