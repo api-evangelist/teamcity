@@ -3,6 +3,19 @@ description: >-
   JetBrains TeamCity is a powerful continuous integration and deployment server that helps development teams build,
   test, and deploy software efficiently. TeamCity provides a comprehensive REST API for automating CI/CD workflows,
   managing projects, build configurations, agents, and infrastructure.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
 url: https://github.com/api-evangelist/teamcity
 humanURL: https://www.jetbrains.com/teamcity/
@@ -21,38 +34,349 @@ type: Index
 aid: teamcity
 access: 3rd-Party
 apis:
-  - name: TeamCity REST API
-    description: >-
-      The primary REST API for interacting with TeamCity server, allowing you to manage builds, projects, build
-      configurations, agents, users, VCS roots, changes, tests, investigations, mutes, cloud infrastructure, and more.
-    image: https://www.jetbrains.com/teamcity/img/teamcity-logo.svg
-    humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
-    baseURL: https://teamcity.example.com/app/rest
-    tags:
-      - Agents
-      - Automation
-      - Builds
-      - CI/CD
-      - Projects
-      - REST
-      - Testing
-    properties:
-      - type: Documentation
-        url: https://www.jetbrains.com/help/teamcity/rest-api.html
-      - type: APIReference
-        url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
-      - type: Authentication
-        url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
-      - type: OpenAPI
-        url: openapi/teamcity-rest-api.yml
-      - type: JSONSchema
-        url: json-schema/teamcity-rest-api.json
-      - type: JSONLD
-        url: json-ld/teamcity-rest-api.jsonld
-    contact:
-      - type: Support
-        url: https://www.jetbrains.com/support/teamcity/
+- aid: teamcity:teamcity-agent-pools-api
+  name: TeamCity Agent Pools API
+  description: Manage agent pools
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Agent Pools
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-agent-pools-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-agents-api
+  name: TeamCity Agents API
+  description: Manage build agents
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-agents-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-audit-api
+  name: TeamCity Audit API
+  description: Query audit log entries
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Audit
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-audit-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-build-configurations-api
+  name: TeamCity Build Configurations API
+  description: Manage build configurations (build types)
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Build Configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-build-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-build-queue-api
+  name: TeamCity Build Queue API
+  description: Manage the build queue
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Build Queue
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-build-queue-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-builds-api
+  name: TeamCity Builds API
+  description: Trigger, query, and manage builds
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Builds
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-builds-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-changes-api
+  name: TeamCity Changes API
+  description: Query VCS changes
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Changes
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-changes-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-cloud-api
+  name: TeamCity Cloud API
+  description: Manage cloud profiles and instances
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Cloud
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-cloud-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-investigations-api
+  name: TeamCity Investigations API
+  description: Manage build and test investigations
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Investigations
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-investigations-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-mutes-api
+  name: TeamCity Mutes API
+  description: Manage test mutes
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Mutes
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-mutes-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-problems-api
+  name: TeamCity Problems API
+  description: Query build problems
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Problems
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-problems-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-projects-api
+  name: TeamCity Projects API
+  description: Manage TeamCity projects
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-projects-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-server-api
+  name: TeamCity Server API
+  description: Server information and configuration
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-server-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-tests-api
+  name: TeamCity Tests API
+  description: Query test results
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Tests
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-tests-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-user-groups-api
+  name: TeamCity User Groups API
+  description: Manage user groups
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-user-groups-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-users-api
+  name: TeamCity Users API
+  description: Manage users and user groups
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-users-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
+- aid: teamcity:teamcity-vcs-roots-api
+  name: TeamCity VCS Roots API
+  description: Manage version control system roots
+  humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
+  baseURL: https://teamcity.example.com/app/rest
+  tags:
+  - VCS Roots
+  properties:
+  - type: OpenAPI
+    url: openapi/teamcity-vcs-roots-api-openapi.yml
+  - type: Documentation
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html
+  - type: APIReference
+    url: https://www.jetbrains.com/help/teamcity/rest-api-reference.html
+  - type: Authentication
+    url: https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication
+  - type: JSONSchema
+    url: json-schema/teamcity-rest-api.json
+  - type: JSONLD
+    url: json-ld/teamcity-rest-api.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/teamcity/overview
   - type: AgenticAccess
     url: agentic-access/teamcity-agentic-access.yml
   - type: VulnerabilityDisclosure
