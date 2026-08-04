@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "656c5386-ed22-4327-88a2-852c85b3fd74",
+    "name": "TeamCity REST Agent Pools Server API",
+    "description": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:09:05.000Z",
+    "updatedAt": "2026-07-28T03:09:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-656c5386-ed22-4327-88a2-852c85b3fd74"
+  },
+  "item": [
+    {
+      "name": "server",
+      "item": [
+        {
+          "name": "plugins",
+          "item": [
+            {
+              "name": "Get Server Plugins",
+              "id": "9f3740d9-a0d0-4718-9f44-b99142a7033d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/server/plugins?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "server",
+                    "plugins"
+                  ],
+                  "query": [
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of installed server plugins."
+              },
+              "response": [
+                {
+                  "id": "2377e95f-ebe1-412c-a922-71a4c8af172b",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/server/plugins?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "server",
+                        "plugins"
+                      ],
+                      "query": [
+                        {
+                          "description": "Fields to include in the response (for partial responses)",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"plugin\": [\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:09:05.000Z",
+                  "updatedAt": "2026-07-28T03:09:05.000Z",
+                  "uid": "35240-2377e95f-ebe1-412c-a922-71a4c8af172b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:09:05.000Z",
+              "updatedAt": "2026-07-28T03:09:05.000Z",
+              "uid": "35240-9f3740d9-a0d0-4718-9f44-b99142a7033d"
+            }
+          ],
+          "id": "e0fad608-2b73-47e0-bb79-52b0e5e6445f",
+          "createdAt": "2026-07-28T03:09:05.000Z",
+          "updatedAt": "2026-07-28T03:09:05.000Z",
+          "uid": "35240-e0fad608-2b73-47e0-bb79-52b0e5e6445f"
+        },
+        {
+          "name": "Get Server Info",
+          "id": "3c2f2f69-d516-41cd-8159-afb3c318675e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/server?fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "server"
+              ],
+              "query": [
+                {
+                  "description": "Fields to include in the response (for partial responses)",
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns TeamCity server information including version and build number."
+          },
+          "response": [
+            {
+              "id": "315be5b4-d754-4aa4-8a31-28d1b1f4b705",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/server?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "server"
+                  ],
+                  "query": [
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"version\": \"<string>\",\n  \"versionMajor\": \"<integer>\",\n  \"versionMinor\": \"<integer>\",\n  \"buildNumber\": \"<string>\",\n  \"buildDate\": \"<string>\",\n  \"currentTime\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"webUrl\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:09:05.000Z",
+              "updatedAt": "2026-07-28T03:09:05.000Z",
+              "uid": "35240-315be5b4-d754-4aa4-8a31-28d1b1f4b705"
+            }
+          ],
+          "createdAt": "2026-07-28T03:09:05.000Z",
+          "updatedAt": "2026-07-28T03:09:05.000Z",
+          "uid": "35240-3c2f2f69-d516-41cd-8159-afb3c318675e"
+        }
+      ],
+      "id": "502b5df2-56a5-4d54-bcb9-e3afc0454a94",
+      "createdAt": "2026-07-28T03:09:05.000Z",
+      "updatedAt": "2026-07-28T03:09:05.000Z",
+      "uid": "35240-502b5df2-56a5-4d54-bcb9-e3afc0454a94"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "teamcity.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}/app/rest"
+    }
+  ]
+}

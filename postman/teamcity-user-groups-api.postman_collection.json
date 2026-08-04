@@ -1,0 +1,231 @@
+{
+  "info": {
+    "_postman_id": "f9d2d6a4-3361-4911-8526-01840d482a5e",
+    "name": "TeamCity REST Agent Pools User Groups API",
+    "description": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:09:07.000Z",
+    "updatedAt": "2026-07-28T03:09:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f9d2d6a4-3361-4911-8526-01840d482a5e"
+  },
+  "item": [
+    {
+      "name": "userGroups",
+      "item": [
+        {
+          "name": "Get All User Groups",
+          "id": "f4fa7b3e-b4e7-4068-9f1e-93450e10da7f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/userGroups?fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userGroups"
+              ],
+              "query": [
+                {
+                  "description": "Fields to include in the response (for partial responses)",
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of all user groups."
+          },
+          "response": [
+            {
+              "id": "66e9eb60-179b-4e2a-b93b-8003fc40d40d",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userGroups?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userGroups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"count\": \"<integer>\",\n  \"group\": [\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"href\": \"<string>\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"href\": \"<string>\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:09:07.000Z",
+              "updatedAt": "2026-07-28T03:09:07.000Z",
+              "uid": "35240-66e9eb60-179b-4e2a-b93b-8003fc40d40d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:09:07.000Z",
+          "updatedAt": "2026-07-28T03:09:07.000Z",
+          "uid": "35240-f4fa7b3e-b4e7-4068-9f1e-93450e10da7f"
+        },
+        {
+          "name": "Create User Group",
+          "id": "83684a3a-820c-49f1-843b-ac7991bd45bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/userGroups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userGroups"
+              ]
+            },
+            "description": "Creates a new user group."
+          },
+          "response": [
+            {
+              "id": "b13e372e-50da-4c29-8828-f23ee9cf4af0",
+              "name": "Group created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userGroups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userGroups"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:09:07.000Z",
+              "updatedAt": "2026-07-28T03:09:07.000Z",
+              "uid": "35240-b13e372e-50da-4c29-8828-f23ee9cf4af0"
+            }
+          ],
+          "createdAt": "2026-07-28T03:09:07.000Z",
+          "updatedAt": "2026-07-28T03:09:07.000Z",
+          "uid": "35240-83684a3a-820c-49f1-843b-ac7991bd45bf"
+        }
+      ],
+      "id": "24abeef4-0d59-4ee0-891c-f55a8a007c57",
+      "createdAt": "2026-07-28T03:09:07.000Z",
+      "updatedAt": "2026-07-28T03:09:07.000Z",
+      "uid": "35240-24abeef4-0d59-4ee0-891c-f55a8a007c57"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "teamcity.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}/app/rest"
+    }
+  ]
+}

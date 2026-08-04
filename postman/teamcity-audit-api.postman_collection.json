@@ -1,0 +1,160 @@
+{
+  "info": {
+    "_postman_id": "f641b5f0-45b1-4415-80da-d6232c1c4749",
+    "name": "TeamCity REST Agent Pools Audit API",
+    "description": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:08:36.000Z",
+    "updatedAt": "2026-07-28T03:08:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f641b5f0-45b1-4415-80da-d6232c1c4749"
+  },
+  "item": [
+    {
+      "name": "audit",
+      "item": [
+        {
+          "name": "Get Audit Events",
+          "id": "d5e1da31-e5c0-4a3d-b193-bf16a829501b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/audit?locator=<string>&fields=<string>&count=100&start=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "audit"
+              ],
+              "query": [
+                {
+                  "description": "TeamCity locator string to filter results",
+                  "key": "locator",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Fields to include in the response (for partial responses)",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of items to return",
+                  "key": "count",
+                  "value": "100"
+                },
+                {
+                  "description": "Index of the first item to return (for pagination)",
+                  "key": "start",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns audit log events."
+          },
+          "response": [
+            {
+              "id": "112c7e17-3eb0-4624-938c-231c35606d6e",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audit?locator=<string>&fields=<string>&count=100&start=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audit"
+                  ],
+                  "query": [
+                    {
+                      "description": "TeamCity locator string to filter results",
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Index of the first item to return (for pagination)",
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"count\": \"<integer>\",\n  \"auditEvent\": [\n    {\n      \"id\": \"<string>\",\n      \"timestamp\": \"<string>\",\n      \"action\": \"<string>\",\n      \"comment\": \"<string>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"href\": \"<string>\",\n        \"lastLogin\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"roleId\": \"<string>\",\n              \"scope\": \"<string>\",\n              \"href\": \"<string>\"\n            },\n            {\n              \"roleId\": \"<string>\",\n              \"scope\": \"<string>\",\n              \"href\": \"<string>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": \"<integer>\",\n          \"group\": [\n            {\n              \"key\": \"<string>\",\n              \"name\": \"<string>\",\n              \"description\": \"<string>\",\n              \"href\": \"<string>\",\n              \"roles\": {\n                \"role\": [\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  },\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  }\n                ]\n              }\n            },\n            {\n              \"key\": \"<string>\",\n              \"name\": \"<string>\",\n              \"description\": \"<string>\",\n              \"href\": \"<string>\",\n              \"roles\": {\n                \"role\": [\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  },\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  }\n                ]\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"timestamp\": \"<string>\",\n      \"action\": \"<string>\",\n      \"comment\": \"<string>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"href\": \"<string>\",\n        \"lastLogin\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"roleId\": \"<string>\",\n              \"scope\": \"<string>\",\n              \"href\": \"<string>\"\n            },\n            {\n              \"roleId\": \"<string>\",\n              \"scope\": \"<string>\",\n              \"href\": \"<string>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": \"<integer>\",\n          \"group\": [\n            {\n              \"key\": \"<string>\",\n              \"name\": \"<string>\",\n              \"description\": \"<string>\",\n              \"href\": \"<string>\",\n              \"roles\": {\n                \"role\": [\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  },\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  }\n                ]\n              }\n            },\n            {\n              \"key\": \"<string>\",\n              \"name\": \"<string>\",\n              \"description\": \"<string>\",\n              \"href\": \"<string>\",\n              \"roles\": {\n                \"role\": [\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  },\n                  {\n                    \"roleId\": \"<string>\",\n                    \"scope\": \"<string>\",\n                    \"href\": \"<string>\"\n                  }\n                ]\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:08:36.000Z",
+              "updatedAt": "2026-07-28T03:08:36.000Z",
+              "uid": "35240-112c7e17-3eb0-4624-938c-231c35606d6e"
+            }
+          ],
+          "createdAt": "2026-07-28T03:08:36.000Z",
+          "updatedAt": "2026-07-28T03:08:36.000Z",
+          "uid": "35240-d5e1da31-e5c0-4a3d-b193-bf16a829501b"
+        }
+      ],
+      "id": "e1db4811-a045-46b7-ab7a-f1cd2454734c",
+      "createdAt": "2026-07-28T03:08:36.000Z",
+      "updatedAt": "2026-07-28T03:08:36.000Z",
+      "uid": "35240-e1db4811-a045-46b7-ab7a-f1cd2454734c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "teamcity.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}/app/rest"
+    }
+  ]
+}

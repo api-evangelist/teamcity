@@ -1,0 +1,926 @@
+{
+  "info": {
+    "_postman_id": "91aaed9f-85f7-409b-b665-f277937daef3",
+    "name": "TeamCity REST Agent Pools Projects API",
+    "description": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:09:03.000Z",
+    "updatedAt": "2026-07-28T03:09:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-91aaed9f-85f7-409b-b665-f277937daef3"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectLocator}",
+          "item": [
+            {
+              "name": "parameters",
+              "item": [
+                {
+                  "name": "Get Project Parameters",
+                  "id": "62f2a555-7901-439e-a645-619bf7dee0a0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectLocator/parameters?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectLocator",
+                        "parameters"
+                      ],
+                      "query": [
+                        {
+                          "description": "Fields to include in the response (for partial responses)",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4ad97f05-46e2-486e-88bb-3bbf1ee9c173",
+                          "key": "projectLocator",
+                          "value": "<string>",
+                          "description": "(Required) Project locator string (e.g., id:MyProject)"
+                        }
+                      ]
+                    },
+                    "description": "Returns all parameters defined for a project."
+                  },
+                  "response": [
+                    {
+                      "id": "5652ea5e-ca9b-4c6b-9187-65741666380a",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectLocator/parameters?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectLocator",
+                            "parameters"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to include in the response (for partial responses)",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectLocator"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"href\": \"<string>\",\n  \"property\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"inherited\": \"<boolean>\",\n      \"type\": {\n        \"rawValue\": \"<string>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"inherited\": \"<boolean>\",\n      \"type\": {\n        \"rawValue\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:09:04.000Z",
+                      "updatedAt": "2026-07-28T03:09:04.000Z",
+                      "uid": "35240-5652ea5e-ca9b-4c6b-9187-65741666380a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:09:04.000Z",
+                  "updatedAt": "2026-07-28T03:09:04.000Z",
+                  "uid": "35240-62f2a555-7901-439e-a645-619bf7dee0a0"
+                }
+              ],
+              "id": "0a0c1ab3-e8fa-4b52-921a-215fe655d978",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-0a0c1ab3-e8fa-4b52-921a-215fe655d978"
+            },
+            {
+              "name": "buildTypes",
+              "item": [
+                {
+                  "name": "Get Project Build Configurations",
+                  "id": "30bf55e4-45e5-4262-905d-0dd9505354c6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectLocator/buildTypes?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectLocator",
+                        "buildTypes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Fields to include in the response (for partial responses)",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "795eb2fd-265b-47db-99db-a3760ff6307f",
+                          "key": "projectLocator",
+                          "value": "<string>",
+                          "description": "(Required) Project locator string (e.g., id:MyProject)"
+                        }
+                      ]
+                    },
+                    "description": "Returns all build configurations for a project."
+                  },
+                  "response": [
+                    {
+                      "id": "f0093ee4-45ed-4d51-8dbd-4271bcc3b403",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectLocator/buildTypes?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectLocator",
+                            "buildTypes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to include in the response (for partial responses)",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectLocator"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"buildType\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"projectName\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"href\": \"<string>\",\n      \"webUrl\": \"<string>\",\n      \"paused\": \"<boolean>\",\n      \"parameters\": {\n        \"count\": \"<integer>\",\n        \"href\": \"<string>\",\n        \"property\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          }\n        ]\n      },\n      \"steps\": {\n        \"count\": \"<integer>\",\n        \"step\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"triggers\": {\n        \"count\": \"<integer>\",\n        \"trigger\": [\n          {\n            \"id\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"settings\": {\n        \"count\": \"<integer>\",\n        \"href\": \"<string>\",\n        \"property\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"projectName\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"href\": \"<string>\",\n      \"webUrl\": \"<string>\",\n      \"paused\": \"<boolean>\",\n      \"parameters\": {\n        \"count\": \"<integer>\",\n        \"href\": \"<string>\",\n        \"property\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          }\n        ]\n      },\n      \"steps\": {\n        \"count\": \"<integer>\",\n        \"step\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"triggers\": {\n        \"count\": \"<integer>\",\n        \"trigger\": [\n          {\n            \"id\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"type\": \"<string>\",\n            \"properties\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"settings\": {\n        \"count\": \"<integer>\",\n        \"href\": \"<string>\",\n        \"property\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:09:04.000Z",
+                      "updatedAt": "2026-07-28T03:09:04.000Z",
+                      "uid": "35240-f0093ee4-45ed-4d51-8dbd-4271bcc3b403"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:09:04.000Z",
+                  "updatedAt": "2026-07-28T03:09:04.000Z",
+                  "uid": "35240-30bf55e4-45e5-4262-905d-0dd9505354c6"
+                }
+              ],
+              "id": "0079136b-5c7d-437b-b4ed-4afda3bda274",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-0079136b-5c7d-437b-b4ed-4afda3bda274"
+            },
+            {
+              "name": "Get Project",
+              "id": "ec725b52-4d3b-4107-b1c9-d93c6f782f67",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:projectLocator?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectLocator"
+                  ],
+                  "query": [
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "54ea0e9d-fafe-4066-8d70-887d954c7b8a",
+                      "key": "projectLocator",
+                      "value": "<string>",
+                      "description": "(Required) Project locator string (e.g., id:MyProject)"
+                    }
+                  ]
+                },
+                "description": "Returns details of a specific project."
+              },
+              "response": [
+                {
+                  "id": "901b5886-af9a-4000-a7fa-fd2240187362",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectLocator?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectLocator"
+                      ],
+                      "query": [
+                        {
+                          "description": "Fields to include in the response (for partial responses)",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectLocator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"webUrl\": \"<string>\",\n  \"parentProjectId\": \"<string>\",\n  \"archived\": \"<boolean>\",\n  \"buildTypes\": {\n    \"count\": \"<integer>\",\n    \"buildType\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"projectName\": \"<string>\",\n        \"projectId\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"paused\": \"<boolean>\",\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        },\n        \"steps\": {\n          \"count\": \"<integer>\",\n          \"step\": [\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"triggers\": {\n          \"count\": \"<integer>\",\n          \"trigger\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"settings\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"projectName\": \"<string>\",\n        \"projectId\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"paused\": \"<boolean>\",\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        },\n        \"steps\": {\n          \"count\": \"<integer>\",\n          \"step\": [\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"triggers\": {\n          \"count\": \"<integer>\",\n          \"trigger\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"settings\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"parameters\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"property\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"projects\": {\n    \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:09:04.000Z",
+                  "updatedAt": "2026-07-28T03:09:04.000Z",
+                  "uid": "35240-901b5886-af9a-4000-a7fa-fd2240187362"
+                },
+                {
+                  "id": "bd6ccb67-6828-4b07-8eb5-e231f9bad1f4",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectLocator?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectLocator"
+                      ],
+                      "query": [
+                        {
+                          "description": "Fields to include in the response (for partial responses)",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectLocator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T03:09:04.000Z",
+                  "updatedAt": "2026-07-28T03:09:04.000Z",
+                  "uid": "35240-bd6ccb67-6828-4b07-8eb5-e231f9bad1f4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-ec725b52-4d3b-4107-b1c9-d93c6f782f67"
+            },
+            {
+              "name": "Delete Project",
+              "id": "10386d87-fa28-42e1-a3af-82d4f0d0ff78",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:projectLocator",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectLocator"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6dc8038e-4b85-4d33-85cf-86dfdd6807ed",
+                      "key": "projectLocator",
+                      "value": "<string>",
+                      "description": "(Required) Project locator string (e.g., id:MyProject)"
+                    }
+                  ]
+                },
+                "description": "Deletes a specific project from the TeamCity server."
+              },
+              "response": [
+                {
+                  "id": "07725180-680d-431a-9f94-0abbacd3a29e",
+                  "name": "Project deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectLocator",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectLocator"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectLocator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:09:04.000Z",
+                  "updatedAt": "2026-07-28T03:09:04.000Z",
+                  "uid": "35240-07725180-680d-431a-9f94-0abbacd3a29e"
+                },
+                {
+                  "id": "5d668337-fd75-454c-99dc-a20140c335b6",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectLocator",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectLocator"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectLocator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T03:09:04.000Z",
+                  "updatedAt": "2026-07-28T03:09:04.000Z",
+                  "uid": "35240-5d668337-fd75-454c-99dc-a20140c335b6"
+                }
+              ],
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-10386d87-fa28-42e1-a3af-82d4f0d0ff78"
+            }
+          ],
+          "id": "10619839-bb56-4b53-94fa-bf06c3dcdc2f",
+          "createdAt": "2026-07-28T03:09:04.000Z",
+          "updatedAt": "2026-07-28T03:09:04.000Z",
+          "uid": "35240-10619839-bb56-4b53-94fa-bf06c3dcdc2f"
+        },
+        {
+          "name": "Get All Projects",
+          "id": "d5d6de6c-29cc-4a53-a0a0-ba560c123a5f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects?locator=<string>&fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "description": "TeamCity locator string to filter results",
+                  "key": "locator",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Fields to include in the response (for partial responses)",
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of all projects on the TeamCity server."
+          },
+          "response": [
+            {
+              "id": "9fe95a3c-7f03-4c03-962f-457850525458",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?locator=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "TeamCity locator string to filter results",
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"count\": \"<integer>\",\n  \"href\": \"<string>\",\n  \"project\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"href\": \"<string>\",\n      \"webUrl\": \"<string>\",\n      \"parentProjectId\": \"<string>\",\n      \"archived\": \"<boolean>\",\n      \"buildTypes\": {\n        \"count\": \"<integer>\",\n        \"buildType\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"projectName\": \"<string>\",\n            \"projectId\": \"<string>\",\n            \"href\": \"<string>\",\n            \"webUrl\": \"<string>\",\n            \"paused\": \"<boolean>\",\n            \"parameters\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            },\n            \"steps\": {\n              \"count\": \"<integer>\",\n              \"step\": [\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"triggers\": {\n              \"count\": \"<integer>\",\n              \"trigger\": [\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"settings\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"projectName\": \"<string>\",\n            \"projectId\": \"<string>\",\n            \"href\": \"<string>\",\n            \"webUrl\": \"<string>\",\n            \"paused\": \"<boolean>\",\n            \"parameters\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            },\n            \"steps\": {\n              \"count\": \"<integer>\",\n              \"step\": [\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"triggers\": {\n              \"count\": \"<integer>\",\n              \"trigger\": [\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"settings\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"parameters\": {\n        \"count\": \"<integer>\",\n        \"href\": \"<string>\",\n        \"property\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          }\n        ]\n      },\n      \"projects\": {\n        \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"href\": \"<string>\",\n      \"webUrl\": \"<string>\",\n      \"parentProjectId\": \"<string>\",\n      \"archived\": \"<boolean>\",\n      \"buildTypes\": {\n        \"count\": \"<integer>\",\n        \"buildType\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"projectName\": \"<string>\",\n            \"projectId\": \"<string>\",\n            \"href\": \"<string>\",\n            \"webUrl\": \"<string>\",\n            \"paused\": \"<boolean>\",\n            \"parameters\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            },\n            \"steps\": {\n              \"count\": \"<integer>\",\n              \"step\": [\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"triggers\": {\n              \"count\": \"<integer>\",\n              \"trigger\": [\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"settings\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"projectName\": \"<string>\",\n            \"projectId\": \"<string>\",\n            \"href\": \"<string>\",\n            \"webUrl\": \"<string>\",\n            \"paused\": \"<boolean>\",\n            \"parameters\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            },\n            \"steps\": {\n              \"count\": \"<integer>\",\n              \"step\": [\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"triggers\": {\n              \"count\": \"<integer>\",\n              \"trigger\": [\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"properties\": {\n                    \"count\": \"<integer>\",\n                    \"href\": \"<string>\",\n                    \"property\": [\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      },\n                      {\n                        \"name\": \"<string>\",\n                        \"value\": \"<string>\",\n                        \"inherited\": \"<boolean>\",\n                        \"type\": {\n                          \"rawValue\": \"<string>\"\n                        }\n                      }\n                    ]\n                  }\n                }\n              ]\n            },\n            \"settings\": {\n              \"count\": \"<integer>\",\n              \"href\": \"<string>\",\n              \"property\": [\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"inherited\": \"<boolean>\",\n                  \"type\": {\n                    \"rawValue\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"parameters\": {\n        \"count\": \"<integer>\",\n        \"href\": \"<string>\",\n        \"property\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"inherited\": \"<boolean>\",\n            \"type\": {\n              \"rawValue\": \"<string>\"\n            }\n          }\n        ]\n      },\n      \"projects\": {\n        \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-9fe95a3c-7f03-4c03-962f-457850525458"
+            },
+            {
+              "id": "53c68daf-23a6-4c36-aba5-ec536abc7ef0",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?locator=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "TeamCity locator string to filter results",
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-53c68daf-23a6-4c36-aba5-ec536abc7ef0"
+            }
+          ],
+          "createdAt": "2026-07-28T03:09:04.000Z",
+          "updatedAt": "2026-07-28T03:09:04.000Z",
+          "uid": "35240-d5d6de6c-29cc-4a53-a0a0-ba560c123a5f"
+        },
+        {
+          "name": "Create Project",
+          "id": "92a07b20-d461-4ac9-9605-c72fff5a86ec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"parentProject\": {\n    \"locator\": \"<string>\"\n  },\n  \"copyAllAssociatedSettings\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Creates a new project on the TeamCity server."
+          },
+          "response": [
+            {
+              "id": "e4fafb54-ca54-4a23-bf08-cd24f5ac8ec3",
+              "name": "Project created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"parentProject\": {\n    \"locator\": \"<string>\"\n  },\n  \"copyAllAssociatedSettings\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"webUrl\": \"<string>\",\n  \"parentProjectId\": \"<string>\",\n  \"archived\": \"<boolean>\",\n  \"buildTypes\": {\n    \"count\": \"<integer>\",\n    \"buildType\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"projectName\": \"<string>\",\n        \"projectId\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"paused\": \"<boolean>\",\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        },\n        \"steps\": {\n          \"count\": \"<integer>\",\n          \"step\": [\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"triggers\": {\n          \"count\": \"<integer>\",\n          \"trigger\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"settings\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"projectName\": \"<string>\",\n        \"projectId\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"paused\": \"<boolean>\",\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        },\n        \"steps\": {\n          \"count\": \"<integer>\",\n          \"step\": [\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"triggers\": {\n          \"count\": \"<integer>\",\n          \"trigger\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"properties\": {\n                \"count\": \"<integer>\",\n                \"href\": \"<string>\",\n                \"property\": [\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  },\n                  {\n                    \"name\": \"<string>\",\n                    \"value\": \"<string>\",\n                    \"inherited\": \"<boolean>\",\n                    \"type\": {\n                      \"rawValue\": \"<string>\"\n                    }\n                  }\n                ]\n              }\n            }\n          ]\n        },\n        \"settings\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\",\n              \"inherited\": \"<boolean>\",\n              \"type\": {\n                \"rawValue\": \"<string>\"\n              }\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"parameters\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"property\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"projects\": {\n    \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-e4fafb54-ca54-4a23-bf08-cd24f5ac8ec3"
+            },
+            {
+              "id": "7acef946-8a67-472b-a87b-93f8ad61c7df",
+              "name": "Bad request - invalid input",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"parentProject\": {\n    \"locator\": \"<string>\"\n  },\n  \"copyAllAssociatedSettings\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-7acef946-8a67-472b-a87b-93f8ad61c7df"
+            },
+            {
+              "id": "76e27f68-762e-42fb-aff1-e3566d0a1000",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"parentProject\": {\n    \"locator\": \"<string>\"\n  },\n  \"copyAllAssociatedSettings\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T03:09:04.000Z",
+              "updatedAt": "2026-07-28T03:09:04.000Z",
+              "uid": "35240-76e27f68-762e-42fb-aff1-e3566d0a1000"
+            }
+          ],
+          "createdAt": "2026-07-28T03:09:04.000Z",
+          "updatedAt": "2026-07-28T03:09:04.000Z",
+          "uid": "35240-92a07b20-d461-4ac9-9605-c72fff5a86ec"
+        }
+      ],
+      "id": "b658ab26-de49-4c4b-86b7-08472670e30b",
+      "createdAt": "2026-07-28T03:09:04.000Z",
+      "updatedAt": "2026-07-28T03:09:04.000Z",
+      "uid": "35240-b658ab26-de49-4c4b-86b7-08472670e30b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "teamcity.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}/app/rest"
+    }
+  ]
+}

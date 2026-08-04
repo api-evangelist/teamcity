@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "6bc03014-42b8-4ade-8ad2-ffafa4212910",
+    "name": "TeamCity REST Agent Pools Mutes API",
+    "description": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:08:56.000Z",
+    "updatedAt": "2026-07-28T03:08:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6bc03014-42b8-4ade-8ad2-ffafa4212910"
+  },
+  "item": [
+    {
+      "name": "mutes",
+      "item": [
+        {
+          "name": "Get All Mutes",
+          "id": "1b5061f0-6365-48be-8cb2-f6769a01ee73",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/mutes?locator=<string>&fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mutes"
+              ],
+              "query": [
+                {
+                  "description": "TeamCity locator string to filter results",
+                  "key": "locator",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Fields to include in the response (for partial responses)",
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of all muted tests and problems."
+          },
+          "response": [
+            {
+              "id": "a1368c61-a477-499c-b49c-9f1f058e216a",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/mutes?locator=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mutes"
+                  ],
+                  "query": [
+                    {
+                      "description": "TeamCity locator string to filter results",
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fields to include in the response (for partial responses)",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"count\": \"<integer>\",\n  \"mute\": [\n    {\n      \"id\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"assignment\": {\n        \"user\": {\n          \"id\": \"<long>\",\n          \"username\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"href\": \"<string>\",\n          \"lastLogin\": \"<string>\",\n          \"roles\": {\n            \"role\": [\n              {\n                \"roleId\": \"<string>\",\n                \"scope\": \"<string>\",\n                \"href\": \"<string>\"\n              },\n              {\n                \"roleId\": \"<string>\",\n                \"scope\": \"<string>\",\n                \"href\": \"<string>\"\n              }\n            ]\n          },\n          \"groups\": {\n            \"count\": \"<integer>\",\n            \"group\": [\n              {\n                \"key\": \"<string>\",\n                \"name\": \"<string>\",\n                \"description\": \"<string>\",\n                \"href\": \"<string>\",\n                \"roles\": {\n                  \"role\": [\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    },\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    }\n                  ]\n                }\n              },\n              {\n                \"key\": \"<string>\",\n                \"name\": \"<string>\",\n                \"description\": \"<string>\",\n                \"href\": \"<string>\",\n                \"roles\": {\n                  \"role\": [\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    },\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        },\n        \"timestamp\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      \"scope\": {},\n      \"target\": {},\n      \"resolution\": {}\n    },\n    {\n      \"id\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"assignment\": {\n        \"user\": {\n          \"id\": \"<long>\",\n          \"username\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"href\": \"<string>\",\n          \"lastLogin\": \"<string>\",\n          \"roles\": {\n            \"role\": [\n              {\n                \"roleId\": \"<string>\",\n                \"scope\": \"<string>\",\n                \"href\": \"<string>\"\n              },\n              {\n                \"roleId\": \"<string>\",\n                \"scope\": \"<string>\",\n                \"href\": \"<string>\"\n              }\n            ]\n          },\n          \"groups\": {\n            \"count\": \"<integer>\",\n            \"group\": [\n              {\n                \"key\": \"<string>\",\n                \"name\": \"<string>\",\n                \"description\": \"<string>\",\n                \"href\": \"<string>\",\n                \"roles\": {\n                  \"role\": [\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    },\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    }\n                  ]\n                }\n              },\n              {\n                \"key\": \"<string>\",\n                \"name\": \"<string>\",\n                \"description\": \"<string>\",\n                \"href\": \"<string>\",\n                \"roles\": {\n                  \"role\": [\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    },\n                    {\n                      \"roleId\": \"<string>\",\n                      \"scope\": \"<string>\",\n                      \"href\": \"<string>\"\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        },\n        \"timestamp\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      \"scope\": {},\n      \"target\": {},\n      \"resolution\": {}\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:08:57.000Z",
+              "updatedAt": "2026-07-28T03:08:57.000Z",
+              "uid": "35240-a1368c61-a477-499c-b49c-9f1f058e216a"
+            }
+          ],
+          "createdAt": "2026-07-28T03:08:57.000Z",
+          "updatedAt": "2026-07-28T03:08:57.000Z",
+          "uid": "35240-1b5061f0-6365-48be-8cb2-f6769a01ee73"
+        },
+        {
+          "name": "Create Mute",
+          "id": "aae3b714-ac67-44f6-b9b9-81a1f0b139ff",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"href\": \"<string>\",\n  \"assignment\": {\n    \"user\": {\n      \"id\": \"<long>\",\n      \"username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"href\": \"<string>\",\n      \"lastLogin\": \"<string>\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          }\n        ]\n      },\n      \"groups\": {\n        \"count\": \"<integer>\",\n        \"group\": [\n          {\n            \"key\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"href\": \"<string>\",\n            \"roles\": {\n              \"role\": [\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                },\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                }\n              ]\n            }\n          },\n          {\n            \"key\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"href\": \"<string>\",\n            \"roles\": {\n              \"role\": [\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                },\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                }\n              ]\n            }\n          }\n        ]\n      }\n    },\n    \"timestamp\": \"<string>\",\n    \"text\": \"<string>\"\n  },\n  \"scope\": {},\n  \"target\": {},\n  \"resolution\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mutes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mutes"
+              ]
+            },
+            "description": "Mutes a test or build problem."
+          },
+          "response": [
+            {
+              "id": "f40bf322-38bf-4775-9e65-9b88d371750b",
+              "name": "Mute created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"href\": \"<string>\",\n  \"assignment\": {\n    \"user\": {\n      \"id\": \"<long>\",\n      \"username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"href\": \"<string>\",\n      \"lastLogin\": \"<string>\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          }\n        ]\n      },\n      \"groups\": {\n        \"count\": \"<integer>\",\n        \"group\": [\n          {\n            \"key\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"href\": \"<string>\",\n            \"roles\": {\n              \"role\": [\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                },\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                }\n              ]\n            }\n          },\n          {\n            \"key\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"href\": \"<string>\",\n            \"roles\": {\n              \"role\": [\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                },\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                }\n              ]\n            }\n          }\n        ]\n      }\n    },\n    \"timestamp\": \"<string>\",\n    \"text\": \"<string>\"\n  },\n  \"scope\": {},\n  \"target\": {},\n  \"resolution\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/mutes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mutes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"href\": \"<string>\",\n  \"assignment\": {\n    \"user\": {\n      \"id\": \"<long>\",\n      \"username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"href\": \"<string>\",\n      \"lastLogin\": \"<string>\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          {\n            \"roleId\": \"<string>\",\n            \"scope\": \"<string>\",\n            \"href\": \"<string>\"\n          }\n        ]\n      },\n      \"groups\": {\n        \"count\": \"<integer>\",\n        \"group\": [\n          {\n            \"key\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"href\": \"<string>\",\n            \"roles\": {\n              \"role\": [\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                },\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                }\n              ]\n            }\n          },\n          {\n            \"key\": \"<string>\",\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"href\": \"<string>\",\n            \"roles\": {\n              \"role\": [\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                },\n                {\n                  \"roleId\": \"<string>\",\n                  \"scope\": \"<string>\",\n                  \"href\": \"<string>\"\n                }\n              ]\n            }\n          }\n        ]\n      }\n    },\n    \"timestamp\": \"<string>\",\n    \"text\": \"<string>\"\n  },\n  \"scope\": {},\n  \"target\": {},\n  \"resolution\": {}\n}",
+              "createdAt": "2026-07-28T03:08:57.000Z",
+              "updatedAt": "2026-07-28T03:08:57.000Z",
+              "uid": "35240-f40bf322-38bf-4775-9e65-9b88d371750b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:08:57.000Z",
+          "updatedAt": "2026-07-28T03:08:57.000Z",
+          "uid": "35240-aae3b714-ac67-44f6-b9b9-81a1f0b139ff"
+        }
+      ],
+      "id": "7ff90499-4ab0-42ca-9d7e-d7ee10755b73",
+      "createdAt": "2026-07-28T03:08:56.000Z",
+      "updatedAt": "2026-07-28T03:08:56.000Z",
+      "uid": "35240-7ff90499-4ab0-42ca-9d7e-d7ee10755b73"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "teamcity.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}/app/rest"
+    }
+  ]
+}
