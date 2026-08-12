@@ -375,6 +375,9 @@ apis:
   - type: JSONLD
     url: json-ld/teamcity-rest-api.jsonld
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/JetBrains/teamcity-rest-client/blob/master/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/teamcity/overview
   - type: AgenticAccess
