@@ -1,0 +1,495 @@
+{
+  "item": [
+    {
+      "id": "89797964-2535-4ed7-b652-4cd3fd758dcf",
+      "name": "VCS Roots",
+      "description": {
+        "content": "Manage version control system roots",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "530b2834-2c8b-421f-b57f-a6da8c248a10",
+          "name": "Get All VCS Roots",
+          "request": {
+            "name": "Get All VCS Roots",
+            "description": {
+              "content": "Returns a list of all VCS roots.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcs-roots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locator",
+                  "value": "<string>",
+                  "description": "TeamCity locator string to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43c68280-201a-4496-9b67-27403d4253e7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcs-roots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4052,\n  \"href\": \"string\",\n  \"vcs-root\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"vcsName\": \"string\",\n      \"href\": \"string\",\n      \"status\": \"string\",\n      \"lastChecked\": \"string\",\n      \"project\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"href\": \"string\",\n        \"webUrl\": \"string\",\n        \"parentProjectId\": \"string\",\n        \"archived\": true,\n        \"buildTypes\": {\n          \"count\": 9050,\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": 9081,\n          \"href\": \"string\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"count\": 262,\n          \"href\": \"string\",\n          \"project\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n            }\n          ]\n        }\n      },\n      \"properties\": {\n        \"count\": 9965,\n        \"href\": \"string\",\n        \"property\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"inherited\": true,\n            \"type\": {\n              \"rawValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"inherited\": true,\n            \"type\": {\n              \"rawValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"vcsName\": \"string\",\n      \"href\": \"string\",\n      \"status\": \"string\",\n      \"lastChecked\": \"string\",\n      \"project\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"href\": \"string\",\n        \"webUrl\": \"string\",\n        \"parentProjectId\": \"string\",\n        \"archived\": false,\n        \"buildTypes\": {\n          \"count\": 7366,\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": 7179,\n          \"href\": \"string\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"count\": 4602,\n          \"href\": \"string\",\n          \"project\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n            }\n          ]\n        }\n      },\n      \"properties\": {\n        \"count\": 3590,\n        \"href\": \"string\",\n        \"property\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"inherited\": false,\n            \"type\": {\n              \"rawValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"inherited\": false,\n            \"type\": {\n              \"rawValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5492d43c-3819-45ca-80c6-2a8c902864dd",
+          "name": "Create VCS Root",
+          "request": {
+            "name": "Create VCS Root",
+            "description": {
+              "content": "Creates a new VCS root.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcs-roots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"vcsName\": \"<string>\",\n  \"href\": \"<string>\",\n  \"status\": \"<string>\",\n  \"lastChecked\": \"<string>\",\n  \"project\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"href\": \"<string>\",\n    \"webUrl\": \"<string>\",\n    \"parentProjectId\": \"<string>\",\n    \"archived\": \"<boolean>\",\n    \"buildTypes\": {\n      \"count\": \"<integer>\",\n      \"buildType\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"parameters\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"property\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        }\n      ]\n    },\n    \"projects\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"project\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        }\n      ]\n    }\n  },\n  \"properties\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"property\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f6dd6830-e301-4610-a298-c37f9028786f",
+              "name": "VCS root created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcs-roots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"vcsName\": \"<string>\",\n  \"href\": \"<string>\",\n  \"status\": \"<string>\",\n  \"lastChecked\": \"<string>\",\n  \"project\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"href\": \"<string>\",\n    \"webUrl\": \"<string>\",\n    \"parentProjectId\": \"<string>\",\n    \"archived\": \"<boolean>\",\n    \"buildTypes\": {\n      \"count\": \"<integer>\",\n      \"buildType\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"parameters\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"property\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        }\n      ]\n    },\n    \"projects\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"project\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        }\n      ]\n    }\n  },\n  \"properties\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"property\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"vcsName\": \"<string>\",\n  \"href\": \"<string>\",\n  \"status\": \"<string>\",\n  \"lastChecked\": \"<string>\",\n  \"project\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"href\": \"<string>\",\n    \"webUrl\": \"<string>\",\n    \"parentProjectId\": \"<string>\",\n    \"archived\": \"<boolean>\",\n    \"buildTypes\": {\n      \"count\": \"<integer>\",\n      \"buildType\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"parameters\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"property\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        }\n      ]\n    },\n    \"projects\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"project\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        }\n      ]\n    }\n  },\n  \"properties\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"property\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a2741fc-5608-4974-81f9-e0b8a70a9092",
+          "name": "Get VCS Root",
+          "request": {
+            "name": "Get VCS Root",
+            "description": {
+              "content": "Returns details of a specific VCS root.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcs-roots",
+                ":vcsRootLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vcsRootLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c982439b-f26c-4f47-8201-b1d9e565000e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcs-roots",
+                    ":vcsRootLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vcsRootLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"vcsName\": \"<string>\",\n  \"href\": \"<string>\",\n  \"status\": \"<string>\",\n  \"lastChecked\": \"<string>\",\n  \"project\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"href\": \"<string>\",\n    \"webUrl\": \"<string>\",\n    \"parentProjectId\": \"<string>\",\n    \"archived\": \"<boolean>\",\n    \"buildTypes\": {\n      \"count\": \"<integer>\",\n      \"buildType\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"projectName\": \"<string>\",\n          \"projectId\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"paused\": \"<boolean>\",\n          \"parameters\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"steps\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"step\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"triggers\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"parameters\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"property\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"inherited\": \"<boolean>\",\n          \"type\": {\n            \"rawValue\": \"<string>\"\n          }\n        }\n      ]\n    },\n    \"projects\": {\n      \"count\": \"<integer>\",\n      \"href\": \"<string>\",\n      \"project\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Project detected>\"\n        }\n      ]\n    }\n  },\n  \"properties\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"property\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"inherited\": \"<boolean>\",\n        \"type\": {\n          \"rawValue\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15c5f196-7ecf-4d84-adbd-2641e3dc16b7",
+          "name": "Delete VCS Root",
+          "request": {
+            "name": "Delete VCS Root",
+            "description": {
+              "content": "Deletes a specific VCS root.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcs-roots",
+                ":vcsRootLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vcsRootLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca55f886-4a85-480c-b313-fc918df46e3f",
+              "name": "VCS root deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcs-roots",
+                    ":vcsRootLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vcsRootLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cdf359e2-e4d8-4adc-9c04-00cb92f11585",
+    "name": "TeamCity REST Agent Pools VCS Roots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

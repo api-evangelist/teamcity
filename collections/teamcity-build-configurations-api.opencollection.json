@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools Build Configurations API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Build Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Build Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/buildTypes",
+            "params": [
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all build configurations."
+        },
+        {
+          "info": {
+            "name": "Get Build Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/buildTypes/:btLocator",
+            "params": [
+              {
+                "name": "btLocator",
+                "value": "",
+                "type": "path",
+                "description": "Build type locator string"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific build configuration."
+        },
+        {
+          "info": {
+            "name": "Get Build Configuration Builds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/buildTypes/:btLocator/builds",
+            "params": [
+              {
+                "name": "btLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first item to return (for pagination)"
+              }
+            ]
+          },
+          "docs": "Returns builds for a specific build configuration."
+        },
+        {
+          "info": {
+            "name": "Get Build Configuration Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/buildTypes/:btLocator/parameters",
+            "params": [
+              {
+                "name": "btLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns all parameters defined for a build configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

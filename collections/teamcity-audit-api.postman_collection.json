@@ -1,0 +1,184 @@
+{
+  "item": [
+    {
+      "id": "df0c75fc-07a7-476f-a55d-f1760efdadcd",
+      "name": "Audit",
+      "description": {
+        "content": "Query audit log entries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0957e5c4-dc33-4ffc-bf7e-c42d712fcbcb",
+          "name": "Get Audit Events",
+          "request": {
+            "name": "Get Audit Events",
+            "description": {
+              "content": "Returns audit log events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locator",
+                  "value": "<string>",
+                  "description": "TeamCity locator string to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "100",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Index of the first item to return (for pagination)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de83c633-ac03-45af-a23b-e3711d35f4d7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1641,\n  \"auditEvent\": [\n    {\n      \"id\": \"string\",\n      \"timestamp\": \"string\",\n      \"action\": \"string\",\n      \"comment\": \"string\",\n      \"user\": {\n        \"id\": 9508,\n        \"username\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"href\": \"string\",\n        \"lastLogin\": \"string\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": 8126,\n          \"group\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"timestamp\": \"string\",\n      \"action\": \"string\",\n      \"comment\": \"string\",\n      \"user\": {\n        \"id\": 9170,\n        \"username\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"href\": \"string\",\n        \"lastLogin\": \"string\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": 9955,\n          \"group\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bacf94f6-c215-4a2a-9fd3-1b3e4d710c33",
+    "name": "TeamCity REST Agent Pools Audit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

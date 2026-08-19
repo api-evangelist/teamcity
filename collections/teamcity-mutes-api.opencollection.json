@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools Mutes API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mutes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Mutes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/mutes",
+            "params": [
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all muted tests and problems."
+        },
+        {
+          "info": {
+            "name": "Create Mute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}/app/rest/mutes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mutes a test or build problem."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

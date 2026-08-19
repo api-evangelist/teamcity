@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools Agents API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/agents",
+            "params": [
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all build agents."
+        },
+        {
+          "info": {
+            "name": "Get Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/agents/:agentLocator",
+            "params": [
+              {
+                "name": "agentLocator",
+                "value": "",
+                "type": "path",
+                "description": "Agent locator string"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific build agent."
+        },
+        {
+          "info": {
+            "name": "Get Agent Enabled Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/agents/:agentLocator/enabled",
+            "params": [
+              {
+                "name": "agentLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns whether an agent is enabled."
+        },
+        {
+          "info": {
+            "name": "Set Agent Enabled Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{server}/app/rest/agents/:agentLocator/enabled",
+            "params": [
+              {
+                "name": "agentLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enables or disables a build agent."
+        },
+        {
+          "info": {
+            "name": "Get Agent Authorized Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/agents/:agentLocator/authorized",
+            "params": [
+              {
+                "name": "agentLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns whether an agent is authorized."
+        },
+        {
+          "info": {
+            "name": "Set Agent Authorized Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{server}/app/rest/agents/:agentLocator/authorized",
+            "params": [
+              {
+                "name": "agentLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Authorizes or unauthorizes a build agent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

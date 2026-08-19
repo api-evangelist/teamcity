@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools User Groups API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All User Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/userGroups",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all user groups."
+        },
+        {
+          "info": {
+            "name": "Create User Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}/app/rest/userGroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

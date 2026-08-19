@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "629510a4-9619-4397-aadc-50e0877c932d",
+      "name": "Users",
+      "description": {
+        "content": "Manage users and user groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "711c07b9-1850-455d-8594-cd9ca6a6e0bd",
+          "name": "Get All Users",
+          "request": {
+            "name": "Get All Users",
+            "description": {
+              "content": "Returns a list of all users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf5369e0-42b2-4eb0-816e-7b8478b8fa28",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3602,\n  \"user\": [\n    {\n      \"id\": 4782,\n      \"username\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"href\": \"string\",\n      \"lastLogin\": \"string\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          },\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          }\n        ]\n      },\n      \"groups\": {\n        \"count\": 1353,\n        \"group\": [\n          {\n            \"key\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"roles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"roles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": 1639,\n      \"username\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"href\": \"string\",\n      \"lastLogin\": \"string\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          },\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          }\n        ]\n      },\n      \"groups\": {\n        \"count\": 8637,\n        \"group\": [\n          {\n            \"key\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"roles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"roles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e57e6756-f615-4cf0-8535-a4a9750211d4",
+          "name": "Create User",
+          "request": {
+            "name": "Create User",
+            "description": {
+              "content": "Creates a new user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00930b70-6c92-44db-b209-9e49e2327917",
+              "name": "User created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c7f0dfe-ddcd-4d7d-b901-6d542f73282a",
+          "name": "Get User",
+          "request": {
+            "name": "Get User",
+            "description": {
+              "content": "Returns details of a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b9cf8db-0427-4911-820d-c431483b150d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef00c0d5-0f9f-431f-b73e-894337766a4f",
+          "name": "Update User",
+          "request": {
+            "name": "Update User",
+            "description": {
+              "content": "Updates an existing user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13de2c64-41a2-4756-80a2-65952637c1b8",
+              "name": "User updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"href\": \"<string>\",\n  \"lastLogin\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  },\n  \"groups\": {\n    \"count\": \"<integer>\",\n    \"group\": [\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8196dfb0-bee1-46b7-9ec9-56f995c048ec",
+          "name": "Delete User",
+          "request": {
+            "name": "Delete User",
+            "description": {
+              "content": "Deletes a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e76a669-a9db-4ceb-b2b4-734cbc80cc17",
+              "name": "User deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fbde4ddf-2b76-4043-a568-721c09a9d0b0",
+    "name": "TeamCity REST Agent Pools Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

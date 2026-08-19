@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agent Pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Agent Pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/agentPools",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all agent pools."
+        },
+        {
+          "info": {
+            "name": "Create Agent Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}/app/rest/agentPools",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new agent pool."
+        },
+        {
+          "info": {
+            "name": "Get Agent Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/agentPools/:agentPoolLocator",
+            "params": [
+              {
+                "name": "agentPoolLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific agent pool."
+        },
+        {
+          "info": {
+            "name": "Delete Agent Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{server}/app/rest/agentPools/:agentPoolLocator",
+            "params": [
+              {
+                "name": "agentPoolLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a specific agent pool."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

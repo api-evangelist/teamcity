@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools VCS Roots API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VCS Roots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All VCS Roots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/vcs-roots",
+            "params": [
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all VCS roots."
+        },
+        {
+          "info": {
+            "name": "Create VCS Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}/app/rest/vcs-roots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new VCS root."
+        },
+        {
+          "info": {
+            "name": "Get VCS Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/vcs-roots/:vcsRootLocator",
+            "params": [
+              {
+                "name": "vcsRootLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific VCS root."
+        },
+        {
+          "info": {
+            "name": "Delete VCS Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{server}/app/rest/vcs-roots/:vcsRootLocator",
+            "params": [
+              {
+                "name": "vcsRootLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a specific VCS root."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

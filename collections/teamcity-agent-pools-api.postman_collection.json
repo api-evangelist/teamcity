@@ -1,0 +1,485 @@
+{
+  "item": [
+    {
+      "id": "1328761c-5d01-4f20-96f0-a3db1fd470ad",
+      "name": "Agent Pools",
+      "description": {
+        "content": "Manage agent pools",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5f9bf94-659f-4879-b519-221914fac350",
+          "name": "Get All Agent Pools",
+          "request": {
+            "name": "Get All Agent Pools",
+            "description": {
+              "content": "Returns a list of all agent pools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agentPools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "325caa53-4885-45dd-99ff-c1a53636055d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agentPools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5984,\n  \"agentPool\": [\n    {\n      \"id\": 391,\n      \"name\": \"string\",\n      \"href\": \"string\",\n      \"maxAgents\": 3805,\n      \"agents\": {\n        \"count\": 9693,\n        \"href\": \"string\",\n        \"agent\": [\n          {\n            \"id\": 6111,\n            \"name\": \"string\",\n            \"typeId\": 377,\n            \"connected\": false,\n            \"enabled\": false,\n            \"authorized\": true,\n            \"ip\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"pool\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentPool detected>\"\n            },\n            \"properties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"build\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 7830,\n            \"name\": \"string\",\n            \"typeId\": 7664,\n            \"connected\": true,\n            \"enabled\": true,\n            \"authorized\": true,\n            \"ip\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"pool\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentPool detected>\"\n            },\n            \"properties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"build\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"projects\": {\n        \"count\": 5000,\n        \"href\": \"string\",\n        \"project\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"parentProjectId\": \"string\",\n            \"archived\": false,\n            \"buildTypes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projects\": {\n              \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"parentProjectId\": \"string\",\n            \"archived\": false,\n            \"buildTypes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projects\": {\n              \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": 7204,\n      \"name\": \"string\",\n      \"href\": \"string\",\n      \"maxAgents\": 5415,\n      \"agents\": {\n        \"count\": 7255,\n        \"href\": \"string\",\n        \"agent\": [\n          {\n            \"id\": 6170,\n            \"name\": \"string\",\n            \"typeId\": 3877,\n            \"connected\": false,\n            \"enabled\": true,\n            \"authorized\": true,\n            \"ip\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"pool\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentPool detected>\"\n            },\n            \"properties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"build\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 3138,\n            \"name\": \"string\",\n            \"typeId\": 2113,\n            \"connected\": true,\n            \"enabled\": true,\n            \"authorized\": true,\n            \"ip\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"pool\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentPool detected>\"\n            },\n            \"properties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"build\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"projects\": {\n        \"count\": 4386,\n        \"href\": \"string\",\n        \"project\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"parentProjectId\": \"string\",\n            \"archived\": false,\n            \"buildTypes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projects\": {\n              \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"href\": \"string\",\n            \"webUrl\": \"string\",\n            \"parentProjectId\": \"string\",\n            \"archived\": true,\n            \"buildTypes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projects\": {\n              \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25c18b5b-2621-4cfc-960a-7f2021ebe774",
+          "name": "Create Agent Pool",
+          "request": {
+            "name": "Create Agent Pool",
+            "description": {
+              "content": "Creates a new agent pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agentPools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"href\": \"<string>\",\n  \"maxAgents\": \"<integer>\",\n  \"agents\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"agent\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"projects\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"project\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1a3df83-6e0a-47eb-b3d6-0c3797603db4",
+              "name": "Agent pool created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agentPools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"href\": \"<string>\",\n  \"maxAgents\": \"<integer>\",\n  \"agents\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"agent\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"projects\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"project\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"href\": \"<string>\",\n  \"maxAgents\": \"<integer>\",\n  \"agents\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"agent\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"projects\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"project\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d756dfa3-948d-4af4-b261-3e8518aab2de",
+          "name": "Get Agent Pool",
+          "request": {
+            "name": "Get Agent Pool",
+            "description": {
+              "content": "Returns details of a specific agent pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agentPools",
+                ":agentPoolLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentPoolLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18a19f11-5dec-4086-a7a8-dd5bb99924be",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agentPools",
+                    ":agentPoolLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentPoolLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"href\": \"<string>\",\n  \"maxAgents\": \"<integer>\",\n  \"agents\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"agent\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"typeId\": \"<integer>\",\n        \"connected\": \"<boolean>\",\n        \"enabled\": \"<boolean>\",\n        \"authorized\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"pool\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"href\": \"<string>\",\n          \"maxAgents\": \"<integer>\",\n          \"agents\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agents detected>\"\n          },\n          \"projects\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"project\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"properties\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"build\": {\n          \"id\": \"<long>\",\n          \"buildTypeId\": \"<string>\",\n          \"number\": \"<string>\",\n          \"status\": \"<string>\",\n          \"state\": \"<string>\",\n          \"statusText\": \"<string>\",\n          \"href\": \"<string>\",\n          \"webUrl\": \"<string>\",\n          \"branchName\": \"<string>\",\n          \"startDate\": \"<string>\",\n          \"finishDate\": \"<string>\",\n          \"queuedDate\": \"<string>\",\n          \"triggered\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastChanges\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"change\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"agent\": {\n            \"value\": \"<Circular reference to #/components/schemas/Agent detected>\"\n          },\n          \"testOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"testOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"problemOccurrences\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"problemOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifacts\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"file\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"properties\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statistics\": {\n            \"count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"buildType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"projectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"webUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paused\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"steps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"triggers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"projects\": {\n    \"count\": \"<integer>\",\n    \"href\": \"<string>\",\n    \"project\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"href\": \"<string>\",\n        \"webUrl\": \"<string>\",\n        \"parentProjectId\": \"<string>\",\n        \"archived\": \"<boolean>\",\n        \"buildTypes\": {\n          \"count\": \"<integer>\",\n          \"buildType\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"parameters\": {\n          \"count\": \"<integer>\",\n          \"href\": \"<string>\",\n          \"property\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"projects\": {\n          \"value\": \"<Circular reference to #/components/schemas/Projects detected>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afee1686-c974-4730-936d-ba6b8131596d",
+          "name": "Delete Agent Pool",
+          "request": {
+            "name": "Delete Agent Pool",
+            "description": {
+              "content": "Deletes a specific agent pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agentPools",
+                ":agentPoolLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentPoolLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5aeba396-791b-44e7-8862-859798a59072",
+              "name": "Agent pool deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agentPools",
+                    ":agentPoolLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentPoolLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a19f28f-6b11-4076-a4e5-a76e4c956d1d",
+    "name": "TeamCity REST Agent Pools API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

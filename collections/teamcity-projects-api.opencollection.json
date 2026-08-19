@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools Projects API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/projects",
+            "params": [
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns a list of all projects on the TeamCity server."
+        },
+        {
+          "info": {
+            "name": "Create Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}/app/rest/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new project on the TeamCity server."
+        },
+        {
+          "info": {
+            "name": "Get Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/projects/:projectLocator",
+            "params": [
+              {
+                "name": "projectLocator",
+                "value": "",
+                "type": "path",
+                "description": "Project locator string (e.g., id:MyProject)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific project."
+        },
+        {
+          "info": {
+            "name": "Delete Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{server}/app/rest/projects/:projectLocator",
+            "params": [
+              {
+                "name": "projectLocator",
+                "value": "",
+                "type": "path",
+                "description": "Project locator string (e.g., id:MyProject)"
+              }
+            ]
+          },
+          "docs": "Deletes a specific project from the TeamCity server."
+        },
+        {
+          "info": {
+            "name": "Get Project Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/projects/:projectLocator/parameters",
+            "params": [
+              {
+                "name": "projectLocator",
+                "value": "",
+                "type": "path",
+                "description": "Project locator string (e.g., id:MyProject)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns all parameters defined for a project."
+        },
+        {
+          "info": {
+            "name": "Get Project Build Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/projects/:projectLocator/buildTypes",
+            "params": [
+              {
+                "name": "projectLocator",
+                "value": "",
+                "type": "path",
+                "description": "Project locator string (e.g., id:MyProject)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns all build configurations for a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

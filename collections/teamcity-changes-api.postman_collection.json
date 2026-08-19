@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "20a48b80-6e3a-433f-b2fb-586dc9a0014b",
+      "name": "Changes",
+      "description": {
+        "content": "Query VCS changes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88e71079-c5f1-43c2-b004-737d1e9d5d7a",
+          "name": "Get All Changes",
+          "request": {
+            "name": "Get All Changes",
+            "description": {
+              "content": "Returns a list of VCS changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locator",
+                  "value": "<string>",
+                  "description": "TeamCity locator string to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "100",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Index of the first item to return (for pagination)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b81889d-23cc-4d76-803e-2254b95e1ec9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5123,\n  \"change\": [\n    {\n      \"id\": 2928,\n      \"version\": \"string\",\n      \"username\": \"string\",\n      \"date\": \"string\",\n      \"href\": \"string\",\n      \"webUrl\": \"string\",\n      \"comment\": \"string\",\n      \"user\": {\n        \"id\": 1831,\n        \"username\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"href\": \"string\",\n        \"lastLogin\": \"string\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": 4588,\n          \"group\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"files\": {\n        \"count\": 4499,\n        \"file\": [\n          {\n            \"beforeRevision\": \"string\",\n            \"afterRevision\": \"string\",\n            \"changeType\": \"string\",\n            \"file\": \"string\",\n            \"relativeFile\": \"string\"\n          },\n          {\n            \"beforeRevision\": \"string\",\n            \"afterRevision\": \"string\",\n            \"changeType\": \"string\",\n            \"file\": \"string\",\n            \"relativeFile\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": 184,\n      \"version\": \"string\",\n      \"username\": \"string\",\n      \"date\": \"string\",\n      \"href\": \"string\",\n      \"webUrl\": \"string\",\n      \"comment\": \"string\",\n      \"user\": {\n        \"id\": 7917,\n        \"username\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"href\": \"string\",\n        \"lastLogin\": \"string\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": 9865,\n          \"group\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"files\": {\n        \"count\": 98,\n        \"file\": [\n          {\n            \"beforeRevision\": \"string\",\n            \"afterRevision\": \"string\",\n            \"changeType\": \"string\",\n            \"file\": \"string\",\n            \"relativeFile\": \"string\"\n          },\n          {\n            \"beforeRevision\": \"string\",\n            \"afterRevision\": \"string\",\n            \"changeType\": \"string\",\n            \"file\": \"string\",\n            \"relativeFile\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64822305-631a-4aa2-b826-e59f7e0394de",
+          "name": "Get Change",
+          "request": {
+            "name": "Get Change",
+            "description": {
+              "content": "Returns details of a specific VCS change.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changes",
+                ":changeLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "changeLocator",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d70350db-ba7d-4855-ab78-2d9a0b76e6c4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changes",
+                    ":changeLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "changeLocator",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1298,\n  \"version\": \"string\",\n  \"username\": \"string\",\n  \"date\": \"string\",\n  \"href\": \"string\",\n  \"webUrl\": \"string\",\n  \"comment\": \"string\",\n  \"user\": {\n    \"id\": 2614,\n    \"username\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"href\": \"string\",\n    \"lastLogin\": \"string\",\n    \"roles\": {\n      \"role\": [\n        {\n          \"roleId\": \"string\",\n          \"scope\": \"string\",\n          \"href\": \"string\"\n        },\n        {\n          \"roleId\": \"string\",\n          \"scope\": \"string\",\n          \"href\": \"string\"\n        }\n      ]\n    },\n    \"groups\": {\n      \"count\": 6085,\n      \"group\": [\n        {\n          \"key\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"href\": \"string\",\n          \"roles\": {\n            \"role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"key\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"href\": \"string\",\n          \"roles\": {\n            \"role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    }\n  },\n  \"files\": {\n    \"count\": 1415,\n    \"file\": [\n      {\n        \"beforeRevision\": \"string\",\n        \"afterRevision\": \"string\",\n        \"changeType\": \"string\",\n        \"file\": \"string\",\n        \"relativeFile\": \"string\"\n      },\n      {\n        \"beforeRevision\": \"string\",\n        \"afterRevision\": \"string\",\n        \"changeType\": \"string\",\n        \"file\": \"string\",\n        \"relativeFile\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0cee6ee6-a9f5-4f05-835f-d068220e359d",
+    "name": "TeamCity REST Agent Pools Changes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

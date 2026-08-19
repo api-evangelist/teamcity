@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "ec7f91e7-41de-4b3e-a3c0-2a45edcdbee8",
+      "name": "User Groups",
+      "description": {
+        "content": "Manage user groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3348d98-df8a-4439-af36-2b4202676ee7",
+          "name": "Get All User Groups",
+          "request": {
+            "name": "Get All User Groups",
+            "description": {
+              "content": "Returns a list of all user groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09b990ce-6efe-45de-933c-917104438061",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 678,\n  \"group\": [\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"href\": \"string\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          },\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"href\": \"string\",\n      \"roles\": {\n        \"role\": [\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          },\n          {\n            \"roleId\": \"string\",\n            \"scope\": \"string\",\n            \"href\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3e0b895-acb9-45f4-be48-bc0d5522fc95",
+          "name": "Create User Group",
+          "request": {
+            "name": "Create User Group",
+            "description": {
+              "content": "Creates a new user group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6288a2ba-ee82-4ec2-ac37-0cb518c3fc36",
+              "name": "Group created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"href\": \"<string>\",\n  \"roles\": {\n    \"role\": [\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      {\n        \"roleId\": \"<string>\",\n        \"scope\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "16fc323f-241e-4a99-8be2-1f50c00556ad",
+    "name": "TeamCity REST Agent Pools User Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

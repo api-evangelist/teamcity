@@ -1,0 +1,164 @@
+{
+  "item": [
+    {
+      "id": "fb0a9bc5-0ea2-4025-a67d-6caeff9d6d3d",
+      "name": "Investigations",
+      "description": {
+        "content": "Manage build and test investigations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3665d756-bd33-4973-9276-52607fe96b21",
+          "name": "Get All Investigations",
+          "request": {
+            "name": "Get All Investigations",
+            "description": {
+              "content": "Returns a list of all investigations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "investigations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locator",
+                  "value": "<string>",
+                  "description": "TeamCity locator string to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields to include in the response (for partial responses)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your TeamCity server hostname",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "714cecad-ef4b-4351-9cc8-243d4613d462",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "investigations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your TeamCity server hostname",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6639,\n  \"investigation\": [\n    {\n      \"id\": \"string\",\n      \"state\": \"FIXED\",\n      \"assignee\": {\n        \"id\": 2200,\n        \"username\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"href\": \"string\",\n        \"lastLogin\": \"string\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": 1759,\n          \"group\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"assignment\": {\n        \"user\": {\n          \"id\": 3858,\n          \"username\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"string\",\n          \"href\": \"string\",\n          \"lastLogin\": \"string\",\n          \"roles\": {\n            \"role\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"groups\": {\n            \"count\": 3212,\n            \"group\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"timestamp\": \"string\",\n        \"text\": \"string\"\n      },\n      \"scope\": {},\n      \"target\": {},\n      \"resolution\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"state\": \"GIVEN_UP\",\n      \"assignee\": {\n        \"id\": 1573,\n        \"username\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"href\": \"string\",\n        \"lastLogin\": \"string\",\n        \"roles\": {\n          \"role\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"groups\": {\n          \"count\": 1048,\n          \"group\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"assignment\": {\n        \"user\": {\n          \"id\": 2541,\n          \"username\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"string\",\n          \"href\": \"string\",\n          \"lastLogin\": \"string\",\n          \"roles\": {\n            \"role\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"groups\": {\n            \"count\": 7139,\n            \"group\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"timestamp\": \"string\",\n        \"text\": \"string\"\n      },\n      \"scope\": {},\n      \"target\": {},\n      \"resolution\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your TeamCity server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "teamcity.example.com",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}/app/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51c95fd0-a314-4aaa-8415-b25bf1164deb",
+    "name": "TeamCity REST Agent Pools Investigations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.\n\nContact Support:\n Name: JetBrains\n Email: teamcity-support@jetbrains.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TeamCity REST Agent Pools Builds API",
+    "version": "2024.12.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Builds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds",
+            "params": [
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first item to return (for pagination)"
+              }
+            ]
+          },
+          "docs": "Returns a list of builds matching the specified criteria."
+        },
+        {
+          "info": {
+            "name": "Get Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds/:buildLocator",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path",
+                "description": "Build locator string"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific build."
+        },
+        {
+          "info": {
+            "name": "Get Build Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds/:buildLocator/tags",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns tags associated with a build."
+        },
+        {
+          "info": {
+            "name": "Set Build Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{server}/app/rest/builds/:buildLocator/tags",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets tags for a build, replacing existing tags."
+        },
+        {
+          "info": {
+            "name": "Get Build Artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds/:buildLocator/artifacts",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns the artifacts of a specific build."
+        },
+        {
+          "info": {
+            "name": "Get Build Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds/:buildLocator/statistics",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns statistical values for a specific build."
+        },
+        {
+          "info": {
+            "name": "Get Build Problem Occurrences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds/:buildLocator/problemOccurrences",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              }
+            ]
+          },
+          "docs": "Returns problem occurrences for a specific build."
+        },
+        {
+          "info": {
+            "name": "Get Build Test Occurrences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}/app/rest/builds/:buildLocator/testOccurrences",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "TeamCity locator string to filter results"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response (for partial responses)"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first item to return (for pagination)"
+              }
+            ]
+          },
+          "docs": "Returns test occurrences for a specific build."
+        },
+        {
+          "info": {
+            "name": "Cancel Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}/app/rest/builds/:buildLocator/cancel",
+            "params": [
+              {
+                "name": "buildLocator",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels a queued or running build."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
