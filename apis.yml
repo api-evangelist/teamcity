@@ -260,6 +260,8 @@ apis:
   humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
   baseURL: https://teamcity.example.com/app/rest
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -340,6 +342,8 @@ apis:
   humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
   baseURL: https://teamcity.example.com/app/rest
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
