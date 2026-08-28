@@ -1,0 +1,102 @@
+slug: teamcity
+provider: TeamCity
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: Build Configurations
+  spec_file: teamcity-build-configurations-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: GET /buildTypes  getAllBuildTypes  Get All Build Configurations; GET /buildTypes/{btLocator}/builds
+  reason: Definition and retrieval of build configurations and their parameters is core continuous integration
+    pipeline management.
+- tag: Build Queue
+  spec_file: teamcity-build-queue-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: POST /buildQueue  triggerBuild  Trigger Build
+  reason: Queueing and triggering builds on a CI server directly realises continuous integration management
+    (build pipelines).
+- tag: Builds
+  spec_file: teamcity-builds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: GET /builds/{buildLocator}/artifacts  getBuildArtifacts; POST /builds/{buildLocator}/cancel  cancelBuild
+  reason: Build execution, artefact retrieval and cancellation — build pipelines and artefact production,
+    i.e. continuous integration management.
+- tag: Tests
+  spec_file: teamcity-tests-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: 'GET /testOccurrences  getAllTestOccurrences; GET /tests  getAllTests; schemas: TestOccurrences,
+    Test'
+  reason: Automated test results and test inventory from CI builds — directly test suite stewardship and
+    defect visibility (Software Quality Engineering).
+- tag: VCS Roots
+  spec_file: teamcity-vcs-roots-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.75
+  evidence: 'POST /vcs-roots  createVcsRoot; schemas: VcsRoot, BuildType, Project'
+  reason: VCS roots configure version-control repository connections for builds — source control integration
+    within software construction practice.
+- tag: Investigations
+  spec_file: teamcity-investigations-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.7
+  evidence: 'GET /investigations  getAllInvestigations  Get All Investigations; schemas: Investigation,
+    User'
+  reason: In TeamCity, an 'investigation' assigns a user responsibility for a failing test/build problem
+    — i.e. defect triage within CI quality engineering, not any financial-crime or audit investigation.
+    Mapped to Software Quality Engineering with moderate confidence given the thin single-operation surface.
+- tag: Problems
+  spec_file: teamcity-problems-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.7
+  evidence: 'GET /problemOccurrences  getAllProblemOccurrences  Get All Problem Occurrences; schemas:
+    ProblemOccurrence, TestOccurrence, Build'
+  reason: 'Build problem occurrences tied to builds and test occurrences: CI build/test failure tracking,
+    i.e. software quality engineering — not ITIL problem management.'
+- tag: User Groups
+  spec_file: teamcity-user-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'GET /userGroups  getAllUserGroups; POST /userGroups  createUserGroup; schemas: Group, Role,
+    Roles'
+  reason: Group and role administration for tool access control is identity & access management within
+    a CI tool; not HR organisational management.
+- tag: Users
+  spec_file: teamcity-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /users  createUser; PUT /users/{userLocator}  updateUser; DELETE /users/{userLocator}  deleteUser;
+    schemas: User, Role, Group'
+  reason: CRUD on tool user accounts with roles/groups is access administration (IAM), not employee records.
