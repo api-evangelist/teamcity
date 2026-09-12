@@ -395,6 +395,8 @@ apis:
   - type: JSONLD
     url: json-ld/teamcity-rest-api.jsonld
 common:
+  - type: Website
+    url: https://www.jetbrains.com/
   - type: CapabilityMap
     url: capabilities/teamcity-capability-edges.yml
     name: TeamCity Business Capability Map
