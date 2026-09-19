@@ -299,6 +299,8 @@ apis:
   humanURL: https://www.jetbrains.com/help/teamcity/rest-api.html
   baseURL: https://teamcity.example.com/app/rest
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
