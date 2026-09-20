@@ -10,6 +10,13 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: tiered-subscription
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: On-Premises Professional Free forever
+  free_edition: On-Premises Professional
+  managed_tier: Cloud
 published: true
 note: JetBrains TeamCity buy page; On-Premises license pricing plus Cloud per-committer subscription with
   usage-based build credits. Cloud yearly total stated as $540.00 per year.
