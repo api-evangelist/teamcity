@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: TeamCity REST Agent Pools Changes API
+  title: TeamCity REST Changes API
   description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
   version: 2024.12.1
   contact:
@@ -68,6 +68,93 @@ paths:
                 $ref: '#/components/schemas/Change'
 components:
   schemas:
+    Changes:
+      type: object
+      properties:
+        count:
+          type: integer
+        change:
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    FileChanges:
+      type: object
+      properties:
+        count:
+          type: integer
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              beforeRevision:
+                type: string
+              afterRevision:
+                type: string
+              changeType:
+                type: string
+              file:
+                type: string
+              relativeFile:
+                type: string
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Change:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Change unique identifier
+        version:
+          type: string
+          description: VCS revision
+        username:
+          type: string
+          description: VCS username
+        date:
+          type: string
+          description: Change date
+        href:
+          type: string
+        webUrl:
+          type: string
+        comment:
+          type: string
+          description: Commit message
+        user:
+          $ref: '#/components/schemas/User'
+        files:
+          $ref: '#/components/schemas/FileChanges'
     User:
       type: object
       properties:
@@ -101,100 +188,14 @@ components:
           type: string
         href:
           type: string
-    FileChanges:
-      type: object
-      properties:
-        count:
-          type: integer
-        file:
-          type: array
-          items:
-            type: object
-            properties:
-              beforeRevision:
-                type: string
-              afterRevision:
-                type: string
-              changeType:
-                type: string
-              file:
-                type: string
-              relativeFile:
-                type: string
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
-          type: string
-        href:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    Change:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: Change unique identifier
-        version:
-          type: string
-          description: VCS revision
-        username:
-          type: string
-          description: VCS username
-        date:
-          type: string
-          description: Change date
-        href:
-          type: string
-        webUrl:
-          type: string
-        comment:
-          type: string
-          description: Commit message
-        user:
-          $ref: '#/components/schemas/User'
-        files:
-          $ref: '#/components/schemas/FileChanges'
-    Changes:
-      type: object
-      properties:
-        count:
-          type: integer
-        change:
-          type: array
-          items:
-            $ref: '#/components/schemas/Change'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
   parameters:
-    fields:
-      name: fields
+    count:
+      name: count
       in: query
-      description: Fields to include in the response (for partial responses)
+      description: Maximum number of items to return
       schema:
-        type: string
+        type: integer
+        default: 100
     start:
       name: start
       in: query
@@ -208,13 +209,12 @@ components:
       description: TeamCity locator string to filter results
       schema:
         type: string
-    count:
-      name: count
+    fields:
+      name: fields
       in: query
-      description: Maximum number of items to return
+      description: Fields to include in the response (for partial responses)
       schema:
-        type: integer
-        default: 100
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

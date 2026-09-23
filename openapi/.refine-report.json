@@ -1,23 +1,7 @@
 {
   "provider": "teamcity",
   "sources": [
-    "teamcity-agent-pools-api-openapi.yml",
-    "teamcity-agents-api-openapi.yml",
-    "teamcity-audit-api-openapi.yml",
-    "teamcity-build-configurations-api-openapi.yml",
-    "teamcity-build-queue-api-openapi.yml",
-    "teamcity-builds-api-openapi.yml",
-    "teamcity-changes-api-openapi.yml",
-    "teamcity-cloud-api-openapi.yml",
-    "teamcity-investigations-api-openapi.yml",
-    "teamcity-mutes-api-openapi.yml",
-    "teamcity-problems-api-openapi.yml",
-    "teamcity-projects-api-openapi.yml",
-    "teamcity-server-api-openapi.yml",
-    "teamcity-tests-api-openapi.yml",
-    "teamcity-user-groups-api-openapi.yml",
-    "teamcity-users-api-openapi.yml",
-    "teamcity-vcs-roots-api-openapi.yml"
+    "_original/teamcity-rest-api.yml"
   ],
   "outputs": [
     "teamcity-agent-pools-api-openapi.yml",
@@ -41,6 +25,28 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "teamcity-rest-api.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "teamcity-agent-pools-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-agents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-audit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-build-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-build-queue-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-builds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-changes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-cloud-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-investigations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-mutes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-problems-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-server-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-tests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-user-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teamcity-vcs-roots-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: TeamCity REST Agent Pools VCS Roots API
+  title: TeamCity REST VCS Roots API
   description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
   version: 2024.12.1
   contact:
@@ -99,19 +99,6 @@ paths:
         '204':
           description: VCS root deleted successfully
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
   schemas:
     VcsRoot:
       type: object
@@ -135,26 +122,6 @@ components:
           $ref: '#/components/schemas/Project'
         properties:
           $ref: '#/components/schemas/Properties'
-    BuildTypes:
-      type: object
-      properties:
-        count:
-          type: integer
-        buildType:
-          type: array
-          items:
-            $ref: '#/components/schemas/BuildType'
-    VcsRoots:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        vcs-root:
-          type: array
-          items:
-            $ref: '#/components/schemas/VcsRoot'
     BuildType:
       type: object
       properties:
@@ -187,22 +154,37 @@ components:
           $ref: '#/components/schemas/Triggers'
         settings:
           $ref: '#/components/schemas/Properties'
-    Triggers:
+    Projects:
       type: object
       properties:
         count:
           type: integer
-        trigger:
+        href:
+          type: string
+        project:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
+            $ref: '#/components/schemas/Project'
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    Properties:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
     Steps:
       type: object
       properties:
@@ -221,17 +203,6 @@ components:
                 type: string
               properties:
                 $ref: '#/components/schemas/Properties'
-    Properties:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
     Project:
       type: object
       properties:
@@ -262,6 +233,22 @@ components:
           $ref: '#/components/schemas/Properties'
         projects:
           $ref: '#/components/schemas/Projects'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
     Property:
       type: object
       properties:
@@ -276,17 +263,30 @@ components:
           properties:
             rawValue:
               type: string
-    Projects:
+    VcsRoots:
       type: object
       properties:
         count:
           type: integer
         href:
           type: string
-        project:
+        vcs-root:
           type: array
           items:
-            $ref: '#/components/schemas/Project'
+            $ref: '#/components/schemas/VcsRoot'
+  parameters:
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

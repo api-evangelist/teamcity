@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: TeamCity REST Agent Pools Server API
+  title: TeamCity REST Server API
   description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
   version: 2024.12.1
   contact:
@@ -59,6 +59,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Plugins'
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   schemas:
     Server:
       type: object
@@ -96,13 +103,6 @@ components:
                 type: string
               version:
                 type: string
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

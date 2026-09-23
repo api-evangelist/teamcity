@@ -1,0 +1,31 @@
+# Front Door AI Index — teamcity — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: teamcity
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.jetbrains.com
+  final_host: www.jetbrains.com
+  ownership: shared
+  owner: jetbrains
+  shares_host_with:
+  - http-client
+  - jetbrains
+  inherited_from: null
+  verdict: scored
+  score: null
+  host_score: 6
+  density: null
+  words: 1113
+  tiers:
+    agentic: 2
+    core: 4
+    model: 0
+  ambiguous: 3
+  top_terms:
+    AI: 4
+    agent: 2
+    AI agent: 1
+    agentic: 1
+    automation: 1

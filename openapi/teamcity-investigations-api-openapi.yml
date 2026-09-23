@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: TeamCity REST Agent Pools Investigations API
+  title: TeamCity REST Investigations API
   description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
   version: 2024.12.1
   contact:
@@ -45,39 +45,6 @@ paths:
                 $ref: '#/components/schemas/Investigations'
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: User unique identifier
-        username:
-          type: string
-          description: User login name
-        name:
-          type: string
-          description: User display name
-        email:
-          type: string
-          description: User email address
-        href:
-          type: string
-        lastLogin:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-        groups:
-          $ref: '#/components/schemas/Groups'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
     Investigation:
       type: object
       properties:
@@ -139,6 +106,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Investigation'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
     Roles:
       type: object
       properties:
@@ -146,17 +137,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Role'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
     locator:
       name: locator
       in: query
       description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
       schema:
         type: string
   securitySchemes:

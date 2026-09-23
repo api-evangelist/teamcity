@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: TeamCity REST Agent Pools Audit API
+  title: TeamCity REST Audit API
   description: The TeamCity REST API provides programmatic access to JetBrains TeamCity continuous integration and deployment server. It allows you to manage projects, build configurations, builds, agents, users, VCS roots, changes, tests, and other TeamCity resources.
   version: 2024.12.1
   contact:
@@ -47,48 +47,19 @@ paths:
                 $ref: '#/components/schemas/AuditEvents'
 components:
   schemas:
-    User:
+    AuditEvent:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: User unique identifier
-        username:
           type: string
-          description: User login name
-        name:
+        timestamp:
           type: string
-          description: User display name
-        email:
+        action:
           type: string
-          description: User email address
-        href:
+        comment:
           type: string
-        lastLogin:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-        groups:
-          $ref: '#/components/schemas/Groups'
-    AuditEvents:
-      type: object
-      properties:
-        count:
-          type: integer
-        auditEvent:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditEvent'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
+        user:
+          $ref: '#/components/schemas/User'
     Group:
       type: object
       properties:
@@ -113,19 +84,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Group'
-    AuditEvent:
-      type: object
-      properties:
-        id:
-          type: string
-        timestamp:
-          type: string
-        action:
-          type: string
-        comment:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
     Roles:
       type: object
       properties:
@@ -133,13 +91,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Role'
+    AuditEvents:
+      type: object
+      properties:
+        count:
+          type: integer
+        auditEvent:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditEvent'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
   parameters:
-    fields:
-      name: fields
+    count:
+      name: count
       in: query
-      description: Fields to include in the response (for partial responses)
+      description: Maximum number of items to return
       schema:
-        type: string
+        type: integer
+        default: 100
     start:
       name: start
       in: query
@@ -153,13 +154,12 @@ components:
       description: TeamCity locator string to filter results
       schema:
         type: string
-    count:
-      name: count
+    fields:
+      name: fields
       in: query
-      description: Maximum number of items to return
+      description: Fields to include in the response (for partial responses)
       schema:
-        type: integer
-        default: 100
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
