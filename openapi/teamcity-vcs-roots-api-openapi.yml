@@ -100,6 +100,33 @@ paths:
           description: VCS root deleted successfully
 components:
   schemas:
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
     VcsRoot:
       type: object
       properties:
@@ -154,55 +181,20 @@ components:
           $ref: '#/components/schemas/Triggers'
         settings:
           $ref: '#/components/schemas/Properties'
-    Projects:
+    Property:
       type: object
       properties:
-        count:
-          type: integer
-        href:
+        name:
           type: string
-        project:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-    BuildTypes:
-      type: object
-      properties:
-        count:
-          type: integer
-        buildType:
-          type: array
-          items:
-            $ref: '#/components/schemas/BuildType'
-    Properties:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
+        value:
           type: string
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Steps:
-      type: object
-      properties:
-        count:
-          type: integer
-        step:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
     Project:
       type: object
       properties:
@@ -233,36 +225,26 @@ components:
           $ref: '#/components/schemas/Properties'
         projects:
           $ref: '#/components/schemas/Projects'
-    Triggers:
+    BuildTypes:
       type: object
       properties:
         count:
           type: integer
-        trigger:
+        buildType:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
-    Property:
+            $ref: '#/components/schemas/BuildType'
+    Properties:
       type: object
       properties:
-        name:
+        count:
+          type: integer
+        href:
           type: string
-        value:
-          type: string
-        inherited:
-          type: boolean
-        type:
-          type: object
-          properties:
-            rawValue:
-              type: string
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
     VcsRoots:
       type: object
       properties:
@@ -274,17 +256,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VcsRoot'
+    Steps:
+      type: object
+      properties:
+        count:
+          type: integer
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
   parameters:
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
     fields:
       name: fields
       in: query
       description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
       schema:
         type: string
   securitySchemes:

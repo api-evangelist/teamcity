@@ -63,21 +63,15 @@ paths:
                 $ref: '#/components/schemas/Group'
 components:
   schemas:
-    Group:
+    Role:
       type: object
       properties:
-        key:
+        roleId:
           type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
+        scope:
           type: string
         href:
           type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
     Groups:
       type: object
       properties:
@@ -94,15 +88,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Role'
-    Role:
+    Group:
       type: object
       properties:
-        roleId:
+        key:
           type: string
-        scope:
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
           type: string
         href:
           type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
   parameters:
     fields:
       name: fields

@@ -59,13 +59,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Plugins'
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
   schemas:
     Server:
       type: object
@@ -103,6 +96,13 @@ components:
                 type: string
               version:
                 type: string
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

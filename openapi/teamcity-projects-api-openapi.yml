@@ -141,26 +141,54 @@ paths:
               schema:
                 $ref: '#/components/schemas/BuildTypes'
 components:
-  responses:
-    BadRequest:
-      description: Bad request - invalid input
-      content:
-        text/plain:
-          schema:
-            type: string
-    Unauthorized:
-      description: Unauthorized - authentication required
-      content:
-        text/plain:
-          schema:
-            type: string
-    NotFound:
-      description: Resource not found
-      content:
-        text/plain:
-          schema:
-            type: string
+  parameters:
+    projectLocator:
+      name: projectLocator
+      in: path
+      required: true
+      description: Project locator string (e.g., id:MyProject)
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
   schemas:
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
     BuildType:
       type: object
       properties:
@@ -193,17 +221,50 @@ components:
           $ref: '#/components/schemas/Triggers'
         settings:
           $ref: '#/components/schemas/Properties'
-    Projects:
+    Property:
       type: object
       properties:
-        count:
-          type: integer
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Project unique identifier
+        name:
+          type: string
+          description: Project display name
+        description:
+          type: string
+          description: Project description
         href:
           type: string
-        project:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
+          description: Relative URL to this project resource
+        webUrl:
+          type: string
+          description: URL to the project in the TeamCity web UI
+        parentProjectId:
+          type: string
+          description: Parent project identifier
+        archived:
+          type: boolean
+          description: Whether the project is archived
+        buildTypes:
+          $ref: '#/components/schemas/BuildTypes'
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        projects:
+          $ref: '#/components/schemas/Projects'
     BuildTypes:
       type: object
       properties:
@@ -260,86 +321,25 @@ components:
               type: string
         copyAllAssociatedSettings:
           type: boolean
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Project unique identifier
-        name:
-          type: string
-          description: Project display name
-        description:
-          type: string
-          description: Project description
-        href:
-          type: string
-          description: Relative URL to this project resource
-        webUrl:
-          type: string
-          description: URL to the project in the TeamCity web UI
-        parentProjectId:
-          type: string
-          description: Parent project identifier
-        archived:
-          type: boolean
-          description: Whether the project is archived
-        buildTypes:
-          $ref: '#/components/schemas/BuildTypes'
-        parameters:
-          $ref: '#/components/schemas/Properties'
-        projects:
-          $ref: '#/components/schemas/Projects'
-    Triggers:
-      type: object
-      properties:
-        count:
-          type: integer
-        trigger:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
-    Property:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        inherited:
-          type: boolean
-        type:
-          type: object
-          properties:
-            rawValue:
-              type: string
-  parameters:
-    projectLocator:
-      name: projectLocator
-      in: path
-      required: true
-      description: Project locator string (e.g., id:MyProject)
-      schema:
-        type: string
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        text/plain:
+          schema:
+            type: string
+    Unauthorized:
+      description: Unauthorized - authentication required
+      content:
+        text/plain:
+          schema:
+            type: string
+    BadRequest:
+      description: Bad request - invalid input
+      content:
+        text/plain:
+          schema:
+            type: string
   securitySchemes:
     bearerAuth:
       type: http

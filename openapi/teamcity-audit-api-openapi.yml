@@ -47,34 +47,15 @@ paths:
                 $ref: '#/components/schemas/AuditEvents'
 components:
   schemas:
-    AuditEvent:
+    Role:
       type: object
       properties:
-        id:
+        roleId:
           type: string
-        timestamp:
-          type: string
-        action:
-          type: string
-        comment:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
+        scope:
           type: string
         href:
           type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
     Groups:
       type: object
       properties:
@@ -124,23 +105,35 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
-    Role:
+    AuditEvent:
       type: object
       properties:
-        roleId:
+        id:
           type: string
-        scope:
+        timestamp:
+          type: string
+        action:
+          type: string
+        comment:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
           type: string
         href:
           type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
   parameters:
-    count:
-      name: count
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 100
     start:
       name: start
       in: query
@@ -148,16 +141,23 @@ components:
       schema:
         type: integer
         default: 0
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
     fields:
       name: fields
       in: query
       description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    count:
+      name: count
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 100
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
       schema:
         type: string
   securitySchemes:

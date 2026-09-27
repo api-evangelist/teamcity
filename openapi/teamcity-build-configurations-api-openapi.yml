@@ -114,83 +114,140 @@ paths:
                 $ref: '#/components/schemas/Properties'
 components:
   schemas:
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
-          type: string
-        href:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-    BuildTypes:
+    Triggers:
       type: object
       properties:
         count:
           type: integer
-        buildType:
+        trigger:
           type: array
           items:
-            $ref: '#/components/schemas/BuildType'
-    User:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    TriggeredBy:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Trigger type (user, vcs, schedule, etc.)
+        details:
+          type: string
+        date:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    FileChanges:
+      type: object
+      properties:
+        count:
+          type: integer
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              beforeRevision:
+                type: string
+              afterRevision:
+                type: string
+              changeType:
+                type: string
+              file:
+                type: string
+              relativeFile:
+                type: string
+    Files:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              size:
+                type: integer
+                format: int64
+              modificationTime:
+                type: string
+              href:
+                type: string
+              content:
+                type: object
+                properties:
+                  href:
+                    type: string
+    ProblemOccurrence:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        identity:
+          type: string
+        href:
+          type: string
+        details:
+          type: string
+        additionalData:
+          type: string
+        build:
+          $ref: '#/components/schemas/Build'
+        problem:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            identity:
+              type: string
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Change:
       type: object
       properties:
         id:
           type: integer
           format: int64
-          description: User unique identifier
+          description: Change unique identifier
+        version:
+          type: string
+          description: VCS revision
         username:
           type: string
-          description: User login name
-        name:
+          description: VCS username
+        date:
           type: string
-          description: User display name
-        email:
-          type: string
-          description: User email address
+          description: Change date
         href:
           type: string
-        lastLogin:
+        webUrl:
           type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-        groups:
-          $ref: '#/components/schemas/Groups'
-    TestOccurrences:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
+        comment:
           type: string
-        testOccurrence:
-          type: array
-          items:
-            $ref: '#/components/schemas/TestOccurrence'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    Changes:
-      type: object
-      properties:
-        count:
-          type: integer
-        change:
-          type: array
-          items:
-            $ref: '#/components/schemas/Change'
+          description: Commit message
+        user:
+          $ref: '#/components/schemas/User'
+        files:
+          $ref: '#/components/schemas/FileChanges'
     TestOccurrence:
       type: object
       properties:
@@ -224,32 +281,17 @@ components:
           $ref: '#/components/schemas/Build'
         test:
           $ref: '#/components/schemas/Test'
-    Files:
+    Agents:
       type: object
       properties:
         count:
           type: integer
         href:
           type: string
-        file:
+        agent:
           type: array
           items:
-            type: object
-            properties:
-              name:
-                type: string
-              size:
-                type: integer
-                format: int64
-              modificationTime:
-                type: string
-              href:
-                type: string
-              content:
-                type: object
-                properties:
-                  href:
-                    type: string
+            $ref: '#/components/schemas/Agent'
     Test:
       type: object
       properties:
@@ -259,32 +301,6 @@ components:
           type: string
         href:
           type: string
-    TriggeredBy:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Trigger type (user, vcs, schedule, etc.)
-        details:
-          type: string
-        date:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-    Property:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        inherited:
-          type: boolean
-        type:
-          type: object
-          properties:
-            rawValue:
-              type: string
     Projects:
       type: object
       properties:
@@ -296,15 +312,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Project'
-    Groups:
+    AgentPool:
       type: object
       properties:
-        count:
+        id:
           type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
+          description: Agent pool unique identifier
+        name:
+          type: string
+          description: Agent pool display name
+        href:
+          type: string
+        maxAgents:
+          type: integer
+          description: Maximum number of agents in the pool
+        agents:
+          $ref: '#/components/schemas/Agents'
+        projects:
+          $ref: '#/components/schemas/Projects'
     Properties:
       type: object
       properties:
@@ -316,33 +341,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property'
-    Change:
+    Steps:
       type: object
       properties:
-        id:
+        count:
           type: integer
-          format: int64
-          description: Change unique identifier
-        version:
-          type: string
-          description: VCS revision
-        username:
-          type: string
-          description: VCS username
-        date:
-          type: string
-          description: Change date
-        href:
-          type: string
-        webUrl:
-          type: string
-        comment:
-          type: string
-          description: Commit message
-        user:
-          $ref: '#/components/schemas/User'
-        files:
-          $ref: '#/components/schemas/FileChanges'
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
     Build:
       type: object
       properties:
@@ -407,33 +423,6 @@ components:
           $ref: '#/components/schemas/Properties'
         buildType:
           $ref: '#/components/schemas/BuildType'
-    Agents:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        agent:
-          type: array
-          items:
-            $ref: '#/components/schemas/Agent'
-    Triggers:
-      type: object
-      properties:
-        count:
-          type: integer
-        trigger:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
     Agent:
       type: object
       properties:
@@ -500,6 +489,115 @@ components:
           $ref: '#/components/schemas/Triggers'
         settings:
           $ref: '#/components/schemas/Properties'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    TestOccurrences:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        testOccurrence:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestOccurrence'
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    ProblemOccurrences:
+      type: object
+      properties:
+        count:
+          type: integer
+        problemOccurrence:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemOccurrence'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    Changes:
+      type: object
+      properties:
+        count:
+          type: integer
+        change:
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Property:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
     Builds:
       type: object
       properties:
@@ -513,70 +611,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Build'
-    FileChanges:
-      type: object
-      properties:
-        count:
-          type: integer
-        file:
-          type: array
-          items:
-            type: object
-            properties:
-              beforeRevision:
-                type: string
-              afterRevision:
-                type: string
-              changeType:
-                type: string
-              file:
-                type: string
-              relativeFile:
-                type: string
-    ProblemOccurrence:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        identity:
-          type: string
-        href:
-          type: string
-        details:
-          type: string
-        additionalData:
-          type: string
-        build:
-          $ref: '#/components/schemas/Build'
-        problem:
-          type: object
-          properties:
-            id:
-              type: string
-            type:
-              type: string
-            identity:
-              type: string
-    AgentPool:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Agent pool unique identifier
-        name:
-          type: string
-          description: Agent pool display name
-        href:
-          type: string
-        maxAgents:
-          type: integer
-          description: Maximum number of agents in the pool
-        agents:
-          $ref: '#/components/schemas/Agents'
-        projects:
-          $ref: '#/components/schemas/Projects'
     Project:
       type: object
       properties:
@@ -607,41 +641,13 @@ components:
           $ref: '#/components/schemas/Properties'
         projects:
           $ref: '#/components/schemas/Projects'
-    ProblemOccurrences:
-      type: object
-      properties:
-        count:
-          type: integer
-        problemOccurrence:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProblemOccurrence'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-    Steps:
-      type: object
-      properties:
-        count:
-          type: integer
-        step:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
   parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
     count:
       name: count
       in: query
@@ -649,18 +655,6 @@ components:
       schema:
         type: integer
         default: 100
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
     start:
       name: start
       in: query
@@ -668,6 +662,12 @@ components:
       schema:
         type: integer
         default: 0
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found

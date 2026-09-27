@@ -77,21 +77,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Change'
-    Group:
+    Role:
       type: object
       properties:
-        key:
+        roleId:
           type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
+        scope:
           type: string
         href:
           type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
     FileChanges:
       type: object
       properties:
@@ -112,15 +115,6 @@ components:
                 type: string
               relativeFile:
                 type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
     Roles:
       type: object
       properties:
@@ -128,6 +122,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Role'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
     Change:
       type: object
       properties:
@@ -155,47 +173,22 @@ components:
           $ref: '#/components/schemas/User'
         files:
           $ref: '#/components/schemas/FileChanges'
-    User:
+    Group:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          description: User unique identifier
-        username:
+        key:
           type: string
-          description: User login name
+          description: Group key
         name:
           type: string
-          description: User display name
-        email:
+          description: Group display name
+        description:
           type: string
-          description: User email address
         href:
-          type: string
-        lastLogin:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-        groups:
-          $ref: '#/components/schemas/Groups'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
   parameters:
-    count:
-      name: count
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 100
     start:
       name: start
       in: query
@@ -203,16 +196,23 @@ components:
       schema:
         type: integer
         default: 0
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
     fields:
       name: fields
       in: query
       description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    count:
+      name: count
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 100
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
       schema:
         type: string
   securitySchemes:
