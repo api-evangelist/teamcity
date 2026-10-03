@@ -151,22 +151,41 @@ paths:
           description: Status updated successfully
 components:
   schemas:
-    Triggers:
+    Properties:
       type: object
       properties:
         count:
           type: integer
-        trigger:
+        href:
+          type: string
+        property:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
+            $ref: '#/components/schemas/Property'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
     TriggeredBy:
       type: object
       properties:
@@ -179,26 +198,66 @@ components:
           type: string
         user:
           $ref: '#/components/schemas/User'
-    FileChanges:
+    Test:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        href:
+          type: string
+    Projects:
       type: object
       properties:
         count:
           type: integer
-        file:
+        href:
+          type: string
+        project:
           type: array
           items:
-            type: object
-            properties:
-              beforeRevision:
-                type: string
-              afterRevision:
-                type: string
-              changeType:
-                type: string
-              file:
-                type: string
-              relativeFile:
-                type: string
+            $ref: '#/components/schemas/Project'
+    TestOccurrences:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        testOccurrence:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestOccurrence'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    Agents:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        agent:
+          type: array
+          items:
+            $ref: '#/components/schemas/Agent'
+    ProblemOccurrences:
+      type: object
+      properties:
+        count:
+          type: integer
+        problemOccurrence:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemOccurrence'
     Files:
       type: object
       properties:
@@ -225,32 +284,67 @@ components:
                 properties:
                   href:
                     type: string
-    ProblemOccurrence:
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    Property:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
+    BuildType:
       type: object
       properties:
         id:
           type: string
-        type:
+          description: Build configuration unique identifier
+        name:
           type: string
-        identity:
+          description: Build configuration display name
+        description:
           type: string
+          description: Build configuration description
+        projectName:
+          type: string
+          description: Name of the parent project
+        projectId:
+          type: string
+          description: ID of the parent project
         href:
           type: string
-        details:
+        webUrl:
           type: string
-        additionalData:
-          type: string
-        build:
-          $ref: '#/components/schemas/Build'
-        problem:
-          type: object
-          properties:
-            id:
-              type: string
-            type:
-              type: string
-            identity:
-              type: string
+        paused:
+          type: boolean
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        steps:
+          $ref: '#/components/schemas/Steps'
+        triggers:
+          $ref: '#/components/schemas/Triggers'
+        settings:
+          $ref: '#/components/schemas/Properties'
     Roles:
       type: object
       properties:
@@ -258,6 +352,69 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Role'
+    FileChanges:
+      type: object
+      properties:
+        count:
+          type: integer
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              beforeRevision:
+                type: string
+              afterRevision:
+                type: string
+              changeType:
+                type: string
+              file:
+                type: string
+              relativeFile:
+                type: string
+    Steps:
+      type: object
+      properties:
+        count:
+          type: integer
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
     Change:
       type: object
       properties:
@@ -285,6 +442,67 @@ components:
           $ref: '#/components/schemas/User'
         files:
           $ref: '#/components/schemas/FileChanges'
+    AgentPool:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Agent pool unique identifier
+        name:
+          type: string
+          description: Agent pool display name
+        href:
+          type: string
+        maxAgents:
+          type: integer
+          description: Maximum number of agents in the pool
+        agents:
+          $ref: '#/components/schemas/Agents'
+        projects:
+          $ref: '#/components/schemas/Projects'
+    Agent:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Agent unique identifier
+        name:
+          type: string
+          description: Agent display name
+        typeId:
+          type: integer
+          description: Agent type identifier
+        connected:
+          type: boolean
+          description: Whether the agent is connected
+        enabled:
+          type: boolean
+          description: Whether the agent is enabled
+        authorized:
+          type: boolean
+          description: Whether the agent is authorized
+        ip:
+          type: string
+          description: Agent IP address
+        href:
+          type: string
+        webUrl:
+          type: string
+        pool:
+          $ref: '#/components/schemas/AgentPool'
+        properties:
+          $ref: '#/components/schemas/Properties'
+        build:
+          $ref: '#/components/schemas/Build'
+    Changes:
+      type: object
+      properties:
+        count:
+          type: integer
+        change:
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
     TestOccurrence:
       type: object
       properties:
@@ -318,84 +536,71 @@ components:
           $ref: '#/components/schemas/Build'
         test:
           $ref: '#/components/schemas/Test'
-    Agents:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        agent:
-          type: array
-          items:
-            $ref: '#/components/schemas/Agent'
-    Test:
+    Project:
       type: object
       properties:
         id:
           type: string
+          description: Project unique identifier
         name:
           type: string
+          description: Project display name
+        description:
+          type: string
+          description: Project description
         href:
           type: string
-    Projects:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
+          description: Relative URL to this project resource
+        webUrl:
           type: string
-        project:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-    AgentPool:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Agent pool unique identifier
-        name:
+          description: URL to the project in the TeamCity web UI
+        parentProjectId:
           type: string
-          description: Agent pool display name
-        href:
-          type: string
-        maxAgents:
-          type: integer
-          description: Maximum number of agents in the pool
-        agents:
-          $ref: '#/components/schemas/Agents'
+          description: Parent project identifier
+        archived:
+          type: boolean
+          description: Whether the project is archived
+        buildTypes:
+          $ref: '#/components/schemas/BuildTypes'
+        parameters:
+          $ref: '#/components/schemas/Properties'
         projects:
           $ref: '#/components/schemas/Projects'
-    Properties:
+    BuildTypes:
       type: object
       properties:
         count:
           type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    ProblemOccurrence:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        identity:
+          type: string
         href:
           type: string
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Steps:
-      type: object
-      properties:
-        count:
-          type: integer
-        step:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
+        details:
+          type: string
+        additionalData:
+          type: string
+        build:
+          $ref: '#/components/schemas/Build'
+        problem:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            identity:
+              type: string
     Build:
       type: object
       properties:
@@ -460,222 +665,17 @@ components:
           $ref: '#/components/schemas/Properties'
         buildType:
           $ref: '#/components/schemas/BuildType'
-    Agent:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Agent unique identifier
-        name:
-          type: string
-          description: Agent display name
-        typeId:
-          type: integer
-          description: Agent type identifier
-        connected:
-          type: boolean
-          description: Whether the agent is connected
-        enabled:
-          type: boolean
-          description: Whether the agent is enabled
-        authorized:
-          type: boolean
-          description: Whether the agent is authorized
-        ip:
-          type: string
-          description: Agent IP address
-        href:
-          type: string
-        webUrl:
-          type: string
-        pool:
-          $ref: '#/components/schemas/AgentPool'
-        properties:
-          $ref: '#/components/schemas/Properties'
-        build:
-          $ref: '#/components/schemas/Build'
-    BuildType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Build configuration unique identifier
-        name:
-          type: string
-          description: Build configuration display name
-        description:
-          type: string
-          description: Build configuration description
-        projectName:
-          type: string
-          description: Name of the parent project
-        projectId:
-          type: string
-          description: ID of the parent project
-        href:
-          type: string
-        webUrl:
-          type: string
-        paused:
-          type: boolean
-        parameters:
-          $ref: '#/components/schemas/Properties'
-        steps:
-          $ref: '#/components/schemas/Steps'
-        triggers:
-          $ref: '#/components/schemas/Triggers'
-        settings:
-          $ref: '#/components/schemas/Properties'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: User unique identifier
-        username:
-          type: string
-          description: User login name
-        name:
-          type: string
-          description: User display name
-        email:
-          type: string
-          description: User email address
-        href:
-          type: string
-        lastLogin:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-        groups:
-          $ref: '#/components/schemas/Groups'
-    BuildTypes:
-      type: object
-      properties:
-        count:
-          type: integer
-        buildType:
-          type: array
-          items:
-            $ref: '#/components/schemas/BuildType'
-    TestOccurrences:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        testOccurrence:
-          type: array
-          items:
-            $ref: '#/components/schemas/TestOccurrence'
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
-          type: string
-        href:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-    ProblemOccurrences:
-      type: object
-      properties:
-        count:
-          type: integer
-        problemOccurrence:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProblemOccurrence'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    Changes:
-      type: object
-      properties:
-        count:
-          type: integer
-        change:
-          type: array
-          items:
-            $ref: '#/components/schemas/Change'
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    Property:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        inherited:
-          type: boolean
-        type:
-          type: object
-          properties:
-            rawValue:
-              type: string
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Project unique identifier
-        name:
-          type: string
-          description: Project display name
-        description:
-          type: string
-          description: Project description
-        href:
-          type: string
-          description: Relative URL to this project resource
-        webUrl:
-          type: string
-          description: URL to the project in the TeamCity web UI
-        parentProjectId:
-          type: string
-          description: Parent project identifier
-        archived:
-          type: boolean
-          description: Whether the project is archived
-        buildTypes:
-          $ref: '#/components/schemas/BuildTypes'
-        parameters:
-          $ref: '#/components/schemas/Properties'
-        projects:
-          $ref: '#/components/schemas/Projects'
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
     locator:
       name: locator
       in: query
       description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
       schema:
         type: string
   responses:

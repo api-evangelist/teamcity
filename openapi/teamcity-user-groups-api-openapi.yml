@@ -62,7 +62,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/Group'
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   schemas:
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
     Role:
       type: object
       properties:
@@ -72,22 +86,6 @@ components:
           type: string
         href:
           type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     Group:
       type: object
       properties:
@@ -103,13 +101,15 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
   securitySchemes:
     bearerAuth:
       type: http

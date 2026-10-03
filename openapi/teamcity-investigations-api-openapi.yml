@@ -44,7 +44,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/Investigations'
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
   schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: User unique identifier
+        username:
+          type: string
+          description: User login name
+        name:
+          type: string
+          description: User display name
+        email:
+          type: string
+          description: User email address
+        href:
+          type: string
+        lastLogin:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+        groups:
+          $ref: '#/components/schemas/Groups'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Investigations:
+      type: object
+      properties:
+        count:
+          type: integer
+        investigation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Investigation'
     Role:
       type: object
       properties:
@@ -54,15 +107,6 @@ components:
           type: string
         href:
           type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
     Investigation:
       type: object
       properties:
@@ -91,46 +135,6 @@ components:
           type: object
         resolution:
           type: object
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: User unique identifier
-        username:
-          type: string
-          description: User login name
-        name:
-          type: string
-          description: User display name
-        email:
-          type: string
-          description: User email address
-        href:
-          type: string
-        lastLogin:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-        groups:
-          $ref: '#/components/schemas/Groups'
-    Investigations:
-      type: object
-      properties:
-        count:
-          type: integer
-        investigation:
-          type: array
-          items:
-            $ref: '#/components/schemas/Investigation'
     Group:
       type: object
       properties:
@@ -146,19 +150,15 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
   securitySchemes:
     bearerAuth:
       type: http

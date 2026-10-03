@@ -123,32 +123,14 @@ paths:
         '204':
           description: User deleted successfully
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   schemas:
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     User:
       type: object
       properties:
@@ -173,15 +155,22 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
-    Users:
+    Roles:
       type: object
       properties:
-        count:
-          type: integer
-        user:
+        role:
           type: array
           items:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/Role'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
     Group:
       type: object
       properties:
@@ -197,13 +186,24 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Users:
+      type: object
+      properties:
+        count:
+          type: integer
+        user:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
   securitySchemes:
     bearerAuth:
       type: http

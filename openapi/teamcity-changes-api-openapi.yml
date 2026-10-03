@@ -67,6 +67,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/Change'
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    start:
+      name: start
+      in: query
+      description: Index of the first item to return (for pagination)
+      schema:
+        type: integer
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 100
   schemas:
     Changes:
       type: object
@@ -77,51 +104,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Change'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    FileChanges:
-      type: object
-      properties:
-        count:
-          type: integer
-        file:
-          type: array
-          items:
-            type: object
-            properties:
-              beforeRevision:
-                type: string
-              afterRevision:
-                type: string
-              changeType:
-                type: string
-              file:
-                type: string
-              relativeFile:
-                type: string
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     User:
       type: object
       properties:
@@ -146,6 +128,66 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    FileChanges:
+      type: object
+      properties:
+        count:
+          type: integer
+        file:
+          type: array
+          items:
+            type: object
+            properties:
+              beforeRevision:
+                type: string
+              afterRevision:
+                type: string
+              changeType:
+                type: string
+              file:
+                type: string
+              relativeFile:
+                type: string
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
     Change:
       type: object
       properties:
@@ -173,48 +215,6 @@ components:
           $ref: '#/components/schemas/User'
         files:
           $ref: '#/components/schemas/FileChanges'
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
-          type: string
-        href:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-  parameters:
-    start:
-      name: start
-      in: query
-      description: Index of the first item to return (for pagination)
-      schema:
-        type: integer
-        default: 0
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    count:
-      name: count
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 100
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

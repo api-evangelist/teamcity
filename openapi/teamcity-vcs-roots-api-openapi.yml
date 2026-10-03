@@ -100,22 +100,6 @@ paths:
           description: VCS root deleted successfully
 components:
   schemas:
-    Triggers:
-      type: object
-      properties:
-        count:
-          type: integer
-        trigger:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
     Projects:
       type: object
       properties:
@@ -127,60 +111,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Project'
-    VcsRoot:
-      type: object
-      properties:
-        id:
-          type: string
-          description: VCS root unique identifier
-        name:
-          type: string
-          description: VCS root display name
-        vcsName:
-          type: string
-          description: VCS type (e.g., jetbrains.git)
-        href:
-          type: string
-        status:
-          type: string
-        lastChecked:
-          type: string
-        project:
-          $ref: '#/components/schemas/Project'
-        properties:
-          $ref: '#/components/schemas/Properties'
-    BuildType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Build configuration unique identifier
-        name:
-          type: string
-          description: Build configuration display name
-        description:
-          type: string
-          description: Build configuration description
-        projectName:
-          type: string
-          description: Name of the parent project
-        projectId:
-          type: string
-          description: ID of the parent project
-        href:
-          type: string
-        webUrl:
-          type: string
-        paused:
-          type: boolean
-        parameters:
-          $ref: '#/components/schemas/Properties'
-        steps:
-          $ref: '#/components/schemas/Steps'
-        triggers:
-          $ref: '#/components/schemas/Triggers'
-        settings:
-          $ref: '#/components/schemas/Properties'
     Property:
       type: object
       properties:
@@ -225,15 +155,6 @@ components:
           $ref: '#/components/schemas/Properties'
         projects:
           $ref: '#/components/schemas/Projects'
-    BuildTypes:
-      type: object
-      properties:
-        count:
-          type: integer
-        buildType:
-          type: array
-          items:
-            $ref: '#/components/schemas/BuildType'
     Properties:
       type: object
       properties:
@@ -245,17 +166,47 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property'
-    VcsRoots:
+    BuildType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Build configuration unique identifier
+        name:
+          type: string
+          description: Build configuration display name
+        description:
+          type: string
+          description: Build configuration description
+        projectName:
+          type: string
+          description: Name of the parent project
+        projectId:
+          type: string
+          description: ID of the parent project
+        href:
+          type: string
+        webUrl:
+          type: string
+        paused:
+          type: boolean
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        steps:
+          $ref: '#/components/schemas/Steps'
+        triggers:
+          $ref: '#/components/schemas/Triggers'
+        settings:
+          $ref: '#/components/schemas/Properties'
+    BuildTypes:
       type: object
       properties:
         count:
           type: integer
-        href:
-          type: string
-        vcs-root:
+        buildType:
           type: array
           items:
-            $ref: '#/components/schemas/VcsRoot'
+            $ref: '#/components/schemas/BuildType'
     Steps:
       type: object
       properties:
@@ -269,6 +220,55 @@ components:
               id:
                 type: string
               name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    VcsRoots:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        vcs-root:
+          type: array
+          items:
+            $ref: '#/components/schemas/VcsRoot'
+    VcsRoot:
+      type: object
+      properties:
+        id:
+          type: string
+          description: VCS root unique identifier
+        name:
+          type: string
+          description: VCS root display name
+        vcsName:
+          type: string
+          description: VCS type (e.g., jetbrains.git)
+        href:
+          type: string
+        status:
+          type: string
+        lastChecked:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
                 type: string
               type:
                 type: string

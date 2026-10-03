@@ -64,24 +64,6 @@ paths:
                 $ref: '#/components/schemas/Mute'
 components:
   schemas:
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
     Mute:
       type: object
       properties:
@@ -104,13 +86,6 @@ components:
           type: object
         resolution:
           type: object
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     User:
       type: object
       properties:
@@ -135,6 +110,13 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
     Mutes:
       type: object
       properties:
@@ -144,6 +126,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Mute'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
     Group:
       type: object
       properties:
@@ -159,6 +150,15 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
   parameters:
     fields:
       name: fields
