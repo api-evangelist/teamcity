@@ -99,18 +99,69 @@ paths:
         '204':
           description: VCS root deleted successfully
 components:
+  parameters:
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   schemas:
-    Projects:
+    VcsRoot:
+      type: object
+      properties:
+        id:
+          type: string
+          description: VCS root unique identifier
+        name:
+          type: string
+          description: VCS root display name
+        vcsName:
+          type: string
+          description: VCS type (e.g., jetbrains.git)
+        href:
+          type: string
+        status:
+          type: string
+        lastChecked:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        properties:
+          $ref: '#/components/schemas/Properties'
+    VcsRoots:
       type: object
       properties:
         count:
           type: integer
         href:
           type: string
-        project:
+        vcs-root:
           type: array
           items:
-            $ref: '#/components/schemas/Project'
+            $ref: '#/components/schemas/VcsRoot'
+    Triggers:
+      type: object
+      properties:
+        count:
+          type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
     Property:
       type: object
       properties:
@@ -125,47 +176,24 @@ components:
           properties:
             rawValue:
               type: string
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Project unique identifier
-        name:
-          type: string
-          description: Project display name
-        description:
-          type: string
-          description: Project description
-        href:
-          type: string
-          description: Relative URL to this project resource
-        webUrl:
-          type: string
-          description: URL to the project in the TeamCity web UI
-        parentProjectId:
-          type: string
-          description: Parent project identifier
-        archived:
-          type: boolean
-          description: Whether the project is archived
-        buildTypes:
-          $ref: '#/components/schemas/BuildTypes'
-        parameters:
-          $ref: '#/components/schemas/Properties'
-        projects:
-          $ref: '#/components/schemas/Projects'
-    Properties:
+    Steps:
       type: object
       properties:
         count:
           type: integer
-        href:
-          type: string
-        property:
+        step:
           type: array
           items:
-            $ref: '#/components/schemas/Property'
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
     BuildType:
       type: object
       properties:
@@ -207,86 +235,58 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BuildType'
-    Steps:
-      type: object
-      properties:
-        count:
-          type: integer
-        step:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
-    VcsRoots:
+    Properties:
       type: object
       properties:
         count:
           type: integer
         href:
           type: string
-        vcs-root:
+        property:
           type: array
           items:
-            $ref: '#/components/schemas/VcsRoot'
-    VcsRoot:
+            $ref: '#/components/schemas/Property'
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    Project:
       type: object
       properties:
         id:
           type: string
-          description: VCS root unique identifier
+          description: Project unique identifier
         name:
           type: string
-          description: VCS root display name
-        vcsName:
+          description: Project display name
+        description:
           type: string
-          description: VCS type (e.g., jetbrains.git)
+          description: Project description
         href:
           type: string
-        status:
+          description: Relative URL to this project resource
+        webUrl:
           type: string
-        lastChecked:
+          description: URL to the project in the TeamCity web UI
+        parentProjectId:
           type: string
-        project:
-          $ref: '#/components/schemas/Project'
-        properties:
+          description: Parent project identifier
+        archived:
+          type: boolean
+          description: Whether the project is archived
+        buildTypes:
+          $ref: '#/components/schemas/BuildTypes'
+        parameters:
           $ref: '#/components/schemas/Properties'
-    Triggers:
-      type: object
-      properties:
-        count:
-          type: integer
-        trigger:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
+        projects:
+          $ref: '#/components/schemas/Projects'
   securitySchemes:
     bearerAuth:
       type: http

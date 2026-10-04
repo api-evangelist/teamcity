@@ -123,14 +123,23 @@ paths:
         '204':
           description: User deleted successfully
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
   schemas:
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Users:
+      type: object
+      properties:
+        count:
+          type: integer
+        user:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -155,13 +164,6 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     Role:
       type: object
       properties:
@@ -171,6 +173,15 @@ components:
           type: string
         href:
           type: string
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
     Group:
       type: object
       properties:
@@ -186,24 +197,13 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    Users:
-      type: object
-      properties:
-        count:
-          type: integer
-        user:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

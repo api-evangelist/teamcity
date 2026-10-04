@@ -64,28 +64,13 @@ paths:
                 $ref: '#/components/schemas/Mute'
 components:
   schemas:
-    Mute:
+    Roles:
       type: object
       properties:
-        id:
-          type: integer
-        href:
-          type: string
-        assignment:
-          type: object
-          properties:
-            user:
-              $ref: '#/components/schemas/User'
-            timestamp:
-              type: string
-            text:
-              type: string
-        scope:
-          type: object
-        target:
-          type: object
-        resolution:
-          type: object
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
     User:
       type: object
       properties:
@@ -110,22 +95,6 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-    Mutes:
-      type: object
-      properties:
-        count:
-          type: integer
-        mute:
-          type: array
-          items:
-            $ref: '#/components/schemas/Mute'
     Role:
       type: object
       properties:
@@ -135,6 +104,37 @@ components:
           type: string
         href:
           type: string
+    Mute:
+      type: object
+      properties:
+        id:
+          type: integer
+        href:
+          type: string
+        assignment:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/User'
+            timestamp:
+              type: string
+            text:
+              type: string
+        scope:
+          type: object
+        target:
+          type: object
+        resolution:
+          type: object
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
     Group:
       type: object
       properties:
@@ -150,26 +150,26 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-    Groups:
+    Mutes:
       type: object
       properties:
         count:
           type: integer
-        group:
+        mute:
           type: array
           items:
-            $ref: '#/components/schemas/Group'
+            $ref: '#/components/schemas/Mute'
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
     locator:
       name: locator
       in: query
       description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
       schema:
         type: string
   securitySchemes:

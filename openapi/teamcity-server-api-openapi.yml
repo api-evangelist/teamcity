@@ -60,22 +60,6 @@ paths:
                 $ref: '#/components/schemas/Plugins'
 components:
   schemas:
-    Plugins:
-      type: object
-      properties:
-        count:
-          type: integer
-        plugin:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              displayName:
-                type: string
-              version:
-                type: string
     Server:
       type: object
       properties:
@@ -96,6 +80,22 @@ components:
           type: string
         webUrl:
           type: string
+    Plugins:
+      type: object
+      properties:
+        count:
+          type: integer
+        plugin:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              displayName:
+                type: string
+              version:
+                type: string
   parameters:
     fields:
       name: fields

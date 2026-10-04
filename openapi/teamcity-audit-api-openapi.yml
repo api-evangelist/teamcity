@@ -46,43 +46,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuditEvents'
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
-    start:
-      name: start
-      in: query
-      description: Index of the first item to return (for pagination)
-      schema:
-        type: integer
-        default: 0
-    count:
-      name: count
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 100
   schemas:
-    AuditEvents:
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    AuditEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        timestamp:
+          type: string
+        action:
+          type: string
+        comment:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    Groups:
       type: object
       properties:
         count:
           type: integer
-        auditEvent:
+        group:
           type: array
           items:
-            $ref: '#/components/schemas/AuditEvent'
+            $ref: '#/components/schemas/Group'
     User:
       type: object
       properties:
@@ -107,59 +124,42 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    AuditEvent:
-      type: object
-      properties:
-        id:
-          type: string
-        timestamp:
-          type: string
-        action:
-          type: string
-        comment:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
-          type: string
-        href:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-    Groups:
+    AuditEvents:
       type: object
       properties:
         count:
           type: integer
-        group:
+        auditEvent:
           type: array
           items:
-            $ref: '#/components/schemas/Group'
+            $ref: '#/components/schemas/AuditEvent'
+  parameters:
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
+    count:
+      name: count
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 100
+    start:
+      name: start
+      in: query
+      description: Index of the first item to return (for pagination)
+      schema:
+        type: integer
+        default: 0
   securitySchemes:
     bearerAuth:
       type: http
