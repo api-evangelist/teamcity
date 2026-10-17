@@ -63,13 +63,6 @@ paths:
                 $ref: '#/components/schemas/Group'
 components:
   schemas:
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     Role:
       type: object
       properties:
@@ -103,6 +96,13 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
   parameters:
     fields:
       name: fields

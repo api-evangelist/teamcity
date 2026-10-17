@@ -141,27 +141,84 @@ paths:
               schema:
                 $ref: '#/components/schemas/BuildTypes'
 components:
-  parameters:
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
-    projectLocator:
-      name: projectLocator
-      in: path
-      required: true
-      description: Project locator string (e.g., id:MyProject)
-      schema:
-        type: string
   schemas:
+    Properties:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
+          type: string
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    Property:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        inherited:
+          type: boolean
+        type:
+          type: object
+          properties:
+            rawValue:
+              type: string
+    BuildType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Build configuration unique identifier
+        name:
+          type: string
+          description: Build configuration display name
+        description:
+          type: string
+          description: Build configuration description
+        projectName:
+          type: string
+          description: Name of the parent project
+        projectId:
+          type: string
+          description: ID of the parent project
+        href:
+          type: string
+        webUrl:
+          type: string
+        paused:
+          type: boolean
+        parameters:
+          $ref: '#/components/schemas/Properties'
+        steps:
+          $ref: '#/components/schemas/Steps'
+        triggers:
+          $ref: '#/components/schemas/Triggers'
+        settings:
+          $ref: '#/components/schemas/Properties'
     Triggers:
       type: object
       properties:
@@ -178,20 +235,6 @@ components:
                 type: string
               properties:
                 $ref: '#/components/schemas/Properties'
-    Property:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        inherited:
-          type: boolean
-        type:
-          type: object
-          properties:
-            rawValue:
-              type: string
     Steps:
       type: object
       properties:
@@ -228,69 +271,6 @@ components:
               type: string
         copyAllAssociatedSettings:
           type: boolean
-    BuildType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Build configuration unique identifier
-        name:
-          type: string
-          description: Build configuration display name
-        description:
-          type: string
-          description: Build configuration description
-        projectName:
-          type: string
-          description: Name of the parent project
-        projectId:
-          type: string
-          description: ID of the parent project
-        href:
-          type: string
-        webUrl:
-          type: string
-        paused:
-          type: boolean
-        parameters:
-          $ref: '#/components/schemas/Properties'
-        steps:
-          $ref: '#/components/schemas/Steps'
-        triggers:
-          $ref: '#/components/schemas/Triggers'
-        settings:
-          $ref: '#/components/schemas/Properties'
-    BuildTypes:
-      type: object
-      properties:
-        count:
-          type: integer
-        buildType:
-          type: array
-          items:
-            $ref: '#/components/schemas/BuildType'
-    Properties:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Projects:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        project:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
     Project:
       type: object
       properties:
@@ -322,8 +302,8 @@ components:
         projects:
           $ref: '#/components/schemas/Projects'
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - authentication required
       content:
         text/plain:
           schema:
@@ -334,12 +314,32 @@ components:
         text/plain:
           schema:
             type: string
-    Unauthorized:
-      description: Unauthorized - authentication required
+    NotFound:
+      description: Resource not found
       content:
         text/plain:
           schema:
             type: string
+  parameters:
+    projectLocator:
+      name: projectLocator
+      in: path
+      required: true
+      description: Project locator string (e.g., id:MyProject)
+      schema:
+        type: string
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

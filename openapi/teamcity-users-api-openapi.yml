@@ -124,22 +124,6 @@ paths:
           description: User deleted successfully
 components:
   schemas:
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-    Users:
-      type: object
-      properties:
-        count:
-          type: integer
-        user:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -197,6 +181,22 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
+    Users:
+      type: object
+      properties:
+        count:
+          type: integer
+        user:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
   parameters:
     fields:
       name: fields

@@ -64,13 +64,15 @@ paths:
                 $ref: '#/components/schemas/Mute'
 components:
   schemas:
-    Roles:
+    Mutes:
       type: object
       properties:
-        role:
+        count:
+          type: integer
+        mute:
           type: array
           items:
-            $ref: '#/components/schemas/Role'
+            $ref: '#/components/schemas/Mute'
     User:
       type: object
       properties:
@@ -104,28 +106,6 @@ components:
           type: string
         href:
           type: string
-    Mute:
-      type: object
-      properties:
-        id:
-          type: integer
-        href:
-          type: string
-        assignment:
-          type: object
-          properties:
-            user:
-              $ref: '#/components/schemas/User'
-            timestamp:
-              type: string
-            text:
-              type: string
-        scope:
-          type: object
-        target:
-          type: object
-        resolution:
-          type: object
     Groups:
       type: object
       properties:
@@ -150,15 +130,35 @@ components:
           type: string
         roles:
           $ref: '#/components/schemas/Roles'
-    Mutes:
+    Roles:
       type: object
       properties:
-        count:
-          type: integer
-        mute:
+        role:
           type: array
           items:
-            $ref: '#/components/schemas/Mute'
+            $ref: '#/components/schemas/Role'
+    Mute:
+      type: object
+      properties:
+        id:
+          type: integer
+        href:
+          type: string
+        assignment:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/User'
+            timestamp:
+              type: string
+            text:
+              type: string
+        scope:
+          type: object
+        target:
+          type: object
+        resolution:
+          type: object
   parameters:
     locator:
       name: locator

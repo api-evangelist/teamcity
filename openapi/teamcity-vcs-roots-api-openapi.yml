@@ -99,69 +99,38 @@ paths:
         '204':
           description: VCS root deleted successfully
 components:
-  parameters:
-    locator:
-      name: locator
-      in: query
-      description: TeamCity locator string to filter results
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Fields to include in the response (for partial responses)
-      schema:
-        type: string
   schemas:
-    VcsRoot:
+    Properties:
       type: object
       properties:
-        id:
-          type: string
-          description: VCS root unique identifier
-        name:
-          type: string
-          description: VCS root display name
-        vcsName:
-          type: string
-          description: VCS type (e.g., jetbrains.git)
+        count:
+          type: integer
         href:
           type: string
-        status:
-          type: string
-        lastChecked:
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    BuildTypes:
+      type: object
+      properties:
+        count:
+          type: integer
+        buildType:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuildType'
+    Projects:
+      type: object
+      properties:
+        count:
+          type: integer
+        href:
           type: string
         project:
-          $ref: '#/components/schemas/Project'
-        properties:
-          $ref: '#/components/schemas/Properties'
-    VcsRoots:
-      type: object
-      properties:
-        count:
-          type: integer
-        href:
-          type: string
-        vcs-root:
           type: array
           items:
-            $ref: '#/components/schemas/VcsRoot'
-    Triggers:
-      type: object
-      properties:
-        count:
-          type: integer
-        trigger:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
+            $ref: '#/components/schemas/Project'
     Property:
       type: object
       properties:
@@ -176,24 +145,6 @@ components:
           properties:
             rawValue:
               type: string
-    Steps:
-      type: object
-      properties:
-        count:
-          type: integer
-        step:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type: string
-              properties:
-                $ref: '#/components/schemas/Properties'
     BuildType:
       type: object
       properties:
@@ -226,37 +177,73 @@ components:
           $ref: '#/components/schemas/Triggers'
         settings:
           $ref: '#/components/schemas/Properties'
-    BuildTypes:
-      type: object
-      properties:
-        count:
-          type: integer
-        buildType:
-          type: array
-          items:
-            $ref: '#/components/schemas/BuildType'
-    Properties:
+    VcsRoots:
       type: object
       properties:
         count:
           type: integer
         href:
           type: string
-        property:
+        vcs-root:
           type: array
           items:
-            $ref: '#/components/schemas/Property'
-    Projects:
+            $ref: '#/components/schemas/VcsRoot'
+    Triggers:
       type: object
       properties:
         count:
           type: integer
+        trigger:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    Steps:
+      type: object
+      properties:
+        count:
+          type: integer
+        step:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              properties:
+                $ref: '#/components/schemas/Properties'
+    VcsRoot:
+      type: object
+      properties:
+        id:
+          type: string
+          description: VCS root unique identifier
+        name:
+          type: string
+          description: VCS root display name
+        vcsName:
+          type: string
+          description: VCS type (e.g., jetbrains.git)
         href:
+          type: string
+        status:
+          type: string
+        lastChecked:
           type: string
         project:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
+          $ref: '#/components/schemas/Project'
+        properties:
+          $ref: '#/components/schemas/Properties'
     Project:
       type: object
       properties:
@@ -287,6 +274,19 @@ components:
           $ref: '#/components/schemas/Properties'
         projects:
           $ref: '#/components/schemas/Projects'
+  parameters:
+    locator:
+      name: locator
+      in: query
+      description: TeamCity locator string to filter results
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Fields to include in the response (for partial responses)
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

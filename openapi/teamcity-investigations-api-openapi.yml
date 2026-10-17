@@ -45,13 +45,6 @@ paths:
                 $ref: '#/components/schemas/Investigations'
 components:
   schemas:
-    Roles:
-      type: object
-      properties:
-        role:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
     Investigation:
       type: object
       properties:
@@ -80,48 +73,6 @@ components:
           type: object
         resolution:
           type: object
-    Group:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Group key
-        name:
-          type: string
-          description: Group display name
-        description:
-          type: string
-        href:
-          type: string
-        roles:
-          $ref: '#/components/schemas/Roles'
-    Investigations:
-      type: object
-      properties:
-        count:
-          type: integer
-        investigation:
-          type: array
-          items:
-            $ref: '#/components/schemas/Investigation'
-    Role:
-      type: object
-      properties:
-        roleId:
-          type: string
-        scope:
-          type: string
-        href:
-          type: string
-    Groups:
-      type: object
-      properties:
-        count:
-          type: integer
-        group:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
     User:
       type: object
       properties:
@@ -146,6 +97,55 @@ components:
           $ref: '#/components/schemas/Roles'
         groups:
           $ref: '#/components/schemas/Groups'
+    Role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        scope:
+          type: string
+        href:
+          type: string
+    Groups:
+      type: object
+      properties:
+        count:
+          type: integer
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Group:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Group key
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+        href:
+          type: string
+        roles:
+          $ref: '#/components/schemas/Roles'
+    Roles:
+      type: object
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Investigations:
+      type: object
+      properties:
+        count:
+          type: integer
+        investigation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Investigation'
   parameters:
     locator:
       name: locator
