@@ -1,4 +1,4 @@
-# TeamCity (teamcity)
+# TeamCity
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,80 +66,183 @@
 
 JetBrains TeamCity is a powerful continuous integration and deployment server that helps development teams build, test, and deploy software efficiently. TeamCity provides a comprehensive REST API for automating CI/CD workflows, managing projects, build configurations, agents, and infrastructure.
 
-**APIs.json:** [https://github.com/api-evangelist/teamcity](https://github.com/api-evangelist/teamcity)
+**Areas:** Build Automation · CI/CD · Continuous Integration · Deployment · Developer Tools · DevOps · Testing
 
-## Scope
+## TeamCity on APIs.io
 
-- **Type:** Index
-- **Access:** 3rd-Party
+Everything profiled for TeamCity is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/teamcity/](https://apis.io/providers/teamcity/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (17)
 
-- Build Automation
-- CI/CD
-- Continuous Integration
-- Deployment
-- DevOps
-- Testing
+- [TeamCity Agent Pools API](https://apis.io/apis/teamcity/teamcity-agent-pools-api/) — Manage agent pools
+- [TeamCity Agents API](https://apis.io/apis/teamcity/teamcity-agents-api/) — Manage build agents
+- [TeamCity Audit API](https://apis.io/apis/teamcity/teamcity-audit-api/) — Query audit log entries
+- [TeamCity Build Configurations API](https://apis.io/apis/teamcity/teamcity-build-configurations-api/) — Manage build configurations (build types)
+- [TeamCity Build Queue API](https://apis.io/apis/teamcity/teamcity-build-queue-api/) — Manage the build queue
+- [TeamCity Builds API](https://apis.io/apis/teamcity/teamcity-builds-api/) — Trigger, query, and manage builds
+- [TeamCity Changes API](https://apis.io/apis/teamcity/teamcity-changes-api/) — Query VCS changes
+- [TeamCity Cloud API](https://apis.io/apis/teamcity/teamcity-cloud-api/) — Manage cloud profiles and instances
+- [TeamCity Investigations API](https://apis.io/apis/teamcity/teamcity-investigations-api/) — Manage build and test investigations
+- [TeamCity Mutes API](https://apis.io/apis/teamcity/teamcity-mutes-api/) — Manage test mutes
+- [TeamCity Problems API](https://apis.io/apis/teamcity/teamcity-problems-api/) — Query build problems
+- [TeamCity Projects API](https://apis.io/apis/teamcity/teamcity-projects-api/) — Manage TeamCity projects
+- [TeamCity Server API](https://apis.io/apis/teamcity/teamcity-server-api/) — Server information and configuration
+- [TeamCity Tests API](https://apis.io/apis/teamcity/teamcity-tests-api/) — Query test results
+- [TeamCity User Groups API](https://apis.io/apis/teamcity/teamcity-user-groups-api/) — Manage user groups
+- [TeamCity Users API](https://apis.io/apis/teamcity/teamcity-users-api/) — Manage users and user groups
+- [TeamCity VCS Roots API](https://apis.io/apis/teamcity/teamcity-vcs-roots-api/) — Manage version control system roots
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### TeamCity REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The primary REST API for interacting with TeamCity server, allowing you to manage builds, projects, build configurations, agents, users, VCS roots, changes, tests, investigations, mutes, cloud infrastructure, and more.
+- [Teamcity Agentic Access](https://apis.io/agentic-access/teamcity/teamcity-agentic-access/)
 
-- **Human URL:** [https://www.jetbrains.com/help/teamcity/rest-api.html](https://www.jetbrains.com/help/teamcity/rest-api.html)
-- **Base URL:** `https://teamcity.example.com/app/rest`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Agents
-- Automation
-- Builds
-- CI/CD
-- Projects
-- REST
-- Testing
+- [TeamCity REST API JSON Schema](https://apis.io/schemas/teamcity/teamcity-rest-api/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://www.jetbrains.com/help/teamcity/rest-api.html)
-- [API Reference](https://www.jetbrains.com/help/teamcity/rest-api-reference.html)
-- [Authentication](https://www.jetbrains.com/help/teamcity/rest-api.html#REST+Authentication)
-- [OpenAPI](openapi/teamcity-rest-api.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/teamcity-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/teamcity-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/teamcity-rest-api.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/teamcity-rest-api.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Linked-data contexts for the provider's vocabulary.
 
-## Common Properties
+- [Teamcity Rest Api Context](https://apis.io/jsonld/teamcity/teamcity-rest-api/)
 
-- [LinkedIn](https://www.linkedin.com/company/jetbrains)
-- [Getting Started](https://www.jetbrains.com/help/teamcity/getting-started-with-teamcity.html)
+#### Collections (35)
+
+Postman and Open Collection request collections.
+
+- [TeamCity REST Agent Pools API](https://apis.io/collections/teamcity/open-teamcity-agent-pools-api/)
+- [TeamCity REST Agent Pools Agents API](https://apis.io/collections/teamcity/open-teamcity-agents-api/)
+- [TeamCity REST Agent Pools Audit API](https://apis.io/collections/teamcity/open-teamcity-audit-api/)
+- [TeamCity REST Agent Pools Build Configurations API](https://apis.io/collections/teamcity/open-teamcity-build-configurations-api/)
+- [TeamCity REST Agent Pools Build Queue API](https://apis.io/collections/teamcity/open-teamcity-build-queue-api/)
+- [TeamCity REST Agent Pools Builds API](https://apis.io/collections/teamcity/open-teamcity-builds-api/)
+- [TeamCity REST Agent Pools Changes API](https://apis.io/collections/teamcity/open-teamcity-changes-api/)
+- [TeamCity REST Agent Pools Cloud API](https://apis.io/collections/teamcity/open-teamcity-cloud-api/)
+- [TeamCity REST Agent Pools Investigations API](https://apis.io/collections/teamcity/open-teamcity-investigations-api/)
+- [TeamCity REST Agent Pools Mutes API](https://apis.io/collections/teamcity/open-teamcity-mutes-api/)
+- [TeamCity REST Agent Pools Problems API](https://apis.io/collections/teamcity/open-teamcity-problems-api/)
+- [TeamCity REST Agent Pools Projects API](https://apis.io/collections/teamcity/open-teamcity-projects-api/)
+- [TeamCity REST API](https://apis.io/collections/teamcity/open-teamcity-rest-api/)
+- [TeamCity REST Agent Pools Server API](https://apis.io/collections/teamcity/open-teamcity-server-api/)
+- [TeamCity REST Agent Pools Tests API](https://apis.io/collections/teamcity/open-teamcity-tests-api/)
+- [TeamCity REST Agent Pools User Groups API](https://apis.io/collections/teamcity/open-teamcity-user-groups-api/)
+- [TeamCity REST Agent Pools Users API](https://apis.io/collections/teamcity/open-teamcity-users-api/)
+- [TeamCity REST Agent Pools VCS Roots API](https://apis.io/collections/teamcity/open-teamcity-vcs-roots-api/)
+- [TeamCity REST Agent Pools API](https://apis.io/collections/teamcity/postman-teamcity-agent-pools-api/)
+- [TeamCity REST Agent Pools Agents API](https://apis.io/collections/teamcity/postman-teamcity-agents-api/)
+- [TeamCity REST Agent Pools Audit API](https://apis.io/collections/teamcity/postman-teamcity-audit-api/)
+- [TeamCity REST Agent Pools Build Configurations API](https://apis.io/collections/teamcity/postman-teamcity-build-configurations-api/)
+- [TeamCity REST Agent Pools Build Queue API](https://apis.io/collections/teamcity/postman-teamcity-build-queue-api/)
+- [TeamCity REST Agent Pools Builds API](https://apis.io/collections/teamcity/postman-teamcity-builds-api/)
+- [TeamCity REST Agent Pools Changes API](https://apis.io/collections/teamcity/postman-teamcity-changes-api/)
+- …and 10 more published on APIs.io
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [TeamCity — jsonschema rules](https://apis.io/rules/teamcity/teamcity-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Teamcity Authentication](https://apis.io/security/teamcity/teamcity-authentication/)
+- [Teamcity Domain Security](https://apis.io/security/teamcity/teamcity-domain-security/)
+- [Teamcity Vulnerability Disclosure](https://apis.io/security/teamcity/teamcity-vulnerability-disclosure/)
+
+#### Plans and pricing (2)
+
+Published plans, tiers and prices.
+
+- [Teamcity Plans Pricing](https://apis.io/plans/teamcity/teamcity-plans-pricing/)
+- [Teamcity Price Estimates](https://apis.io/plans/teamcity/teamcity-price-estimates/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Teamcity Rate Limits](https://apis.io/rate-limits/teamcity/teamcity-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Teamcity Finops](https://apis.io/finops/teamcity/teamcity-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.jetbrains.com/)
 - [Documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html)
+- [Getting started](https://www.jetbrains.com/help/teamcity/getting-started-with-teamcity.html)
 - [Pricing](https://www.jetbrains.com/teamcity/buy/)
-- [Blog](https://blog.jetbrains.com/teamcity/)
-- [X (Twitter)](https://twitter.com/teamcity)
-- [GitHub Organization](https://github.com/JetBrains)
-- [GitHub Repository](https://github.com/JetBrains/teamcity-rest-client)
-- [Status Page](https://teamcity-support.jetbrains.com/hc/en-us/categories/200595559-Known-Issues)
-- [Marketplace](https://plugins.jetbrains.com/teamcity)
 - [Support](https://www.jetbrains.com/support/teamcity/)
 - [Changelog](https://www.jetbrains.com/help/teamcity/what-s-new-in-teamcity.html)
-- [C L I](https://github.com/JetBrains/teamcity-cli)
-- [SDK](https://github.com/JetBrains/teamcity-rest-client)
-- [SDK](https://github.com/JetBrains/terraform-provider-teamcity)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://blog.jetbrains.com/teamcity/)
+- [GitHub](https://github.com/JetBrains)
+- [Status](https://teamcity-support.jetbrains.com/hc/en-us/categories/200595559-Known-Issues)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** JetBrains
-**Email:** teamcity-support@jetbrains.com
-**URL:** https://www.jetbrains.com
+**Kin Score 45.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 55.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 63.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 21.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/teamcity/](https://apis.io/providers/teamcity/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TeamCity: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/teamcity/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
